@@ -11,6 +11,7 @@
 	local speed = 2500
 	isPause = false
 
+
 	moles = {}
 
 
@@ -107,6 +108,9 @@
 		end
 
 		function hitMole(event)
+			if (isPause == true) then
+				return
+			end
 			local mole = event.target
 			display.remove(mole)
 	 		transition.cancel( mole.tran)
