@@ -9,6 +9,7 @@
 	-- open value
 	local score = 0
 	local speed = 2500
+	isPause = false
 
 	moles = {}
 
@@ -72,7 +73,7 @@
 	-- element funciton --
 		function spawnMole(mole_x, mole_y)
 
-			local mole = display.newSprite( imageSheet, sequenceData )
+			mole = display.newSprite( imageSheet, sequenceData )
 			mole:setSequence( "spawn" )
 			mole:play( )
 			--local mole = display.newImageRect("img/mole.png",202,168)
@@ -126,7 +127,15 @@
 		end
 
 		function pauseAll()
-			transition.pause()
+			if ( isPause == false) then
+				transition.pause()
+				mole:pause()
+				isPause = true
+			else
+				transition.resume( )
+				mole:play()
+				isPause = false
+			end
 		end
 
 		function showFont()
