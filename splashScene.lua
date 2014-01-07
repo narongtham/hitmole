@@ -24,7 +24,7 @@ end
 
 function toMenu()
 	transition.to( logo , {time = 1000 , xScale = 1, yScale = 1, alpha = 0} )
-	storyboard.gotoScene("sceneMenu",{
+	storyboard.gotoScene("menuScene",{
 	effect = "fade",
 	time = 500,
 	onComplete = purgeS
