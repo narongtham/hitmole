@@ -8,18 +8,18 @@
 
 	-- open value
 	local score = 0
-	local speed = 2500
+	local speed = 3000
 	isPause = false
 
 
 	moles = {}
 
 
-	local options = {width = 200, height = 170, numFrames = 55}
+	local options = {width = 200, height = 170, numFrames = 67}
 	local imageSheet = graphics.newImageSheet( "img/sprite/mole1.png", options )
 	local sequenceData = { 
-	
-	{name = "spawn", start = 1, count = 55, time = 2000 , loopCount = 1}
+		{name = "spawn", start = 1, count = 55, time = 2000 , loopCount = 1},
+		{name = "down", start = 56, count = 12, time = 300 , loopCount = 1}
 	}
 
 	-- end value
@@ -111,16 +111,29 @@
 			if (isPause == true) then
 				return
 			end
+
 			local mole = event.target
-			display.remove(mole)
-	 		transition.cancel( mole.tran)
+			mole:setSequence("down")
+			mole:play( )
+			mole:addEventListener( "sprite", moleSpriteEventHandler )
+			--timer.performWithDelay( delay, listener [, iterations] )
 	 		score = score + 20
 	 		scoreTxt.text = "Score: ".. score
 
-	 		mole_x, mole_y = checkMole()
+		end
 
-	 		spawnMole(mole_x, mole_y)
+		function moleSpriteEventHandler(event)
+			if (event.phase == "ended") then
+				performWithDelay( 200, killMole )
+			end
+		end
 
+		function killMole(mole)
+			
+				display.remove(mole)
+		 		transition.cancel(mole)
+		 		mole_x, mole_y = checkMole()
+	 			spawnMole(mole_x, mole_y)
 		end
 
 		function removeMole(event)
