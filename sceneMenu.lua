@@ -2,23 +2,15 @@
 local storyboard = require("storyboard")  
 local scene = storyboard.newScene()
 -- end header
--- open value
-	
-	
--- end value
 
--- create center
-local centerX = display.contentCenterX
-local centerY = display.contentCenterY
--- end create center
 
 function scene:createScene(e)
 	local group = self.view
-	local bg = display.newRect(0,0,640,1136)
+	local bg = display.newImageRect("img/menuBg.jpg",contentWidth ,contentHeight)
 	bg.x = centerX
 	bg.y = centerY
-	bg:setFillColor( 1,1,1 )
 	group:insert(bg)
+
 end
 
 function scene:enterScene(e)
@@ -28,43 +20,36 @@ function scene:enterScene(e)
 end
 
 function scene:exitScene(e) 
+	storyboard.purgeScene( "sceneMenu" )
 end
 
-
-
 function showLogo(view)
-	--local group = self.view
-	logo = display.newImageRect("img/logo.jpg",562,337)
-	logo.x = centerX + 15
-	logo.y = 200
+	logo = display.newImageRect("img/logo.png",659,330)
+	logo.x = centerX 
+	logo.y = 300
 	logo.alpha = 0
 	transition.to( logo, {time = 1000, alpha = 1, onComplete = showMenu} )
 	
 end
 
 function showMenu()
-	--local view = self.view
-	local font = "Helvetica" or native.systemFont
-	startGame = display.newText("Tab to Start game",0,0,font,50)
-	startGame:setFillColor( 0.7, 0.7, 0.7)
-	startGame.x = centerX
-	startGame.y = 800
-	startGame.alpha = 0
-	--view:insert(startGame)
+	startBtn = display.newImageRect( "img/startBtn.png",  303, 196 )
+	startBtn.x = centerX
+	startBtn.y = 900
+	startBtn.alpha = 0
 
-	transition.to(startGame,{time = 1000, alpha =1})
-	startGame:addEventListener("tap",startG)
+	transition.to(startBtn,{time = 1000, alpha =1})
+	startBtn:addEventListener("tap",startG)
 
 end
 
 function startG()
-	startGame = display.remove(startGame)
+	startBtn = display.remove(startBtn)
 	storyboard.gotoScene("sceneGame",{
 		effect = "fade",
 		time = 1000
 	})
 end
-
 
 
 scene:addEventListener("createScene",scene)

@@ -7,6 +7,6 @@ contentHeight = display.viewableContentHeight
 
 
 local storyboard = require("storyboard")
-storyboard.gotoScene("splashScene")
+storyboard.gotoScene("sceneMenu") --splashScene
 
 display.setStatusBar(display.HiddenStatusBar) 
