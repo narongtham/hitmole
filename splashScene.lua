@@ -2,49 +2,40 @@
 local storyboard = require("storyboard")  
 local scene = storyboard.newScene()
 -- end header
--- open value
--- end value
 
--- create center
-local centerX = display.contentCenterX
-local centerY = display.contentCenterY
--- end create center
 
 function scene:createScene(e)
-	local view = self.view
-	local bg = display.newRect(0,0,640,1136)
+	local group = self.view
+	local bg = display.newRect(centerX,centerY,contentWidth ,contentHeight)
 	bg:setFillColor( 0,0,0 )
-	view:insert(bg)
+	group:insert(bg)
 
-	local logo = display.newImageRect("img/v.jpg",200,260)
+	local logo = display.newImageRect("img/kongDev.jpg",600,488)
 	logo.x = centerX
 	logo.y = centerY
 	logo.alpha = 0
-	view:insert(logo)
+	group:insert(logo)
 
 	transition.to( logo , {time = 1000 , xScale = 1, yScale = 1, alpha = 1} )
 	timer.performWithDelay( 2000, toMenu )
-
-	--print( "hello world!!!!" )
 	
-end
-
-function scene:enterScene(e)
-end
-
-function scene:exitScene(e) 
 end
 
 
 function toMenu()
+	transition.to( logo , {time = 1000 , xScale = 1, yScale = 1, alpha = 0} )
 	storyboard.gotoScene("sceneMenu",{
 	effect = "fade",
 	time = 500,
+	onComplete = purgeS
 	})
+	
+end
+function purgeS( )
+	storyboard.purgeScene( "splashScene" )
 end
 
 scene:addEventListener("createScene",scene)
-scene:addEventListener("enterScene",scene)
-scene:addEventListener("exitScene",scene)
+
 
 return scene
