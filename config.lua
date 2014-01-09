@@ -11,3 +11,5 @@ application =
         fps = 30,
 	},
 }
+
+storyboard = require("storyboard")
