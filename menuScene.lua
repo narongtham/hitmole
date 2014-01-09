@@ -1,11 +1,13 @@
 -- header
 local storyboard = require("storyboard")  
 local scene = storyboard.newScene()
+g = nil
 -- end header
 
 
 function scene:createScene(e)
 	local group = self.view
+	g = group
 	local bg = display.newImageRect("img/menuBg.jpg",contentWidth ,contentHeight)
 	bg.x = centerX
 	bg.y = centerY
@@ -37,17 +39,25 @@ function showMenu()
 	startBtn.x = centerX
 	startBtn.y = 900
 	startBtn.alpha = 0
+	g:insert(startBtn)
 
 	transition.to(startBtn,{time = 1000, alpha =1})
-	startBtn:addEventListener("tap",startG)
+	startBtn:addEventListener("tap",startG1)
 
 end
 
+function startG1( event )
+	transition.to( startBtn, {time = 80, yScale = 0.8} )
+	transition.to( startBtn, {time = 80, delay = 80, yScale = 1.2} )
+	transition.to( startBtn, {time = 80, delay = 160, yScale = 1, onComplete = startG} )
+end
+
 function startG()
-	startBtn = display.remove(startBtn)
+	
+	--startBtn = display.remove(startBtn)
 	storyboard.gotoScene("gameScene",{
 		effect = "fade",
-		time = 1000
+		time = 500
 	})
 end
 

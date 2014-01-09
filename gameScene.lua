@@ -10,6 +10,7 @@
 	local score = 0
 	local speed = 3000
 	isPause = false
+	g = nil
 
 
 	moles = {}
@@ -21,6 +22,24 @@
 		{name = "spawn", start = 1, count = 55, time = 2000 , loopCount = 1},
 		{name = "down", start = 56, count = 12, time = 300 , loopCount = 1}
 	}
+
+	local bgmChannel
+	 local tapChannel
+	 --local blastChannel
+	 local audio = require("audio")
+	 local bgm = audio.loadSound("audio/music.mp3") --โหลดไฟล์เสียงมาใส่ในเครื่อง user เลย
+	 local tapSound = audio.loadStream( "audio/punch.mp3") -- โหลดเสียงแบบ Stream (เหมือนดู ยูทูป)
+	 --local blastSound = audio.loadStream( "audio/blast.mp3")
+	 
+	 function playBgSound()
+	 bgmChannel = audio.play(bgm, { channel = 1 , loops = -1 }) -- loops 0mean play once , loops -1 mean infinity loop
+	 end
+	 function playTapSound()
+	 	tapChannel = audio.play(tapSound, { channel = 2 , loops = 0}) -- ต้องใส่ channel ด้วย เด๋วเสียงชนกัน
+	 end
+	 --function playBlastSound()
+	 --blastChannel = audio.play(blastSound, { channel = 3 , loops = 0})
+	 --end
 
 	-- end value
 
@@ -40,24 +59,25 @@
 		box.alpha = 0.01
 		box:addEventListener("tap", showFont)]]--
 
-
+		playBgSound()
 		
 	end
 
 	function scene:enterScene(e)
 		local group = self.view
+		g = group
 
 		font = native.systemFont
 		scoreTxt = display.newText("Score: 0", 0, 0, font, 30)
 		scoreTxt.x = display.contentWidth - 140
 		scoreTxt.y = 40
-		scoreTxt:setTextColor (0,0,0)
+		scoreTxt:setFillColor (0,0,0)
 		group:insert(scoreTxt)
 
 		pauseGame = display.newText("pause", 0, 0, font, 30)
 		pauseGame.x = display.contentWidth - 120
 		pauseGame.y = 80
-		pauseGame:setTextColor (0,0,0)
+		pauseGame:setFillColor (0,0,0)
 		group:insert(pauseGame)
 
 		pauseGame:addEventListener("tap", pauseAll)
@@ -65,6 +85,7 @@
 		mole_x, mole_y = checkMole()
 	 	spawnMole(mole_x, mole_y)
 
+	 	
 	end
 
 	function scene:exitScene(e) 
@@ -72,7 +93,7 @@
 
 
 	-- element funciton --
-		function spawnMole(mole_x, mole_y)
+		function spawnMole(mole_x, mole_y )
 
 			mole = display.newSprite( imageSheet, sequenceData )
 			mole:setSequence( "spawn" )
@@ -86,7 +107,7 @@
 			mole:addEventListener("tap",hitMole )
 			
 			mole.tran = transition.to( mole,{time = speed, x=mole.x, y=mole.y, onComplete = removeMole } )
-			
+			g:insert(mole)
 		end
 
 		function checkMole()
@@ -120,11 +141,13 @@
 	 		score = score + 20
 	 		scoreTxt.text = "Score: ".. score
 
+	 		playTapSound()
+
 		end
 
 		function moleSpriteEventHandler(event)
 			if (event.phase == "ended") then
-				performWithDelay( 200, killMole )
+				--timer.performWithDelay( 0, killMole )
 			end
 		end
 
@@ -148,6 +171,7 @@
 				transition.pause()
 				mole:pause()
 				isPause = true
+				storyboard.showOverlay( "option" , {effect = "fade" , isModal = true})
 			else
 				transition.resume( )
 				mole:play()
