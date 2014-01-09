@@ -1,0 +1,6 @@
+describe("main specs", function ()
+	require("main")
+	it("should set contentCenterX of display to centerX", function ()
+		assert.are.equal(display.contentConterX, centerX)
+	end)
+end)
