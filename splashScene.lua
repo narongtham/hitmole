@@ -6,13 +6,16 @@ local scene = storyboard.newScene()
 
 function scene:createScene(e)
 	local group = self.view
-	local bg = display.newRect(centerX,centerY,contentWidth ,contentHeight)
+	local bg = display.newRect(DISPLAY_CENTER_X,
+		DISPLAY_CENTER_Y,
+		CONTENT_WIDTH,
+		CONTENT_HEIGHT)
 	bg:setFillColor( 0,0,0 )
 	group:insert(bg)
 
 	local logo = display.newImageRect("img/kongDev.jpg",600,488)
-	logo.x = centerX
-	logo.y = centerY
+	logo.x = DISPLAY_CENTER_X
+	logo.y = DISPLAY_CENTER_Y
 	logo.alpha = 0
 	group:insert(logo)
 

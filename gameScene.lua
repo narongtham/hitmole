@@ -46,10 +46,12 @@
 
 	function scene:createScene(e)
 		local group = self.view
-		local bg = display.newImageRect("img/backyard.jpg", contentWidth ,contentHeight)
+		local bg = display.newImageRect("img/backyard.jpg",
+			CONTENT_WIDTH,
+			CONTENT_HEIGHT)
 		--bg:setFillColor( 0,0,0 )
-		bg.x = centerX
-		bg.y = centerY
+		bg.x = DISPLAY_CENTER_X
+		bg.y = DISPLAY_CENTER_Y
 		group:insert(bg)
 
 		

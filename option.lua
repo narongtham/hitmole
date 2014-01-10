@@ -6,13 +6,16 @@ local scene = storyboard.newScene()
 
 function scene:createScene(e)
 	local group = self.view
-	local bg = display.newRect(centerX,centerY,600 ,800)
+	local bg = display.newRect(DISPLAY_CENTER_X,
+		DISPLAY_CENTER_Y,
+		600,
+		800)
 	bg:setFillColor( 0,0,0 )
 	group:insert(bg)
 
 	local logo = display.newImageRect("img/kongDev.jpg",600,488)
-	logo.x = centerX
-	logo.y = centerY - 300
+	logo.x = DISPLAY_CENTER_X
+	logo.y = DISPLAY_CENTER_Y - 300
 	logo.alpha = 1
 	logo.xScale = 0.5
 	logo.yScale = 0.5
@@ -20,13 +23,13 @@ function scene:createScene(e)
 
 	local font = "Helvetica" or native.systemFont
 	local optionTitle = display.newText(  "Option" , 0,0,font,48 )
-	optionTitle.x = centerX
-	optionTitle.y = centerY
+	optionTitle.x = DISPLAY_CENTER_X
+	optionTitle.y = DISPLAY_CENTER_Y
 	group:insert(optionTitle)
 
 	local backTxt = display.newText(  "back" , 0,0,font,36 )
-	backTxt.x = centerX
-	backTxt.y = centerY+100
+	backTxt.x = DISPLAY_CENTER_X
+	backTxt.y = DISPLAY_CENTER_Y + 100
 	backTxt:addEventListener( "tap", backToGame )
 	group:insert(backTxt)
 

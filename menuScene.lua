@@ -8,9 +8,11 @@ g = nil
 function scene:createScene(e)
 	local group = self.view
 	g = group
-	local bg = display.newImageRect("img/menuBg.jpg",contentWidth ,contentHeight)
-	bg.x = centerX
-	bg.y = centerY
+	local bg = display.newImageRect("img/menuBg.jpg",
+		CONTENT_WIDTH,
+		CONTENT_HEIGHT)
+	bg.x = DISPLAY_CENTER_X
+	bg.y = DISPLAY_CENTER_Y
 	group:insert(bg)
 
 end
@@ -27,7 +29,7 @@ end
 
 function showLogo(view)
 	logo = display.newImageRect("img/logo.png",659,330)
-	logo.x = centerX 
+	logo.x = DISPLAY_CENTER_X 
 	logo.y = 300
 	logo.alpha = 0
 	transition.to( logo, {time = 1000, alpha = 1, onComplete = showMenu} )
@@ -36,7 +38,7 @@ end
 
 function showMenu()
 	startBtn = display.newImageRect( "img/startBtn.png",  303, 196 )
-	startBtn.x = centerX
+	startBtn.x = DISPLAY_CENTER_X
 	startBtn.y = 900
 	startBtn.alpha = 0
 	g:insert(startBtn)
