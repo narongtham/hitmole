@@ -11,8 +11,9 @@
 	local speed = 3000
 	isPause = false
 	g = nil
+	hitCount = 4
 
-
+	
 	moles = {}
 
 
@@ -84,7 +85,7 @@
 
 		mole_x, mole_y = checkMole()
 	 	spawnMole(mole_x, mole_y)
-
+	 	showHeart()
 	 	
 	end
 
@@ -145,6 +146,15 @@
 
 		end
 
+		function showHeart()
+			heart = {}
+			for i =1 , hitCount do
+				heart[i] = display.newImage("img/heart.png")
+				heart[i].x = 30*i
+				heart[i].y = 30
+			end
+		end
+
 		function moleSpriteEventHandler(event)
 			if (event.phase == "ended") then
 				--timer.performWithDelay( 0, killMole )
@@ -163,9 +173,26 @@
 			mole_x, mole_y = checkMole()
 			display.remove(event)
 			table.remove(moles)
-			spawnMole(mole_x, mole_y)
+			moleEsc()
+			--spawnMole(mole_x, mole_y)
 		end
 
+		function moleEsc( )
+			display.remove(heart[hitCount])
+			hitCount = hitCount - 1
+			print( "heart = ".. #heart )
+			print( "hitCount = ".. hitCount )
+			print( "mole = ".. #mole )
+
+			if hitCount > 0 then 
+				spawnMole(mole_x, mole_y)
+		 	else
+		 		local gameOverTxt = display.newText("GameOver",0,0,"Helvetica",50)
+		 		gameOverTxt.x = centerX
+		 		gameOverTxt.y = centerY
+
+		 	end
+		end
 		function pauseAll()
 			if ( isPause == false) then
 				transition.pause()
