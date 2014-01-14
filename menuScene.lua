@@ -43,7 +43,7 @@ function showMenu()
 	g:insert(startBtn)
 
 	transition.to(startBtn,{time = 1000, alpha =1})
-	startBtn:addEventListener("tap",startG1)
+	startBtn:addEventListener("tap",startG1	)
 
 end
 

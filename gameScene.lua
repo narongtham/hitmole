@@ -10,8 +10,9 @@
 	local speed = 3000
 	isPause = false
 	g = nil
+	escCount = 3
 
-
+	
 	moles = {}
 
 
@@ -22,13 +23,13 @@
 		{name = "down", start = 56, count = 12, time = 300 , loopCount = 1}
 	}
 
-	local bgmChannel
+	 local bgmChannel
 	 local tapChannel
 	 --local blastChannel
 	 local audio = require("audio")
 	 local bgm = audio.loadSound("audio/music.mp3") --โหลดไฟล์เสียงมาใส่ในเครื่อง user เลย
 	 local tapSound = audio.loadStream( "audio/punch.mp3") -- โหลดเสียงแบบ Stream (เหมือนดู ยูทูป)
-	 --local blastSound = audio.loadStream( "audio/blast.mp3")
+	
 	 
 	 function playBgSound()
 	 bgmChannel = audio.play(bgm, { channel = 1 , loops = -1 }) -- loops 0mean play once , loops -1 mean infinity loop
@@ -36,9 +37,6 @@
 	 function playTapSound()
 	 	tapChannel = audio.play(tapSound, { channel = 2 , loops = 0}) -- ต้องใส่ channel ด้วย เด๋วเสียงชนกัน
 	 end
-	 --function playBlastSound()
-	 --blastChannel = audio.play(blastSound, { channel = 3 , loops = 0})
-	 --end
 
 	-- end value
 
@@ -52,14 +50,6 @@
 		bg.x = DISPLAY_CENTER_X
 		bg.y = DISPLAY_CENTER_Y
 		group:insert(bg)
-
-		
-		
-		--[[local box = display.newRect(0,350,640,1136)
-		box:setFillColor(0,0,0)
-		box.alpha = 0.01
-		box:addEventListener("tap", showFont)]]--
-
 		playBgSound()
 		
 	end
@@ -85,7 +75,7 @@
 
 		mole_x, mole_y = checkMole()
 	 	spawnMole(mole_x, mole_y)
-
+	 	showHeart()
 	 	
 	end
 
@@ -146,6 +136,16 @@
 
 		end
 
+		function showHeart()
+			heart = {}
+			for i =1 , escCount do
+				heart[i] = display.newImage("img/heart.png")
+				heart[i].x = 30*i
+				heart[i].y = 30
+				g:insert(heart[i])
+			end
+		end
+
 		function moleSpriteEventHandler(event)
 			if (event.phase == "ended") then
 				--timer.performWithDelay( 0, killMole )
@@ -164,7 +164,26 @@
 			mole_x, mole_y = checkMole()
 			display.remove(event)
 			table.remove(moles)
-			spawnMole(mole_x, mole_y)
+			moleEsc()
+			--spawnMole(mole_x, mole_y)
+		end
+
+		function moleEsc( )
+			display.remove(heart[escCount])
+			escCount = escCount - 1
+			print( "heart = ".. #heart )
+			print( "escCount = ".. escCount )
+			print( "mole = ".. #mole )
+
+			if escCount > 0 then 
+				spawnMole(mole_x, mole_y)
+		 	else
+		 		local gameOverTxt = display.newText("GameOver",0,0,"Helvetica",50)
+		 		gameOverTxt:setFillColor( 0,0,0.2 )
+		 		gameOverTxt.x = centerX
+		 		gameOverTxt.y = centerY
+
+		 	end
 		end
 
 		function pauseAll()
@@ -179,15 +198,6 @@
 				isPause = false
 			end
 		end
-
-		function showFont()
-			local font = "Helvetica" or native.systemFont
-			local text = display.newText("main game",0,0,font,40)
-			text:setTextColor(70,70,70)
-			text.x = centerX
-			text.y = centerY
-		end
-
 
 	scene:addEventListener("createScene",scene)
 	scene:addEventListener("enterScene",scene)
