@@ -1,5 +1,4 @@
 		-- header
-	local storyboard = require("storyboard")  
 	local scene = storyboard.newScene()
 	math.randomseed (os.time())
 

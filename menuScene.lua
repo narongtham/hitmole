@@ -1,5 +1,4 @@
--- header
-local storyboard = require("storyboard")  
+-- header 
 local scene = storyboard.newScene()
 g = nil
 -- end header

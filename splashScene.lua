@@ -1,8 +1,10 @@
--- header
-local storyboard = require("storyboard")  
-local scene = storyboard.newScene()
--- end header
+local splashScene = {}
 
+	function splashScene.new( ... )
+		splashScene.scene = storyboard.newScene()
+	end
+
+return splashScene
 
 function scene:createScene(e)
 	local group = self.view
