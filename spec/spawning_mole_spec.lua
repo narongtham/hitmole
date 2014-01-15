@@ -1,3 +1,5 @@
 describe("Spawning mole spec", function ( ... )
-	error( "Not yet implemented" )
+	it("Should set sequence 'spawn' to sprite", function ( ... )
+		error( "Not yet implemented")
+	end)
 end)
