@@ -1,10 +1,4 @@
-local splashScene = {}
-
-	function splashScene.new( ... )
-		splashScene.scene = storyboard.newScene()
-	end
-
-return splashScene
+local scene = storyboard.newScene( "splashScene" )
 
 function scene:createScene(e)
 	local group = self.view

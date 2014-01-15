@@ -13,3 +13,4 @@ application =
 }
 
 storyboard = require("storyboard")
+createMoleSprite = require("createMoleSprite")

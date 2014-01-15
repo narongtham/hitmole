@@ -1,9 +1,9 @@
-local CreateMoleSprite = {}
+local createMoleSprite = {}
 
-CreateMoleSprite.create = function ( ... )
+createMoleSprite.create = function ( ... )
 	local moleSprite = {}
 	moleSprite.options = {width = 200, height = 170, numFrames = 67}
-	moleSprite.imageSheet = graphics.newImageSheet("img/sprite/mole1.png", options)
+	moleSprite.imageSheet = graphics.newImageSheet("img/sprite/mole1.png", moleSprite.options)
 	moleSprite.sequenceData = {
 		{name="spawn", start=1, count=55, time=2000 , loopCount=1},
 		{name="idle", start=55, count=2, loopCount=0},
@@ -13,4 +13,4 @@ CreateMoleSprite.create = function ( ... )
 	return moleSprite
 end
 
-return CreateMoleSprite
+return createMoleSprite

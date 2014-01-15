@@ -1,6 +1,6 @@
 describe("CreateMoleSprite spec", function ( ... )
 	graphics = require("spec.corona-busted.mocks.mockGraphics")
-	createMoleSprite = require("CreateMoleSprite")
+	createMoleSprite = require("createMoleSprite")
 	options = {width = 200, height = 170, numFrames = 67}
 
 	it("It should construct mole image sheet", function ( ... )
