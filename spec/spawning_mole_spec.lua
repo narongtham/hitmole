@@ -1,9 +1,16 @@
-describe("Spawning mole spec", function ( ... )
+describe("Create spawning mole spec", function ( ... )
 
-	graphics = require("spec.corona-busted.mocks.mockGraphics")
-	local SpawningMole = require("SpawningMole")
+	local createSpawningMole = require("createSpawningMole")
 
-	it("When generateMole() called, It should draw spawning mole at given position", function ( ... )
+	it("Should return spawning mole", function ( ... )
+		error( "Not yet implemented")
+	end)
+
+	it("Should generate random position for spawning mole", function ( ... )
+		error( "Not yet implemented")
+	end)
+
+	it("Should set randomed position to spawingin mole", function ( ... )
 		error("Not yet implemented")
 	end)
 end)
