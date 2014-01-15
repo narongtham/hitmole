@@ -1,9 +1,12 @@
 describe("Create spawning mole spec", function ( ... )
 	SpawningMole = require("SpawningMole")
-	generateMolePosition = require("generateMolePosition")
+	generateMolePosition = {
+		generate = function ( ... )
+			return { x=10, y=20}
+		end
+	}
 
 	local createSpawningMole = require("createSpawningMole")
-	
 	
 	it("Should return spawning mole", function ( ... )
 		--when
