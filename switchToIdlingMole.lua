@@ -1,0 +1,3 @@
+local switchToIdlingMole = {}
+
+return switchToIdlingMole
