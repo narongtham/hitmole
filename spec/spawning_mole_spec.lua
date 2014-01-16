@@ -35,7 +35,24 @@ describe("Spawning mole spec", function ( ... )
 		assert.spy(sprite.addEventListener).was_called_with(sprite, "sprite", spawningMole.spriteEventHandler)
 	end)
 
-	it("When sprite animate ended, It will switch to idling mole", function ( ... )
-		error("Not yet implemented")
+	it("When sprite animate ended, It will switch to idling mole and play", function ( ... )
+		--given
+		local sprite = {
+			setSequence = function ( ... ) end,
+			addEventListener = function ( ... )	end,
+			play = function ( ... )	end
+		}
+		spy.on(sprite, "setSequence")
+		--spy.on(sprite, "play")
+		local event = {
+			phase="ended",
+			target=sprite
+		}
+		--when
+		spawningMole.spriteEventHandler(event)
+		--then
+		assert.spy(sprite.setSequence).was_called_with(sprite, "idle")
+		--assert.spy(sprite.play).was_called_with(sprite)
 	end)
+
 end)

@@ -14,7 +14,10 @@ function SpawningMole:setSprite( sprite )
 end
 
 function SpawningMole.spriteEventHandler( event )
-	print(event.phase)
+	if event.phase == "ended" then
+		event.target:setSequence( "idle" )
+		event.target:play( )
+	end
 end
 
 return SpawningMole
