@@ -50,6 +50,7 @@ describe("Spawning mole spec", function ( ... )
 		spawningMole.spriteEventHandler(event)
 		--then
 		assert.stub(switchToIdlingMole.evaluate).was_called_with(sprite)
+		switchToIdlingMole.evaluate:revert()
 	end)
 
 end)

@@ -3,11 +3,25 @@ describe("SwitchToIdlingMole spec", function ( ... )
 	local switchToIdlingMole = require( "switchToIdlingMole" )
 
 	it("Set mole sprite sequence to 'idle'.", function ( ... )
-		error( "Not yet implemented." )
+		--given
+		local  sprite = {}
+		stub(sprite, "setSequence")
+		stub(sprite, "play")
+		--when
+		switchToIdlingMole.evaluate(sprite)
+		--then
+		assert.stub(sprite.setSequence).was_called_with(sprite, "idle")
 	end)
 
 	it("Play sprite after set sequence", function ( ... )
-		error( "Not yet implemented." )
+		--given
+		local  sprite = {}
+		stub(sprite, "setSequence")
+		stub(sprite, "play")
+		--when
+		switchToIdlingMole.evaluate(sprite)
+		--then
+		assert.stub(sprite.play).was_called_with(sprite)
 	end)
 
 	it("Bind tap event listener to sprite", function ( ... )
