@@ -1,6 +1,5 @@
 -- header
 local scene = storyboard.newScene()
-math.randomseed (os.time())
 -- end header
 
 
@@ -15,7 +14,7 @@ escCount = 3
 moles = {}
 
 
-local moleSpriteMetaData = createMoleSprite.create()
+moleSpriteMetaData = createMoleSprite.create()
 
 local bgmChannel
 local tapChannel
@@ -26,10 +25,10 @@ local tapSound = audio.loadStream( "audio/punch.mp3") -- โหลดเสี�
 
 
 function playBgSound()
-	bgmChannel = audio.play(bgm, { channel = 1 , loops = -1 }) -- loops 0mean play once , loops -1 mean infinity loop
+	bgmChannel = audio.play(bgm, { channel=1 , loops=-1 }) -- loops 0mean play once , loops -1 mean infinity loop
 end
 function playTapSound()
-	tapChannel = audio.play(tapSound, { channel = 2 , loops = 0}) -- ต้องใส่ channel ด้วย เด๋วเสียงชนกัน
+	tapChannel = audio.play(tapSound, { channel=2 , loops=0}) -- ต้องใส่ channel ด้วย เด๋วเสียงชนกัน
 end
 
 function scene:createScene(e)
@@ -37,12 +36,10 @@ function scene:createScene(e)
 	local bg = display.newImageRect("img/backyard.jpg",
 		CONTENT_WIDTH,
 		CONTENT_HEIGHT)
-	--bg:setFillColor( 0,0,0 )
 	bg.x = DISPLAY_CENTER_X
 	bg.y = DISPLAY_CENTER_Y
 	group:insert(bg)
 	playBgSound()
-	
 end
 
 function scene:enterScene(e)
@@ -64,45 +61,16 @@ function scene:enterScene(e)
 
 	pauseGame:addEventListener("tap", pauseAll)
 
-	mole_x, mole_y = checkMole()
-	spawnMole(mole_x, mole_y)
+	spawnMole()
 	showHeart()
-
 end
 
 -- element funciton --
-function spawnMole(mole_x, mole_y )
-	mole = display.newSprite( moleSpriteMetaData.imageSheet, moleSpriteMetaData.sequenceData )
-	mole:setSequence( "spawn" )
-	mole:play( )
+function spawnMole()
+	mole = createSpawningMole.create()
+	mole.sprite:play()
 
-	table.insert(moles, mole)	
-	mole.xScale = 1.5
-	mole.yScale = 1.5
-	mole.x = mole_x
-	mole.y = mole_y
-	mole:addEventListener("tap",hitMole )
-	
-	mole.tran = transition.to( mole,{time = speed, x=mole.x, y=mole.y, onComplete = removeMole } )
-	g:insert(mole)
-end
-
-function checkMole()
-	randomized_x = math.random( 110, display.contentWidth - 100)
-	randomized_y = math.random( 350, display.contentHeight - 120)
-
-	for key, it_mole in pairs(moles) do
-		randomized_x = math.random( 110, display.contentWidth - 100)
-		randomized_y = math.random( 350, display.contentHeight - 120)
-
-		print( key )
-		print( it_mole.x )
-		print( it_mole.y )
-		print( it_mole.width )
-		print( it_mole.height )
-	end
-
-	return randomized_x, randomized_y
+	g:insert(mole.sprite)
 end
 
 function hitMole(event)
@@ -114,12 +82,10 @@ function hitMole(event)
 	mole:setSequence("down")
 	mole:play( )
 	mole:addEventListener( "sprite", moleSpriteEventHandler )
-	--timer.performWithDelay( delay, listener [, iterations] )
 	score = score + 20
 	scoreTxt.text = "Score: ".. score
 
 	playTapSound()
-
 end
 
 function showHeart()
@@ -139,19 +105,15 @@ function moleSpriteEventHandler(event)
 end
 
 function killMole(mole)
-	
 	display.remove(mole)
 	transition.cancel(mole)
-	mole_x, mole_y = checkMole()
-	spawnMole(mole_x, mole_y)
+	spawnMole()
 end
 
 function removeMole(event)
-	mole_x, mole_y = checkMole()
 	display.remove(event)
 	table.remove(moles)
 	moleEsc()
-	--spawnMole(mole_x, mole_y)
 end
 
 function moleEsc( )
@@ -162,7 +124,7 @@ function moleEsc( )
 	print( "mole = ".. #mole )
 
 	if escCount > 0 then 
-		spawnMole(mole_x, mole_y)
+		spawnMole()
 	else
 		local gameOverTxt = display.newText("GameOver",0,0,"Helvetica",50)
 		gameOverTxt:setFillColor( 0,0,0.2 )
