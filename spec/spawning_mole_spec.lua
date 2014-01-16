@@ -38,7 +38,9 @@ describe("Spawning mole spec", function ( ... )
 
 	it("When sprite animate ended, It will switch to idling mole", function ( ... )
 		--given
-		local sprite = {}
+		local sprite = {
+			removeEventListener=function ( ... ) end
+		}
 
 		local event = {
 			phase="ended",

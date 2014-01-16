@@ -46,13 +46,32 @@ describe("SwitchToIdlingMole spec", function ( ... )
 		local event = {
 			target=sprite
 		}
-
+		stub(sprite, "removeEventListener")
 		stub(switchToDyingMole, "evaluate")
 		--when
 		switchToIdlingMole.onTapMole(event)
 		--then
 		assert.stub(switchToDyingMole.evaluate).was_called_with(sprite)
 		switchToDyingMole.evaluate:revert()
+	end)
+
+	it("When sprite tapped.It should remove tap event listener.", function ( ... )
+		--given
+		local sprite = {}
+		local event = {
+			target=sprite
+		}
+		stub(sprite, "removeEventListener")
+		stub(switchToDyingMole, "evaluate")
+		--when
+		switchToIdlingMole.onTapMole(event)
+		--then
+		assert.stub(sprite.removeEventListener).was_called_with(sprite, "tap", switchToIdlingMole.onTapMole)
+		switchToDyingMole.evaluate:revert()
+	end)
+
+	it("When sprite tapped.It should play tapping sound.", function ( ... )
+		error("Not yet implemented")
 	end)
 
 	it("Start timer for make mole escape", function ( ... )

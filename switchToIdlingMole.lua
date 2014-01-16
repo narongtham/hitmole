@@ -10,6 +10,7 @@ end
 
 function switchToIdlingMole.onTapMole( event )
 	switchToDyingMole.evaluate(event.target)
+	event.target:removeEventListener( "tap", switchToIdlingMole.onTapMole )
 end
 
 return switchToIdlingMole

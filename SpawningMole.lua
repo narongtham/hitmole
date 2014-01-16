@@ -17,6 +17,7 @@ end
 function SpawningMole.spriteEventHandler( event )
 	if event.phase == "ended" then
 		swithchToIdlingMole.evaluate(event.target)
+		event.target:removeEventListener( "sprite", SpawningMole.spriteEventHandler )
 	end
 end
 
