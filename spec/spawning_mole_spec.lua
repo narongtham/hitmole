@@ -36,13 +36,9 @@ describe("Spawning mole spec", function ( ... )
 		assert.spy(sprite.addEventListener).was_called_with(sprite, "sprite", spawningMole.spriteEventHandler)
 	end)
 
-	it("When sprite animate ended, It will switch to idling mole and play", function ( ... )
+	it("When sprite animate ended, It will switch to idling mole", function ( ... )
 		--given
-		local sprite = {
-			setSequence = function ( ... ) end,
-			addEventListener = function ( ... )	end,
-			play = function ( ... )	end
-		}
+		local sprite = {}
 
 		local event = {
 			phase="ended",

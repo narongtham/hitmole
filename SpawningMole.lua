@@ -1,5 +1,6 @@
 local SpawningMole = {}
 local SpawningMole_mt = { __index = SpawningMole }
+local swithchToIdlingMole = swithchToIdlingMole or require('switchToIdlingMole')
 
 function SpawningMole.new( ... )
 	local newSpawningMole = {}
@@ -15,8 +16,7 @@ end
 
 function SpawningMole.spriteEventHandler( event )
 	if event.phase == "ended" then
-		event.target:setSequence( "idle" )
-		event.target:play( )
+		swithchToIdlingMole.evaluate(event.target)
 	end
 end
 
