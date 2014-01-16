@@ -8,9 +8,9 @@ createSpawningMole.create = function ( ... )
 	moleSprite.y = molePosition.y
 	moleSprite.xScale = 1.5
 	moleSprite.yScale = 1.5
-	
+
 	local spawningMole = SpawningMole.new()
-	spawningMole.sprite = moleSprite
+	spawningMole:setSprite(moleSprite)
 
 	return spawningMole
 end

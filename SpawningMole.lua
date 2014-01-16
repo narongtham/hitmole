@@ -13,8 +13,8 @@ function SpawningMole:setSprite( sprite )
 	self.sprite:addEventListener( "sprite", self.spriteEventHandler )
 end
 
-function SpawningMole.spriteEventHandler( target )
-	-- body
+function SpawningMole.spriteEventHandler( event )
+	print(event.phase)
 end
 
 return SpawningMole

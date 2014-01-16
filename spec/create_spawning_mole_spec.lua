@@ -1,5 +1,11 @@
 describe("Create spawning mole spec", function ( ... )
-	SpawningMole = require("SpawningMole")
+	SpawningMole = {}
+	SpawningMole.new = function ( ... )
+		return {
+			setSprite = function( ) end
+		}
+	end
+
 	display = require('spec.corona-busted.mocks.mockDisplay')
 	
 	generated_x = 10
@@ -43,20 +49,5 @@ describe("Create spawning mole spec", function ( ... )
 		--then
 		assert.spy(display.newSprite).was_called_with(moleSpriteMetaData.imageSheet,
 		 	moleSpriteMetaData.sequenceData)
-	end)
-
-	it("Should set randomed position to spawning mole", function ( ... )
-		--when
-		local result = createSpawningMole.create()
-		--then
-		assert.are.equal(result.sprite.x, generated_x)
-		assert.are.equal(result.sprite.y, generated_y)
-	end)
-
-	it("Should set spawning mole scale to 1.5", function ( ... )
-		local result = createSpawningMole.create()
-		--then
-		assert.are.equal(result.sprite.xScale, 1.5)
-		assert.are.equal(result.sprite.yScale, 1.5)
 	end)
 end)
