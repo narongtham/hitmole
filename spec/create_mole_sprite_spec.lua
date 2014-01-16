@@ -30,7 +30,7 @@ describe("CreateMoleSprite spec", function ( ... )
 
 	it("Result should contains idling sequence data", function ( ... )
 		--Given
-		local idlingSequenceData = {name="idle", start=55, count=2, loopCount=0}
+		local idlingSequenceData = {name="idle", start=54, count=2, time=500, loopCount=0}
 		--When
 		local result = createMoleSprite.create()
 		--Then
