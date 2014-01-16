@@ -53,4 +53,23 @@ describe("Spawning mole spec", function ( ... )
 		switchToIdlingMole.evaluate:revert()
 	end)
 
+	it("When sprite animate ended, It will remove sprite event listener", function ( ... )
+		--given
+		local sprite = {
+			removeEventListener=function ( ... ) end
+		}
+
+		local event = {
+			phase="ended",
+			target=sprite
+		}
+
+		stub(switchToIdlingMole, "evaluate")
+		stub(sprite, "removeEventListener")
+		--when
+		spawningMole.spriteEventHandler(event)
+		--then
+		assert.stub(sprite.removeEventListener).was_called_with(sprite, "sprite", spawningMole.spriteEventHandler)
+		switchToIdlingMole.evaluate:revert()
+	end)
 end)
