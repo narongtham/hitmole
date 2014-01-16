@@ -2,6 +2,7 @@ describe("Spawning mole spec", function ( ... )
 
 	local SpawningMole = require 'SpawningMole'
 	local display = require 'spec.corona-busted.mocks.mockDisplay'
+	local switchToIdlingMole = require 'switchToIdlingMole'
 
 	local spawningMole
 
@@ -42,16 +43,17 @@ describe("Spawning mole spec", function ( ... )
 			addEventListener = function ( ... )	end,
 			play = function ( ... )	end
 		}
-		spy.on(sprite, "setSequence")
-		--spy.on(sprite, "play")
+
 		local event = {
 			phase="ended",
 			target=sprite
 		}
+
+		stub(switchToIdlingMole, "evaluate")
 		--when
 		spawningMole.spriteEventHandler(event)
 		--then
-		assert.spy(sprite.setSequence).was_called_with(sprite, "idle")
+		assert.stub(switchToIdlingMole.evaluate).was_called_with(sprite)
 	end)
 
 end)
