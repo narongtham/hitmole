@@ -52,7 +52,6 @@ describe("Spawning mole spec", function ( ... )
 		spawningMole.spriteEventHandler(event)
 		--then
 		assert.spy(sprite.setSequence).was_called_with(sprite, "idle")
-		--assert.spy(sprite.play).was_called_with(sprite)
 	end)
 
 end)
