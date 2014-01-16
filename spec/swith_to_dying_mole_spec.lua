@@ -18,7 +18,10 @@ describe("switchToDyingMole spec", function ( ... )
 	end)
 
 	it("play sprite after set sequence", function ( ... )
-		error("Not yet implemented")
+		--when
+		switchToDyingMole.evaluate(sprite)  
+		--then
+		assert.stub(sprite.play).was_called_with(sprite)
 	end)
 
 	it("Bind sprite event listener to sprite", function ( ... )
