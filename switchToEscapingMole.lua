@@ -17,7 +17,15 @@ end
 
 function switchToEscapingMole.removeMoleSprite()
 	display.remove(switchToEscapingMole.waitForRemoveSprite)
-	createSpawningMole.create()
+
+	if escapeCount > 0 then 
+		createSpawningMole.create()
+	else
+		local gameOverTxt = display.newText("GameOver",0,0,"Helvetica",50)
+		gameOverTxt:setFillColor( 0,0,0.2 )
+		gameOverTxt.x = DISPLAY_CENTER_X
+		gameOverTxt.y = DISPLAY_CENTER_Y
+	end
 end
 
 return switchToEscapingMole

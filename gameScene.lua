@@ -33,7 +33,7 @@ end
 
 function scene:createScene(e)
 	local group = self.view
-	local bg = display.newImageRect("img/backyard.jpg",
+	local bg = display.newImageRect("img/bg_morning.jpg",
 		CONTENT_WIDTH,
 		CONTENT_HEIGHT)
 	bg.x = DISPLAY_CENTER_X
@@ -73,23 +73,11 @@ end
 function showHeart()
 	heart = {}
 	for i =1 , escapeCount do
-		heart[i] = display.newImage("img/heart.png")
+		heart[i] = display.newImage("img/headmole.png")
 		heart[i].x = 30*i
 		heart[i].y = 30
 		g:insert(heart[i])
 	end
-end
-
-function killMole(mole)
-	display.remove(mole)
-	transition.cancel(mole)
-	spawnMole()
-end
-
-function removeMole(event)
-	display.remove(event)
-	table.remove(moles)
-	moleEsc()
 end
 
 function moleEsc( )
