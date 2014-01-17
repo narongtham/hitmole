@@ -68,24 +68,6 @@ end
 -- element funciton --
 function spawnMole()
 	mole = createSpawningMole.create()
-	mole.sprite:play()
-
-	g:insert(mole.sprite)
-end
-
-function hitMole(event)
-	if (isPause == true) then
-		return
-	end
-
-	local mole = event.target
-	mole:setSequence("down")
-	mole:play( )
-	mole:addEventListener( "sprite", moleSpriteEventHandler )
-	score = score + 20
-	scoreTxt.text = "Score: ".. score
-
-	playTapSound()
 end
 
 function showHeart()

@@ -14,7 +14,8 @@ describe("Spawning mole spec", function ( ... )
 		--given
 		local sprite = {
 			setSequence = function ( ... ) end,
-			addEventListener = function ( ... )	end
+			addEventListener = function ( ... )	end,
+			play = function ( ... ) end
 		}
 		spy.on(sprite, "setSequence")
 		--when
@@ -27,7 +28,8 @@ describe("Spawning mole spec", function ( ... )
 		--given
 		local sprite = {
 			setSequence = function ( ... ) end,
-			addEventListener = function ( ... )	end
+			addEventListener = function ( ... )	end,
+			play = function ( ... ) end
 		}
 		spy.on(sprite, "addEventListener")
 		--when

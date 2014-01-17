@@ -11,7 +11,6 @@ createSpawningMole.create = function ( ... )
 
 	local spawningMole = SpawningMole.new()
 	spawningMole:setSprite(moleSprite)
-
 	return spawningMole
 end
 

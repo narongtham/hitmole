@@ -11,6 +11,7 @@ end
 function SpawningMole:setSprite( sprite )
 	self.sprite = sprite
 	self.sprite:setSequence( "spawn" )
+	self.sprite:play()
 	self.sprite:addEventListener( "sprite", self.spriteEventHandler )
 end
 

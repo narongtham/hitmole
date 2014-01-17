@@ -5,6 +5,7 @@ describe("switchToDyingMole spec", function ( ... )
 
 	timer = {}
 	display = require("spec.corona-busted.mocks.mockDisplay")
+	createSpawningMole = require("createSpawningMole")
 
 	setup(function ( ... )
 		sprite = {}
@@ -43,6 +44,7 @@ describe("switchToDyingMole spec", function ( ... )
 			target = sprite
 		}
 		stub(timer, "performWithDelay")
+		stub(sprite, "removeEventListener")
 		--when
 		switchToDyingMole.spriteEventHandler(event)
 		--then
@@ -57,6 +59,7 @@ describe("switchToDyingMole spec", function ( ... )
 			target = sprite
 		}
 		stub(timer, "performWithDelay")
+		stub(sprite, "removeEventListener")
 		--when
 		switchToDyingMole.spriteEventHandler(event)
 		--then
@@ -75,10 +78,32 @@ describe("switchToDyingMole spec", function ( ... )
 	end)
 
 	it("When sprite animate ended it should remove sprite event listener", function ( ... )
-		error("Not yet implemented")
+		--given
+		local sprite = {}
+		local event = {
+			phase="ended",
+			target = sprite
+		}
+		stub(timer, "performWithDelay")
+		stub(sprite, "removeEventListener")
+		--when
+		switchToDyingMole.spriteEventHandler(event)
+		--then
+		assert.stub(sprite.removeEventListener)
+			.was_called_with(sprite, "sprite", switchToDyingMole.spriteEventHandler)
 	end)
 
-	it("When sprite animate ended it should create spawning mole", function ( ... )
-		error("Not yet implemented")
+	it("When call removeMoleSprite() it should create spawning mole", function ( ... )
+		--given
+		local sprite = {}
+		switchToDyingMole.waitForRemoveSprite = sprite
+		stub(display, "remove")
+		stub(createSpawningMole, "create")
+		--when
+		switchToDyingMole.removeMoleSprite(event)
+		--then
+		assert.stub(createSpawningMole.create)
+			.was_called()
+		createSpawningMole.create:revert()
 	end)
 end)
