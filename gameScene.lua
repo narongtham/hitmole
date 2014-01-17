@@ -113,12 +113,12 @@ end
 function pauseAll()
 	if ( isPause == false) then
 		transition.pause()
-		mole:pause()
+		mole.sprite:pause()
 		isPause = true
 		storyboard.showOverlay( "option" , {effect = "fade" , isModal = true})
 	else
 		transition.resume( )
-		mole:play()
+		mole.sprite:play()
 		isPause = false
 	end
 end

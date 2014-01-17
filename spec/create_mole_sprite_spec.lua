@@ -39,7 +39,7 @@ describe("CreateMoleSprite spec", function ( ... )
 
 	it("Result should contains leaving sequence data", function ( ... )
 		--Given
-		local leavingSequenceData = {name="leave", frames={55,54,53,52,51,50,49,48,47,46}, loopCount=1, time=300}
+		local leavingSequenceData = {name="escape", frames={55,54,53,52,51,50,49,48,47,46}, loopCount=1, time=300}
 		--When
 		local result = createMoleSprite.create()
 		--Then

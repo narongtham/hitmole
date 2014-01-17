@@ -123,7 +123,7 @@ describe("SwitchToIdlingMole spec", function ( ... )
 		local sprite = {}
 		stub(sprite, "removeEventListener")
 		stub(display, "remove")
-
+		stub(switchToEscapingMole, "evaluate")
 		escapeCount = 3
 
 		--when
@@ -138,6 +138,7 @@ describe("SwitchToIdlingMole spec", function ( ... )
 		local sprite = {}
 		stub(sprite, "removeEventListener")
 		stub(display, "remove")
+		stub(switchToEscapingMole, "evaluate")
 		--when
 		switchToIdlingMole.onTimeToLiveExeed(sprite)
 		--then

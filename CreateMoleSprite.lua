@@ -7,7 +7,7 @@ createMoleSprite.create = function ( ... )
 	moleSprite.sequenceData = {
 		{name="spawn", start=1, count=55, time=2000 , loopCount=1},
 		{name="idle", start=54, count=2, time=500, loopCount=0},
-		{name="leave", frames={55,54,53,52,51,50,49,48,47,46}, time=300, loopCount=1},
+		{name="escape", frames={55,54,53,52,51,50,49,48,47,46}, time=300, loopCount=1},
 		{name="dead", start=56, count=12, time=300 , loopCount=1}
 	}
 	return moleSprite
