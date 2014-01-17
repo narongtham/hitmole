@@ -119,4 +119,17 @@ describe("SwitchToIdlingMole spec", function ( ... )
 	it("When timed out. It should switch mole to escaping state.", function ( ... )
 		error( "Not yet implemented" )
 	end)
+
+	it("When timed out. It should remove tap event listener.", function ( ... )
+		--given
+		local sprite = {}
+		local event = {
+			target=sprite
+		}
+		stub(sprite, "removeEventListener")
+		--when
+		switchToIdlingMole.onTimeToLiveExeed(event)
+		--then
+		assert.stub(sprite.removeEventListener).was_called_with(sprite, "tap", switchToIdlingMole.onTapMole)
+	end)
 end)

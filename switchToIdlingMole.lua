@@ -18,8 +18,9 @@ function switchToIdlingMole.onTapMole( event )
 	switchToDyingMole.evaluate(event.target)
 end
 
-function switchToIdlingMole.onTimeToLiveExeed( event )
-	print( "Time to live exceeded" )
+function switchToIdlingMole.onTimeToLiveExeed( target )
+	target:removeEventListener( "tap", switchToIdlingMole.onTapMole )
+	print( "Mole time to live exceeded." )
 end
 
 return switchToIdlingMole
