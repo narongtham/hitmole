@@ -4,7 +4,7 @@ local scene = storyboard.newScene()
 
 
 -- open value
-local score = 0
+score = 0
 local speed = 3000
 isPause = false
 g = nil
@@ -19,9 +19,9 @@ moleSpriteMetaData = createMoleSprite.create()
 local bgmChannel
 local tapChannel
 --local blastChannel
-local audio = require("audio")
+audio = require("audio")
 local bgm = audio.loadSound("audio/music.mp3") --โหลดไฟล์เสียงมาใส่ในเครื่อง user เลย
-local tapSound = audio.loadStream( "audio/punch.mp3") -- โหลดเสียงแบบ Stream (เหมือนดู ยูทูป)
+tapSound = audio.loadStream( "audio/punch.mp3") -- โหลดเสียงแบบ Stream (เหมือนดู ยูทูป)
 
 
 function playBgSound()

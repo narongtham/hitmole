@@ -1,6 +1,10 @@
 describe("SwitchToIdlingMole spec", function ( ... )
 
 	local switchToDyingMole = require("switchToDyingMole")
+	audio = {}
+	tapSound = {}
+	score = 0
+	scoreTxt = {}
 
 	local switchToIdlingMole = require( "switchToIdlingMole" )
 
@@ -48,6 +52,7 @@ describe("SwitchToIdlingMole spec", function ( ... )
 		}
 		stub(sprite, "removeEventListener")
 		stub(switchToDyingMole, "evaluate")
+		stub(audio, "play")
 		--when
 		switchToIdlingMole.onTapMole(event)
 		--then
@@ -63,6 +68,7 @@ describe("SwitchToIdlingMole spec", function ( ... )
 		}
 		stub(sprite, "removeEventListener")
 		stub(switchToDyingMole, "evaluate")
+		stub(audio, "play")
 		--when
 		switchToIdlingMole.onTapMole(event)
 		--then
@@ -70,8 +76,38 @@ describe("SwitchToIdlingMole spec", function ( ... )
 		switchToDyingMole.evaluate:revert()
 	end)
 
-	it("When sprite tapped.It should play tapping sound.", function ( ... )
-		error("Not yet implemented")
+	it("When sprite tapped. It should play tapping sound.", function ( ... )
+		--given
+		local sprite = {}
+		local event = {
+			target=sprite
+		}
+		stub(sprite, "removeEventListener")
+		stub(switchToDyingMole, "evaluate")
+		stub(audio, "play")
+		--when
+		switchToIdlingMole.onTapMole(event)
+		--then
+		assert.stub(audio.play).was_called_with(tapSound, {channel=2, loops=0})
+		switchToDyingMole.evaluate:revert()
+	end)
+
+	it("When sprite tapped. It should increase score", function ( ... )
+		--given
+		local sprite = {}
+		local event = {
+			target=sprite
+		}
+		stub(sprite, "removeEventListener")
+		stub(switchToDyingMole, "evaluate")
+		stub(audio, "play")
+
+		score = 0
+		--when
+		switchToIdlingMole.onTapMole(event)
+		--then
+		assert.are.same("Score: 20", scoreTxt.text)
+		switchToDyingMole.evaluate:revert()
 	end)
 
 	it("Start timer for make mole escape", function ( ... )
