@@ -1,6 +1,7 @@
 describe("SwitchToIdlingMole spec", function ( ... )
 
 	local switchToDyingMole = require("switchToDyingMole")
+	local switchToEscapingMole = require("switchToEscapingMole")
 	audio = {}
 	tapSound = {}
 	score = 0
@@ -117,10 +118,6 @@ describe("SwitchToIdlingMole spec", function ( ... )
 			.was_called_with(sprite, {time=3000, x=sprite.x, y=sprite.y, onComplete=switchToIdlingMole.onTimeToLiveExeed })
 	end)
 
-	it("When timed out. It should switch mole to escaping state.", function ( ... )
-		error( "Not yet implemented" )
-	end)
-
 	it("When timed out. It should decrease heart.", function ( ... )
 		--given
 		local sprite = {}
@@ -145,5 +142,19 @@ describe("SwitchToIdlingMole spec", function ( ... )
 		switchToIdlingMole.onTimeToLiveExeed(sprite)
 		--then
 		assert.stub(sprite.removeEventListener).was_called_with(sprite, "tap", switchToIdlingMole.onTapMole)
+	end)
+
+	it("When timed out. It should switch mole to escaping state.", function ( ... )
+		--given
+		local sprite = {}
+		stub(sprite, "removeEventListener")
+		stub(display, "remove")
+		stub(switchToEscapingMole, "evaluate")
+
+		--when
+		switchToIdlingMole.onTimeToLiveExeed(sprite)
+		--then
+		assert.stub(switchToEscapingMole.evaluate).was_called_with(sprite)
+		switchToEscapingMole.evaluate:revert()
 	end)
 end)

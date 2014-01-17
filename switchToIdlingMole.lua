@@ -1,4 +1,5 @@
 local switchToDyingMole = switchToDyingMole or require("switchToDyingMole")
+local switchToEscapingMole = require("switchToEscapingMole")
 
 local switchToIdlingMole = {}
 
@@ -22,7 +23,7 @@ function switchToIdlingMole.onTimeToLiveExeed( target )
 	target:removeEventListener( "tap", switchToIdlingMole.onTapMole )
 	display.remove( heart[escapeCount] )
 	escapeCount = escapeCount - 1
-	print( "Mole time to live exceeded." )
+	switchToEscapingMole.evaluate(target)
 end
 
 return switchToIdlingMole
