@@ -6,6 +6,7 @@ describe("SwitchToIdlingMole spec", function ( ... )
 	score = 0
 	scoreTxt = {}
 	transition = {}
+	heart = { {}, {}, {}}
 
 	local switchToIdlingMole = require( "switchToIdlingMole" )
 	local sprite = {
@@ -120,6 +121,24 @@ describe("SwitchToIdlingMole spec", function ( ... )
 		error( "Not yet implemented" )
 	end)
 
+	it("When timed out. It should decrease heart.", function ( ... )
+		--given
+		local sprite = {}
+		local event = {
+			target=sprite
+		}
+		stub(sprite, "removeEventListener")
+		stub(display.remove)
+
+		escapeCount = 3
+
+		--when
+		switchToIdlingMole.onTimeToLiveExeed(event)
+		--then
+		assert.stub(display.remove).was_called_with(heart[escapeCount])
+		assert.are.equal(escapeCount, 2)
+	end)
+
 	it("When timed out. It should remove tap event listener.", function ( ... )
 		--given
 		local sprite = {}
@@ -127,6 +146,7 @@ describe("SwitchToIdlingMole spec", function ( ... )
 			target=sprite
 		}
 		stub(sprite, "removeEventListener")
+		stub(display.remove)
 		--when
 		switchToIdlingMole.onTimeToLiveExeed(event)
 		--then
