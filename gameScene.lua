@@ -98,12 +98,6 @@ function showHeart()
 	end
 end
 
-function moleSpriteEventHandler(event)
-	if (event.phase == "ended") then
-		--timer.performWithDelay( 0, killMole )
-	end
-end
-
 function killMole(mole)
 	display.remove(mole)
 	transition.cancel(mole)
@@ -128,8 +122,8 @@ function moleEsc( )
 	else
 		local gameOverTxt = display.newText("GameOver",0,0,"Helvetica",50)
 		gameOverTxt:setFillColor( 0,0,0.2 )
-		gameOverTxt.x = centerX
-		gameOverTxt.y = centerY
+		gameOverTxt.x = DISPLAY_CENTER_X
+		gameOverTxt.y = DISPLAY_CENTER_Y
 
 	end
 end
