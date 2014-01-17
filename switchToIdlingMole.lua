@@ -6,6 +6,8 @@ function switchToIdlingMole.evaluate( sprite )
 	sprite:setSequence( "idle" )
 	sprite:play( )
 	sprite:addEventListener( "tap", switchToIdlingMole.onTapMole )
+	sprite.transition = transition.to(sprite,
+	 {time=3000, x=sprite.x, y=sprite.y, onComplete=switchToIdlingMole.onTimeToLiveExeed })
 end
 
 function switchToIdlingMole.onTapMole( event )
@@ -14,6 +16,10 @@ function switchToIdlingMole.onTapMole( event )
 	score = score + 20
 	scoreTxt.text = "Score: " .. score
 	switchToDyingMole.evaluate(event.target)
+end
+
+function switchToIdlingMole.onTimeToLiveExeed( event )
+	print( "Time to live exceeded" )
 end
 
 return switchToIdlingMole

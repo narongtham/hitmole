@@ -5,15 +5,23 @@ describe("SwitchToIdlingMole spec", function ( ... )
 	tapSound = {}
 	score = 0
 	scoreTxt = {}
+	transition = {}
 
 	local switchToIdlingMole = require( "switchToIdlingMole" )
+	local sprite = {
+		x=10,
+		y=10
+	}
 
-	it("Set mole sprite sequence to 'idle'.", function ( ... )
-		--given
-		local  sprite = {}
+	setup(function ( ... )
 		stub(sprite, "setSequence")
 		stub(sprite, "play")
 		stub(sprite, "addEventListener")
+
+		stub(transition, "to")
+	end)
+
+	it("Set mole sprite sequence to 'idle'.", function ( ... )
 		--when
 		switchToIdlingMole.evaluate(sprite)
 		--then
@@ -21,11 +29,6 @@ describe("SwitchToIdlingMole spec", function ( ... )
 	end)
 
 	it("Play sprite after set sequence", function ( ... )
-		--given
-		local  sprite = {}
-		stub(sprite, "setSequence")
-		stub(sprite, "play")
-		stub(sprite, "addEventListener")
 		--when
 		switchToIdlingMole.evaluate(sprite)
 		--then
@@ -33,11 +36,6 @@ describe("SwitchToIdlingMole spec", function ( ... )
 	end)
 
 	it("Bind tap event listener to sprite", function ( ... )
-		--given
-		local  sprite = {}
-		stub(sprite, "setSequence")
-		stub(sprite, "play")
-		stub(sprite, "addEventListener")
 		--when
 		switchToIdlingMole.evaluate(sprite)
 		--then
@@ -111,7 +109,11 @@ describe("SwitchToIdlingMole spec", function ( ... )
 	end)
 
 	it("Start timer for make mole escape", function ( ... )
-		error( "Not yet implemented" )
+		--when
+		switchToIdlingMole.evaluate(sprite)
+		--then
+		assert.stub(transition.to)
+			.was_called_with(sprite, {time=3000, x=sprite.x, y=sprite.y, onComplete=switchToIdlingMole.onTimeToLiveExeed })
 	end)
 
 	it("When timed out. It should switch mole to escaping state.", function ( ... )
