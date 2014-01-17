@@ -3,6 +3,7 @@ describe("switchToDyingMole spec", function ( ... )
 	local switchToDyingMole = require("switchToDyingMole")
 	local sprite
 
+	timer = {}
 	display = require("spec.corona-busted.mocks.mockDisplay")
 
 	setup(function ( ... )
@@ -34,18 +35,43 @@ describe("switchToDyingMole spec", function ( ... )
 		assert.stub(sprite.addEventListener).was_called_with(sprite, "sprite", switchToDyingMole.spriteEventHandler)
 	end)
 
-	it("When sprite animate ended it should remove sprite from view", function ( ... )
+	it("When sprite animate ended it should set timer to delay removing mole", function ( ... )
 		--given
 		local sprite = {}
 		local event = {
 			phase="ended",
-			sprite = sprite
+			target = sprite
 		}
-		stub(display, "remove")
+		stub(timer, "performWithDelay")
 		--when
 		switchToDyingMole.spriteEventHandler(event)
 		--then
-		assert.stub(display.remove).was_called_with(event.sprite)
+		assert.stub(timer.performWithDelay).was_called_with(300, switchToDyingMole.removeMoleSprite)
+	end)
+
+	it("When sprite animate ended it should set sprite to waitForRemoveSprite", function ( ... )
+		--given
+		local sprite = {}
+		local event = {
+			phase="ended",
+			target = sprite
+		}
+		stub(timer, "performWithDelay")
+		--when
+		switchToDyingMole.spriteEventHandler(event)
+		--then
+		assert.are.same(switchToDyingMole.waitForRemoveSprite, sprite)
+	end)
+
+	it("When call removeMoleSprite() it should remove sprite from display", function ( ... )
+		--given
+		local sprite = {}
+		switchToDyingMole.waitForRemoveSprite = sprite
+		stub(display, "remove")
+		--when
+		switchToDyingMole.removeMoleSprite(event)
+		--then
+		assert.stub(display.remove).was_called_with(sprite)
 	end)
 
 	it("When sprite animate ended it should remove sprite event listener", function ( ... )
