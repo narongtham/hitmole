@@ -124,16 +124,13 @@ describe("SwitchToIdlingMole spec", function ( ... )
 	it("When timed out. It should decrease heart.", function ( ... )
 		--given
 		local sprite = {}
-		local event = {
-			target=sprite
-		}
 		stub(sprite, "removeEventListener")
-		stub(display.remove)
+		stub(display, "remove")
 
 		escapeCount = 3
 
 		--when
-		switchToIdlingMole.onTimeToLiveExeed(event)
+		switchToIdlingMole.onTimeToLiveExeed(sprite)
 		--then
 		assert.stub(display.remove).was_called_with(heart[escapeCount])
 		assert.are.equal(escapeCount, 2)
@@ -142,13 +139,10 @@ describe("SwitchToIdlingMole spec", function ( ... )
 	it("When timed out. It should remove tap event listener.", function ( ... )
 		--given
 		local sprite = {}
-		local event = {
-			target=sprite
-		}
 		stub(sprite, "removeEventListener")
-		stub(display.remove)
+		stub(display, "remove")
 		--when
-		switchToIdlingMole.onTimeToLiveExeed(event)
+		switchToIdlingMole.onTimeToLiveExeed(sprite)
 		--then
 		assert.stub(sprite.removeEventListener).was_called_with(sprite, "tap", switchToIdlingMole.onTapMole)
 	end)

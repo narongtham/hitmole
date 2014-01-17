@@ -20,6 +20,8 @@ end
 
 function switchToIdlingMole.onTimeToLiveExeed( target )
 	target:removeEventListener( "tap", switchToIdlingMole.onTapMole )
+	display.remove( heart[escapeCount] )
+	escapeCount = escapeCount - 1
 	print( "Mole time to live exceeded." )
 end
 

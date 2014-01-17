@@ -8,7 +8,7 @@ score = 0
 local speed = 3000
 isPause = false
 g = nil
-escCount = 3
+escapeCount = 3
 
 
 moles = {}
@@ -72,7 +72,7 @@ end
 
 function showHeart()
 	heart = {}
-	for i =1 , escCount do
+	for i =1 , escapeCount do
 		heart[i] = display.newImage("img/heart.png")
 		heart[i].x = 30*i
 		heart[i].y = 30
@@ -93,13 +93,13 @@ function removeMole(event)
 end
 
 function moleEsc( )
-	display.remove(heart[escCount])
-	escCount = escCount - 1
+	display.remove(heart[escapeCount])
+	escapeCount = escapeCount - 1
 	print( "heart = ".. #heart )
-	print( "escCount = ".. escCount )
+	print( "escapeCount = ".. escapeCount )
 	print( "mole = ".. #mole )
 
-	if escCount > 0 then 
+	if escapeCount > 0 then 
 		spawnMole()
 	else
 		local gameOverTxt = display.newText("GameOver",0,0,"Helvetica",50)
