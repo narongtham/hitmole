@@ -6,19 +6,11 @@ local scene = storyboard.newScene()
 
 function scene:createScene(e)
 	local group = self.view
-	local bg = display.newRect(DISPLAY_CENTER_X,
-		DISPLAY_CENTER_Y,
-		600,
-		800)
-	bg:setFillColor( 0,0,0 )
-	group:insert(bg)
 
-	local logo = display.newImageRect("img/kongDev.jpg",600,488)
+	local logo = display.newImage("img/bg_Menu.png")
 	logo.x = DISPLAY_CENTER_X
-	logo.y = DISPLAY_CENTER_Y - 300
+	logo.y = DISPLAY_CENTER_Y
 	logo.alpha = 1
-	logo.xScale = 0.5
-	logo.yScale = 0.5
 	group:insert(logo)
 
 	local font = "Helvetica" or native.systemFont

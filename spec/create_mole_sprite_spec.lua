@@ -1,7 +1,7 @@
 describe("CreateMoleSprite spec", function ( ... )
 	graphics = require("spec.corona-busted.mocks.mockGraphics")
 	createMoleSprite = require("createMoleSprite")
-	options = {width = 200, height = 170, numFrames = 67}
+	options = {width = 200, height = 170, numFrames = 122}
 
 	it("It should construct mole image sheet", function ( ... )
 		--Given
@@ -9,19 +9,19 @@ describe("CreateMoleSprite spec", function ( ... )
 		--When
 		createMoleSprite.create()
 		--Then
-		assert.spy(graphics.newImageSheet).was_called_with("img/sprite/mole1.png", options)
+		assert.spy(graphics.newImageSheet).was_called_with("img/sprite/moleSprite.png", options)
 	end)
 
 	it("Result should contains imageSheet", function ( ... )
 		--When
 		local result = createMoleSprite.create()
 		--Then
-		assert.are.same(result.imageSheet, graphics.newImageSheet("img/sprite/mole1.png", options))
+		assert.are.same(result.imageSheet, graphics.newImageSheet("img/sprite/moleSprite.png", options))
 	end)
 
 	it("Result should contains spawning sequence data", function ( ... )
 		--Given
-		local spawningSequenceData = {name="spawn", start=1, count=55, time=2000 , loopCount=1}
+		local spawningSequenceData = {name="spawn", start=1, count=56, time=2000 , loopCount=1}
 		--When
 		local result = createMoleSprite.create()
 		--Then
@@ -30,7 +30,7 @@ describe("CreateMoleSprite spec", function ( ... )
 
 	it("Result should contains idling sequence data", function ( ... )
 		--Given
-		local idlingSequenceData = {name="idle", start=54, count=2, time=500, loopCount=0}
+		local idlingSequenceData = {name="idle", start=83, count=40, time=1000, loopCount=0}
 		--When
 		local result = createMoleSprite.create()
 		--Then
@@ -39,7 +39,7 @@ describe("CreateMoleSprite spec", function ( ... )
 
 	it("Result should contains leaving sequence data", function ( ... )
 		--Given
-		local leavingSequenceData = {name="escape", frames={55,54,53,52,51,50,49,48,47,46}, loopCount=1, time=300}
+		local leavingSequenceData = {name="escape", start=57, count=14, time=300, loopCount=1}
 		--When
 		local result = createMoleSprite.create()
 		--Then
@@ -48,7 +48,7 @@ describe("CreateMoleSprite spec", function ( ... )
 
 	it("Result should contains dying sequence data", function ( ... )
 		--Given
-		local dyingSequenceData = {name="dead", start=56, count=12, time=300 , loopCount=1}
+		local dyingSequenceData = {name="dead", start=70, count=12, time=300 , loopCount=1}
 		--When
 		local result = createMoleSprite.create()
 		--Then

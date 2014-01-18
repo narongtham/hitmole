@@ -21,6 +21,7 @@ describe("SwitchToIdlingMole spec", function ( ... )
 		stub(sprite, "addEventListener")
 
 		stub(transition, "to")
+		stub(transition, "cancel")
 	end)
 
 	it("Set mole sprite sequence to 'idle'.", function ( ... )

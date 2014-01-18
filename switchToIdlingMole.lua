@@ -13,6 +13,7 @@ end
 
 function switchToIdlingMole.onTapMole( event )
 	event.target:removeEventListener( "tap", switchToIdlingMole.onTapMole )
+	transition.cancel(event.target)
 	audio.play( tapSound, {channel=2, loops=0})
 	score = score + 20
 	scoreTxt.text = "Score: " .. score

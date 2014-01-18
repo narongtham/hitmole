@@ -6,6 +6,7 @@ describe("switchToEscapingMole spec", function ( ... )
 	timer = {}
 	display = require("spec.corona-busted.mocks.mockDisplay")
 	createSpawningMole = require("createSpawningMole")
+	escapeCount = 3
 
 	setup(function ( ... )
 		sprite = {}
@@ -19,7 +20,7 @@ describe("switchToEscapingMole spec", function ( ... )
 		--when
 		switchToEscapingMole.evaluate(sprite)  
 		--then
-		assert.stub(sprite.setSequence).was_called_with(sprite, "leave")
+		assert.stub(sprite.setSequence).was_called_with(sprite, "escape")
 	end)
 
 	it("play sprite after set sequence", function ( ... )

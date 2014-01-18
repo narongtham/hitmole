@@ -53,10 +53,11 @@ function scene:enterScene(e)
 	scoreTxt:setFillColor (0,0,0)
 	group:insert(scoreTxt)
 
-	pauseGame = display.newText("pause", 0, 0, font, 30)
-	pauseGame.x = display.contentWidth - 120
-	pauseGame.y = 80
-	pauseGame:setFillColor (0,0,0)
+	pauseGame = display.newImage("img/pause.png")
+	pauseGame.x = display.contentWidth - 100
+	pauseGame.y = 128
+	pauseGame.xScale = 0.25
+	pauseGame.yScale = 0.25
 	group:insert(pauseGame)
 
 	pauseGame:addEventListener("tap", pauseAll)
@@ -68,6 +69,7 @@ end
 -- element funciton --
 function spawnMole()
 	mole = createSpawningMole.create()
+	g:insert(mole.sprite)
 end
 
 function showHeart()
@@ -76,6 +78,8 @@ function showHeart()
 		heart[i] = display.newImage("img/headmole.png")
 		heart[i].x = 30*i
 		heart[i].y = 30
+		heart[i].width = 32
+		heart[i].height = 32
 		g:insert(heart[i])
 	end
 end
