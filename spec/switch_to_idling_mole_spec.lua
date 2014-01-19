@@ -1,13 +1,9 @@
 describe("SwitchToIdlingMole spec", function ( ... )
 
 	local switchToIdlingMole = require( "switchToIdlingMole" )
-	local switchToDyingMole = require("switchToDyingMole")
 	local switchToEscapingMole = require("switchToEscapingMole")
+	local terminateMole = require("terminateMole")
 	
-	audio = {}
-	tapSound = {}
-	score = 0
-	scoreTxt = {}
 	transition = {}
 	heart = { {}, {}, {}}
 	
@@ -20,6 +16,7 @@ describe("SwitchToIdlingMole spec", function ( ... )
 		stub(sprite, "setSequence")
 		stub(sprite, "play")
 		stub(sprite, "addEventListener")
+		stub(sprite, "removeEventListener")
 
 		stub(transition, "to")
 		stub(transition, "cancel")
@@ -54,70 +51,34 @@ describe("SwitchToIdlingMole spec", function ( ... )
 			.was_called_with(sprite, {time=3000, x=sprite.x, y=sprite.y, onComplete=switchToIdlingMole.onTimeToLiveExeed })
 	end)
 
-	it("When sprite tapped .It should switch mole to dying state.", function ( ... )
+	it("When sprite tapped .It should call mole terminater.", function ( ... )
 		--given
-		local sprite = {}
 		local event = {
 			target=sprite
 		}
-		stub(sprite, "removeEventListener")
-		stub(switchToDyingMole, "evaluate")
-		stub(audio, "play")
+		
+		stub(terminateMole, "evaluate")
 		--when
 		switchToIdlingMole.onTapMole(event)
 		--then
-		assert.stub(switchToDyingMole.evaluate).was_called_with(sprite)
-		switchToDyingMole.evaluate:revert()
+		assert.stub(terminateMole.evaluate).was_called_with(sprite)
+		terminateMole.evaluate:revert()
 	end)
+
+	
 
 	it("When sprite tapped.It should remove tap event listener.", function ( ... )
 		--given
-		local sprite = {}
 		local event = {
 			target=sprite
 		}
-		stub(sprite, "removeEventListener")
-		stub(switchToDyingMole, "evaluate")
-		stub(audio, "play")
+		stub(terminateMole, "evaluate")
+
 		--when
 		switchToIdlingMole.onTapMole(event)
 		--then
 		assert.stub(sprite.removeEventListener).was_called_with(sprite, "tap", switchToIdlingMole.onTapMole)
-		switchToDyingMole.evaluate:revert()
-	end)
-
-	it("When sprite tapped. It should play tapping sound.", function ( ... )
-		--given
-		local sprite = {}
-		local event = {
-			target=sprite
-		}
-		stub(sprite, "removeEventListener")
-		stub(switchToDyingMole, "evaluate")
-		stub(audio, "play")
-		--when
-		switchToIdlingMole.onTapMole(event)
-		--then
-		assert.stub(audio.play).was_called_with(tapSound, {channel=2, loops=0})
-		switchToDyingMole.evaluate:revert()
-	end)
-
-	it("When sprite tapped. It should increase score", function ( ... )
-		--given
-		local sprite = {}
-		local event = {
-			target=sprite
-		}
-		stub(sprite, "removeEventListener")
-		stub(switchToDyingMole, "evaluate")
-		stub(audio, "play")
-
-		score = 0
-		--when
-		switchToIdlingMole.onTapMole(event)
-		--then
-		assert.are.same("Score: 20", scoreTxt.text)
-		switchToDyingMole.evaluate:revert()
+		terminateMole.evaluate:revert()
 	end)
 
 	it("When timed out. It should decrease heart.", function ( ... )

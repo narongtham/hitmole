@@ -1,4 +1,4 @@
-switchToDyingMole = switchToDyingMole or require("switchToDyingMole")
+terminateMole = terminateMole or require "terminatemole"
 switchToEscapingMole = switchToEscapingMole or require("switchToEscapingMole")
 
 switchToIdlingMole = {}
@@ -12,19 +12,20 @@ function switchToIdlingMole.evaluate( sprite )
 end
 
 function switchToIdlingMole.onTapMole( event )
-	event.target:removeEventListener( "tap", switchToIdlingMole.onTapMole )
-	transition.cancel(event.target)
-	audio.play( tapSound, {channel=2, loops=0})
-	score = score + 20
-	scoreTxt.text = "Score: " .. score
-	switchToDyingMole.evaluate(event.target)
+	switchToIdlingMole.removeAllEventListeners(event.target)
+	terminateMole.evaluate(event.target)
 end
 
 function switchToIdlingMole.onTimeToLiveExeed( target )
-	target:removeEventListener( "tap", switchToIdlingMole.onTapMole )
+	switchToIdlingMole.removeAllEventListeners(target)
 	display.remove( heart[escapeCount] )
 	escapeCount = escapeCount - 1
 	switchToEscapingMole.evaluate(target)
+end
+
+function switchToIdlingMole.removeAllEventListeners(target)
+	target:removeEventListener( "tap", switchToIdlingMole.onTapMole )
+	transition.cancel(target)
 end
 
 return switchToIdlingMole
