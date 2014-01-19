@@ -3,19 +3,20 @@ describe("terminateMole spec", function ( ... )
 	local terminateMole = require "terminateMole"
 	local switchToDyingMole = require "switchToDyingMole"
 	local moleTapSoundPlayer = require "moleTapSoundPlayer"
-	score = 0
-	scoreTxt = {}
+	local scoreIncrement = require "scoreIncrement"
 
 	local sprite = {}
 
 	setup(function ( ... )
 		stub(switchToDyingMole, "evaluate")
 		stub(moleTapSoundPlayer, "play")
+		stub(scoreIncrement, "increaseScore")
 	end)
 
 	teardown(function ( ... )
 		switchToDyingMole.evaluate:revert()
 		moleTapSoundPlayer.play:revert()
+		scoreIncrement.increaseScore:revert()
 	end)
 
 	it("When sprite tapped .It should switch mole to dying state.", function ( ... )
@@ -34,11 +35,9 @@ describe("terminateMole spec", function ( ... )
 	end)
 
 	it("When sprite tapped. It should increase score", function ( ... )
-		--given
-		score = 0
 		--when
 		terminateMole.evaluate(event)
 		--then
-		assert.are.same("Score: 20", scoreTxt.text)
+		assert.stub(scoreIncrement.increaseScore).was_called_with(20)
 	end)
 end)
