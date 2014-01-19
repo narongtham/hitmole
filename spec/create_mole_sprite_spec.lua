@@ -30,14 +30,14 @@ describe("CreateMoleSprite spec", function ( ... )
 
 	it("Result should contains idling sequence data", function ( ... )
 		--Given
-		local idlingSequenceData = {name="idle", start=83, count=40, time=1000, loopCount=0}
+		local idlingSequenceData = {name="idle", start=83, count=40, time=1500, loopCount=0}
 		--When
 		local result = createMoleSprite.create()
 		--Then
 		assert.are.same(result.sequenceData[2], idlingSequenceData)
 	end)
 
-	it("Result should contains leaving sequence data", function ( ... )
+	it("Result should contains escaping sequence data", function ( ... )
 		--Given
 		local leavingSequenceData = {name="escape", start=57, count=14, time=300, loopCount=1}
 		--When

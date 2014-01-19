@@ -1,21 +1,17 @@
 -- header
-local scene = storyboard.newScene()
+storyboard = require("storyboard")
+createMoleSprite = require("createMoleSprite")
+createSpawningMole = require("createSpawningMole")
 -- end header
 
 
 -- open value
 score = 0
-local speed = 3000
 isPause = false
 g = nil
 escapeCount = 3
-
-
-moles = {}
-
-
 moleSpriteMetaData = createMoleSprite.create()
-
+local scene = storyboard.newScene("gameScene")
 local bgmChannel
 local tapChannel
 --local blastChannel

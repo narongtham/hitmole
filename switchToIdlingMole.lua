@@ -1,7 +1,7 @@
-local switchToDyingMole = switchToDyingMole or require("switchToDyingMole")
-local switchToEscapingMole = require("switchToEscapingMole")
+switchToDyingMole = switchToDyingMole or require("switchToDyingMole")
+switchToEscapingMole = switchToEscapingMole or require("switchToEscapingMole")
 
-local switchToIdlingMole = {}
+switchToIdlingMole = {}
 
 function switchToIdlingMole.evaluate( sprite )
 	sprite:setSequence( "idle" )

@@ -1,5 +1,5 @@
 local switchToDyingMole = {}
-local createSpawningMole = require("createSpawningMole")
+--local createSpawningMole = require("createSpawningMole")
 
 function switchToDyingMole.evaluate(sprite)
 	sprite:setSequence( "dead" )
@@ -17,7 +17,7 @@ end
 
 function switchToDyingMole.removeMoleSprite()
 	display.remove(switchToDyingMole.waitForRemoveSprite)
-	createSpawningMole.create()
+	mole = createSpawningMole.create()
 end
 
 return switchToDyingMole

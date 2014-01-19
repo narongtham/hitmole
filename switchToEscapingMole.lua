@@ -1,5 +1,5 @@
-local createSpawningMole = require("createSpawningMole")
-local switchToEscapingMole = {}
+switchToEscapingMole = {}
+createSpawningMole = createSpawningMole or "createSpawningMole"
 
 function switchToEscapingMole.evaluate(sprite)
 	sprite:setSequence( "escape" )
@@ -19,7 +19,7 @@ function switchToEscapingMole.removeMoleSprite()
 	display.remove(switchToEscapingMole.waitForRemoveSprite)
 
 	if escapeCount > 0 then 
-		createSpawningMole.create()
+		mole = createSpawningMole.create()
 	else
 		local gameOverTxt = display.newText("GameOver",0,0,"Helvetica",50)
 		gameOverTxt:setFillColor( 0,0,0.2 )

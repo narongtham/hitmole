@@ -5,6 +5,7 @@ DISPLAY_CENTER_Y = display.contentCenterY
 CONTENT_WIDTH = display.viewableContentWidth
 CONTENT_HEIGHT = display.viewableContentHeight
 
+storyboard = storyboard or require("storyboard")
 storyboard.gotoScene("splashScene")
 
 display.setStatusBar( display.HiddenStatusBar )

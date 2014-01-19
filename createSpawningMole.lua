@@ -1,4 +1,7 @@
-local createSpawningMole = {}
+generateMolePosition = generateMolePosition or require("generateMolePosition")
+switchToSpawningMole = switchToSpawningMole or require("switchToSpawningMole")
+
+createSpawningMole = {}
 
 createSpawningMole.create = function ( ... )
 	local molePosition = generateMolePosition.generate()
@@ -9,9 +12,11 @@ createSpawningMole.create = function ( ... )
 	moleSprite.xScale = 1.5
 	moleSprite.yScale = 1.5
 
-	local spawningMole = SpawningMole.new()
-	spawningMole:setSprite(moleSprite)
-	return spawningMole
+	switchToSpawningMole.evaluate(moleSprite)
+
+	return {
+		sprite=moleSprite
+	}
 end
 
 return createSpawningMole

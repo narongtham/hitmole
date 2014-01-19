@@ -11,9 +11,3 @@ application =
         fps = 30,
 	},
 }
-
-storyboard = require("storyboard")
-createMoleSprite = require("createMoleSprite")
-generateMolePosition = require("generateMolePosition")
-SpawningMole = require("SpawningMole")
-createSpawningMole = require("createSpawningMole")

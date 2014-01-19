@@ -1,13 +1,12 @@
 describe("Create spawning mole spec", function ( ... )
-	SpawningMole = {}
-	SpawningMole.new = function ( ... )
-		return {
-			setSprite = function( ) end
-		}
-	end
+	local createSpawningMole = require("createSpawningMole")
 
 	display = require('spec.corona-busted.mocks.mockDisplay')
 	
+	display.newSpritre = function ( ... )
+		return {}
+	end
+
 	generated_x = 10
 	generated_y = 20
 	generateMolePosition = {
@@ -23,7 +22,10 @@ describe("Create spawning mole spec", function ( ... )
 		sequenceData={}
 	}
 
-	local createSpawningMole = require("createSpawningMole")
+	switchToSpawningMole = {}
+	stub(switchToSpawningMole, "evaluate")
+
+	
 	
 	it("Should return spawning mole", function ( ... )
 		--when

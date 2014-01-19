@@ -1,6 +1,8 @@
 describe("main specs", function ()
 	display = require("spec.corona-busted.mocks.mockDisplay")
 	
+	storyboard = {}
+
 	setup(function ( ... )
 		display.contentCenterX = 120
 		display.contentCenterY = 150
