@@ -1,9 +1,9 @@
 switchToDyingMole = switchToDyingMole or require("switchToDyingMole")
-
+moleTapSoundPlayer = moleTapSoundPlayer or require("moleTapSoundPlayer")
 terminateMole = {}
 
 function terminateMole.evaluate(sprite)
-	audio.play( tapSound, {channel=2, loops=0})
+	moleTapSoundPlayer.play()
 	score = score + 20
 	scoreTxt.text = "Score: " .. score
 	switchToDyingMole.evaluate(sprite)
