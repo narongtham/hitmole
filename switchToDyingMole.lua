@@ -1,5 +1,6 @@
-local switchToDyingMole = {}
---local createSpawningMole = require("createSpawningMole")
+--createSpawningMole = createSpawningMole or require("createSpawningMole")
+
+switchToDyingMole = {}
 
 function switchToDyingMole.evaluate(sprite)
 	sprite:setSequence( "dead" )
