@@ -81,21 +81,6 @@ describe("SwitchToIdlingMole spec", function ( ... )
 		terminateMole.evaluate:revert()
 	end)
 
-	it("When timed out. It should decrease heart.", function ( ... )
-		--given
-		local sprite = {}
-		stub(sprite, "removeEventListener")
-		stub(display, "remove")
-		stub(switchToEscapingMole, "evaluate")
-		escapeCount = 3
-
-		--when
-		switchToIdlingMole.onTimeToLiveExeed(sprite)
-		--then
-		assert.stub(display.remove).was_called_with(heart[escapeCount])
-		assert.are.equal(escapeCount, 2)
-	end)
-
 	it("When timed out. It should remove tap event listener.", function ( ... )
 		--given
 		local sprite = {}

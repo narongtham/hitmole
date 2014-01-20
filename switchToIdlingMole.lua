@@ -18,8 +18,6 @@ end
 
 function switchToIdlingMole.onTimeToLiveExeed( target )
 	switchToIdlingMole.removeAllEventListeners(target)
-	display.remove( heart[escapeCount] )
-	escapeCount = escapeCount - 1
 	switchToEscapingMole.evaluate(target)
 end
 
