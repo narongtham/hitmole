@@ -66,17 +66,6 @@ describe("switchToDyingMole spec", function ( ... )
 		assert.are.same(switchToDyingMole.waitForRemoveSprite, sprite)
 	end)
 
-	it("When call removeMoleSprite() it should remove sprite from display", function ( ... )
-		--given
-		local sprite = {}
-		switchToDyingMole.waitForRemoveSprite = sprite
-		stub(display, "remove")
-		--when
-		switchToDyingMole.removeMoleSprite(event)
-		--then
-		assert.stub(display.remove).was_called_with(sprite)
-	end)
-
 	it("When sprite animate ended it should remove sprite event listener", function ( ... )
 		--given
 		local sprite = {}
@@ -91,6 +80,17 @@ describe("switchToDyingMole spec", function ( ... )
 		--then
 		assert.stub(sprite.removeEventListener)
 			.was_called_with(sprite, "sprite", switchToDyingMole.spriteEventHandler)
+	end)
+
+	it("When call removeMoleSprite() it should remove sprite from display", function ( ... )
+		--given
+		local sprite = {}
+		switchToDyingMole.waitForRemoveSprite = sprite
+		stub(display, "remove")
+		--when
+		switchToDyingMole.removeMoleSprite(event)
+		--then
+		assert.stub(display.remove).was_called_with(sprite)
 	end)
 
 	it("When call removeMoleSprite() it should create spawning mole", function ( ... )

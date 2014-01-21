@@ -1,0 +1,14 @@
+delayAfterSpriteAnimateEnded = {}
+
+function delayAfterSpriteAnimateEnded.start(sprite, afterDelayEndedFunctions)
+	delayAfterSpriteAnimateEnded.waitForRemoveSprite = sprite
+	delayAfterSpriteAnimateEnded.afterDelayEndedFunctions = afterDelayEndedFunctions
+	timer.performWithDelay(300, delayAfterSpriteAnimateEnded.onDelayEnded)
+end
+
+function delayAfterSpriteAnimateEnded.onDelayEnded(event)
+	display.remove(delayAfterSpriteAnimateEnded.waitForRemoveSprite)
+	delayAfterSpriteAnimateEnded.afterDelayEndedFunctions()
+end
+
+return delayAfterSpriteAnimateEnded
