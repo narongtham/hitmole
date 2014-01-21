@@ -9,7 +9,9 @@ describe("delayAfterSpriteAnimateEnded spec", function ( ... )
 	local afterAnimateEndedFunctions = {
 		function_1 =  function( ... ) end
 	}
+	
 	timer = {}
+	transition = {}
 
 	setup(function ( ... )
 		sprite = {}
@@ -19,6 +21,7 @@ describe("delayAfterSpriteAnimateEnded spec", function ( ... )
 		}
 		stub(timer, "performWithDelay")
 		stub(sprite, "removeEventListener")
+		stub(transition, "to")
 	end)
 
 	it("It should set timer to delay removing mole", function ( ... )
@@ -42,15 +45,15 @@ describe("delayAfterSpriteAnimateEnded spec", function ( ... )
 		assert.are.same(delayAfterSpriteAnimateEnded.afterDelayEndedFunctions, afterAnimateEndedFunctions.function_1)
 	end)
 
-	it("When delay ended it should remove sprite from display", function ( ... )
+	it("When delay ended it start fading out transition", function ( ... )
 		--given
 		delayAfterSpriteAnimateEnded.waitForRemoveSprite = sprite
 		delayAfterSpriteAnimateEnded.afterDelayEndedFunctions = afterAnimateEndedFunctions.function_1
-		stub(display, "remove")
 		--when
 		delayAfterSpriteAnimateEnded.onDelayEnded(event)
 		--then
-		assert.stub(display.remove).was_called_with(sprite)
+		assert.stub(transition.to).was_called_with(delayAfterSpriteAnimateEnded.waitForRemoveSprite,
+		 {alpha=0, time=300, onComplete=delayAfterSpriteAnimateEnded.onFadeOutCompleted})
 	end)
 
 	it("When delay ended it should call after animate ended provided function", function ( ... )
@@ -62,5 +65,14 @@ describe("delayAfterSpriteAnimateEnded spec", function ( ... )
 		delayAfterSpriteAnimateEnded.onDelayEnded(event)
 		--then
 		assert.stub(afterAnimateEndedFunctions.function_1).was_called()
+	end)
+
+	it("When fadeout ended. It should remove sprite from display", function ( ... )
+		--given
+		stub(display, "remove")
+		--when
+		delayAfterSpriteAnimateEnded.onFadeOutCompleted(event)
+		--then
+		assert.stub(display.remove).was_called_with(sprite)
 	end)
 end)

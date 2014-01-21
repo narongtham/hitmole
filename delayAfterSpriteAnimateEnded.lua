@@ -7,8 +7,12 @@ function delayAfterSpriteAnimateEnded.start(sprite, afterDelayEndedFunctions)
 end
 
 function delayAfterSpriteAnimateEnded.onDelayEnded(event)
-	display.remove(delayAfterSpriteAnimateEnded.waitForRemoveSprite)
+	transition.to(delayAfterSpriteAnimateEnded.waitForRemoveSprite, {alpha=0, time=300, onComplete=delayAfterSpriteAnimateEnded.onFadeOutCompleted})
 	delayAfterSpriteAnimateEnded.afterDelayEndedFunctions()
+end
+
+function delayAfterSpriteAnimateEnded.onFadeOutCompleted(event)
+	display.remove(event.target)
 end
 
 return delayAfterSpriteAnimateEnded
