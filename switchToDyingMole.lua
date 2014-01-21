@@ -1,4 +1,5 @@
 --createSpawningMole = createSpawningMole or require("createSpawningMole")
+require "dyingMoleSpriteAnimateEnded"
 
 switchToDyingMole = {}
 
@@ -11,14 +12,8 @@ end
 function switchToDyingMole.spriteEventHandler(event)
 	if event.phase == "ended" then
 		event.target:removeEventListener( "sprite", switchToDyingMole.spriteEventHandler )
-		switchToDyingMole.waitForRemoveSprite = event.target
-		timer.performWithDelay( 300, switchToDyingMole.removeMoleSprite )
+		dyingMoleSpriteAnimateEnded.evaluate(event.target)
 	end
-end
-
-function switchToDyingMole.removeMoleSprite()
-	display.remove(switchToDyingMole.waitForRemoveSprite)
-	mole = createSpawningMole.create()
 end
 
 return switchToDyingMole
