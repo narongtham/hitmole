@@ -14,6 +14,9 @@ createSpawningMole.create = function ( ... )
 
 	switchToSpawningMole.evaluate(moleSprite)
 
+	mole = moleSprite
+	currentViewGroup:insert(moleSprite)
+
 	return {
 		sprite=moleSprite
 	}

@@ -8,7 +8,7 @@ createSpawningMole = require("createSpawningMole")
 -- open value
 score = 0
 isPause = false
-g = nil
+currentViewGroup = nil
 escapeCount = 3
 moleSpriteMetaData = createMoleSprite.create()
 local scene = storyboard.newScene("gameScene")
@@ -40,7 +40,7 @@ end
 
 function scene:enterScene(e)
 	local group = self.view
-	g = group
+	currentViewGroup = group
 
 	font = native.systemFont
 	scoreTxt = display.newText("Score: 0", 0, 0, font, 30)
@@ -64,8 +64,7 @@ end
 
 -- element funciton --
 function spawnMole()
-	mole = createSpawningMole.create()
-	g:insert(mole.sprite)
+	createSpawningMole.create()
 end
 
 function showHeart()
@@ -76,37 +75,19 @@ function showHeart()
 		heart[i].y = 30
 		heart[i].width = 32
 		heart[i].height = 32
-		g:insert(heart[i])
-	end
-end
-
-function moleEsc( )
-	display.remove(heart[escapeCount])
-	escapeCount = escapeCount - 1
-	print( "heart = ".. #heart )
-	print( "escapeCount = ".. escapeCount )
-	print( "mole = ".. #mole )
-
-	if escapeCount > 0 then 
-		spawnMole()
-	else
-		local gameOverTxt = display.newText("GameOver",0,0,"Helvetica",50)
-		gameOverTxt:setFillColor( 0,0,0.2 )
-		gameOverTxt.x = DISPLAY_CENTER_X
-		gameOverTxt.y = DISPLAY_CENTER_Y
-
+		currentViewGroup:insert(heart[i])
 	end
 end
 
 function pauseAll()
 	if ( isPause == false) then
 		transition.pause()
-		mole.sprite:pause()
+		mole:pause()
 		isPause = true
 		storyboard.showOverlay( "option" , {effect = "fade" , isModal = true})
 	else
 		transition.resume( )
-		mole.sprite:play()
+		mole:play()
 		isPause = false
 	end
 end
