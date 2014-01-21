@@ -1,5 +1,5 @@
 terminateMole = terminateMole or require "terminatemole"
-switchToEscapingMole = switchToEscapingMole or require("switchToEscapingMole")
+escapeMole = escapeMole or require("escapeMole")
 
 switchToIdlingMole = {}
 
@@ -18,7 +18,7 @@ end
 
 function switchToIdlingMole.onTimeToLiveExeed( target )
 	switchToIdlingMole.removeAllEventListeners(target)
-	switchToEscapingMole.evaluate(target)
+	escapeMole.evaluate(target)
 end
 
 function switchToIdlingMole.removeAllEventListeners(target)

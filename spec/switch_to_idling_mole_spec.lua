@@ -1,7 +1,7 @@
 describe("SwitchToIdlingMole spec", function ( ... )
 
 	local switchToIdlingMole = require( "switchToIdlingMole" )
-	local switchToEscapingMole = require("switchToEscapingMole")
+	local escapeMole = require("escapeMole")
 	local terminateMole = require("terminateMole")
 	
 	transition = {}
@@ -86,7 +86,7 @@ describe("SwitchToIdlingMole spec", function ( ... )
 		local sprite = {}
 		stub(sprite, "removeEventListener")
 		stub(display, "remove")
-		stub(switchToEscapingMole, "evaluate")
+		stub(escapeMole, "evaluate")
 		--when
 		switchToIdlingMole.onTimeToLiveExeed(sprite)
 		--then
@@ -98,12 +98,12 @@ describe("SwitchToIdlingMole spec", function ( ... )
 		local sprite = {}
 		stub(sprite, "removeEventListener")
 		stub(display, "remove")
-		stub(switchToEscapingMole, "evaluate")
+		stub(escapeMole, "evaluate")
 
 		--when
 		switchToIdlingMole.onTimeToLiveExeed(sprite)
 		--then
-		assert.stub(switchToEscapingMole.evaluate).was_called_with(sprite)
-		switchToEscapingMole.evaluate:revert()
+		assert.stub(escapeMole.evaluate).was_called_with(sprite)
+		escapeMole.evaluate:revert()
 	end)
 end)
