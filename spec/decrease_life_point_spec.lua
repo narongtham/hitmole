@@ -4,11 +4,12 @@ describe("DecreaseLifePoint spec", function ( ... )
 
 	display = {}
 	heart = {{}, {}, {}}
-	escapeCount = 3
+	
 
 	it("It should decrease escape count.", function ( ... )
 		--given
 		stub(display, "remove")
+		escapeCount = 3
 		--when
 		decreaseLifePoint.decreaseByOne()
 		--then
@@ -18,6 +19,7 @@ describe("DecreaseLifePoint spec", function ( ... )
 	it("It should remove one lifepoint indicator from remaining lifepoint indicators", function ( ... )
 		--given
 		stub(display, "remove")
+		escapeCount = 3
 		--when
 		decreaseLifePoint.decreaseByOne()
 		--then
