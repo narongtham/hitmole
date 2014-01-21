@@ -5,9 +5,6 @@ describe("switchToDyingMole spec", function ( ... )
 
 	local sprite
 
-	timer = {}
-	display = require("spec.corona-busted.mocks.mockDisplay")
-
 	setup(function ( ... )
 		sprite = {}
 		stub(sprite, "setSequence")
