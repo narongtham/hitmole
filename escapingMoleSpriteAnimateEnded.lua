@@ -9,7 +9,7 @@ function escapingMoleSpriteAnimateEnded.evaluate(sprite)
 end
 
 function escapingMoleSpriteAnimateEnded.afterDelayEnded()
-	decreaseLifePoint.decreaseOne()
+	decreaseLifePoint.decreaseByOne()
 	checkGameOver.evaluate()
 end
 

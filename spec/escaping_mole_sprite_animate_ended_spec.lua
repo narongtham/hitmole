@@ -10,13 +10,13 @@ describe("escapingMoleSpriteAnimateEnded", function ( ... )
 	setup(function ( ... )
 		sprite = {}
 		stub(delayAfterSpriteAnimateEnded, "start")
-		stub(decreaseLifePoint, "decreaseOne")
+		stub(decreaseLifePoint, "decreaseByOne")
 		stub(checkGameOver, "evaluate")
 	end)
 
 	teardown(function ( ... )
 		delayAfterSpriteAnimateEnded.start:revert()
-		decreaseLifePoint.decreaseOne:revert()
+		decreaseLifePoint.decreaseByOne:revert()
 		checkGameOver.evaluate:revert()
 	end)
 
@@ -31,7 +31,7 @@ describe("escapingMoleSpriteAnimateEnded", function ( ... )
 		--when
 		escapingMoleSpriteAnimateEnded.afterDelayEnded()
 		--then
-		assert.stub(decreaseLifePoint.decreaseOne).was_called()
+		assert.stub(decreaseLifePoint.decreaseByOne).was_called()
 	end)
 
 	it("Should check game over", function ( ... )

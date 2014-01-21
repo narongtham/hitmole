@@ -7,10 +7,9 @@ describe("delayAfterSpriteAnimateEnded spec", function ( ... )
 			target = sprite
 	}
 	local afterAnimateEndedFunctions = {
-		function_1 =  function( ... ) 
-			print( "Delay ended" )
-		end
+		function_1 =  function( ... ) end
 	}
+	timer = {}
 
 	setup(function ( ... )
 		sprite = {}
