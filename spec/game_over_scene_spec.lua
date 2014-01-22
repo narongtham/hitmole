@@ -15,14 +15,18 @@ describe("gameOverScene", function ( ... )
 
 	local gameOverScene = require "gameOverScene"
 	local showGameOverBackgroundImage = require "showGameOverBackgroundImage"
+	local showEndingImage = require "showEndingImage"
+
 	event = {}
 
 	setup(function ( ... )
 		stub(showGameOverBackgroundImage, "show")
+		stub(showEndingImage, "show")
 	end)
 
 	teardown(function ( ... )
 		showGameOverBackgroundImage.show:revert()
+		showEndingImage.show:revert()
 	end)
 
 
@@ -34,12 +38,10 @@ describe("gameOverScene", function ( ... )
 	end)
 
 	it("Show ending image", function ( ... )
-		--given
-		spy.on(display, "newImage")
 		--when
 		gameOverScene:createScene(event)
 		--then
-		assert.spy(display.newImage).was_called_with("img/end_image_1.png")
+		assert.stub(showEndingImage.show).was_called_with(scene.view)
 	end)
 
 	it("Set ending image x to center of screen", function ( ... )

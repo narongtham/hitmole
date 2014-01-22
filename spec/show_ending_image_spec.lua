@@ -36,9 +36,9 @@ describe("showEndingImage", function ( ... )
 		assert.are.equal(endingImage.x, DISPLAY_CENTER_X)
 	end)
 
-	it("Set image y position to 300r", function ( ... )
+	it("Set image y position to 300", function ( ... )
 		-- given
-		local expectedImageYPosition = 300
+		local expectedImageYPosition = 448
 		--when
 		showEndingImage.show(group)
 		--then
