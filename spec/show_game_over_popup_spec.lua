@@ -12,7 +12,7 @@ describe("gameOverScene", function ( ... )
 		--when
 		showGameOverPopup.show()
 		--then
-		assert.stub(storyboard.showOverlay).was_called_with("gameOver", {effect = "fade" , isModal = true})
+		assert.stub(storyboard.showOverlay).was_called_with("gameOverScene", {effect = "fade" , isModal = true})
 	end)
 
 	it("Should hide pause button", function ( ... )

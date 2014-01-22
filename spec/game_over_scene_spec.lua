@@ -1,0 +1,40 @@
+describe("gameOverScene", function ( ... )
+
+	storyboard = {
+		newScene = function ( ... )
+			return {
+				addEventListener = function ( ... )
+					-- body
+				end
+			}
+		end
+	}
+
+	local gameOverScene = require "gameOverScene"
+
+	event = {}
+	display = {
+		newImage = function ( ... )
+			return {}
+		end
+	}
+
+	it("Call showGameOverImage.show()")
+
+	it("Show ending image", function ( ... )
+		--given
+		spy.on(display, "newImage")
+		--when
+		gameOverScene:createScene(event)
+		--then
+		assert.spy(display.newImage).was_called_with("img/end_image_1.png")
+	end)
+
+	it("Set ending image x to center of screen", function ( ... )
+		-- body
+
+	end)
+	it("Show share button")
+	it("Show restart button")
+	it("Show main menu button")
+end)
