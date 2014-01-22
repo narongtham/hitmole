@@ -35,11 +35,7 @@ function scene:createScene(e)
 	bg.x = DISPLAY_CENTER_X
 	bg.y = DISPLAY_CENTER_Y
 	group:insert(bg)
-	playBgSound()
-end
-
-function scene:enterScene(e)
-	local group = self.view
+	
 	currentViewGroup = group
 
 	font = native.systemFont
@@ -57,7 +53,13 @@ function scene:enterScene(e)
 	group:insert(pauseGame)
 
 	pauseGame:addEventListener("tap", pauseAll)
+end
 
+function scene:enterScene(e)
+	escapeCount = 3
+	score = 0
+	scoreTxt.text = "Score: 0"
+	playBgSound()
 	spawnMole()
 	showHeart()
 end
