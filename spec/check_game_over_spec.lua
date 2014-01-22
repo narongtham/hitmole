@@ -2,6 +2,8 @@ describe("CheckGameOver", function ( ... )
 
 	local checkGameOver = require "checkGameOver"
 	createSpawningMole = require "createSpawningMole"
+	showGameOverPopup = require "showGameOverPopup"
+
 	display = {
 		newText = function ( ... )
 			return {}
@@ -11,11 +13,13 @@ describe("CheckGameOver", function ( ... )
 	DISPLAY_CENTER_Y = 10
 	setup(function ( ... )
 		stub(createSpawningMole, "create")
-		spy.on(display, "newText")
+		--spy.on(display, "newText")
+		stub(showGameOverPopup, "show")
 	end)
 
 	teardown(function ( ... )
 		createSpawningMole.create:revert()
+		showGameOverPopup.show:revert()
 	end)
 
 	it("If life still greater than zero. It will create new mole", function ( ... )
@@ -33,6 +37,6 @@ describe("CheckGameOver", function ( ... )
 		--when
 		checkGameOver.evaluate()
 		--then
-		assert.spy(display.newText).was_called_with("GameOver",0,0,"Helvetica",50)
+		assert.stub(showGameOverPopup.show).was_called()
 	end)
 end)
