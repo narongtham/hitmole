@@ -2,17 +2,22 @@ describe("showGameOverBackgroundImage", function ( ... )
 
 	local showGameOverBackgroundImage = require "showGameOverBackgroundImage"
 	
-	local backGroundimage = {}
-	
-	display.newImage = function ( ... )
-		return backGroundimage
-	end
+	local backGroundimage
+	local group
 
-	group = {
-		insert=function ( ... )
-			-- body
+	setup(function ( ... )
+		backGroundimage = {}
+	
+		display.newImage = function ( ... )
+			return backGroundimage
 		end
-	}
+
+		group = {
+			insert=function ( ... )
+				-- body
+			end
+		}
+	end)
 
 	it("Show background of game over scene", function ( ... )
 		--given
