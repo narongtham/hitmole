@@ -38,7 +38,7 @@ describe("showEndingImage", function ( ... )
 
 	it("Set image y position to 300", function ( ... )
 		-- given
-		local expectedImageYPosition = 448
+		local expectedImageYPosition = 480
 		--when
 		showEndingImage.show(group)
 		--then

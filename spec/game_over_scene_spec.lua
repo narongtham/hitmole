@@ -13,20 +13,25 @@ describe("gameOverScene", function ( ... )
 		end
 	}
 
+	widget = {}
+
 	local gameOverScene = require "gameOverScene"
 	local showGameOverBackgroundImage = require "showGameOverBackgroundImage"
 	local showEndingImage = require "showEndingImage"
+	local showPlayAgainButton = require "showPlayAgainButton"
 
 	event = {}
 
 	setup(function ( ... )
 		stub(showGameOverBackgroundImage, "show")
 		stub(showEndingImage, "show")
+		stub(showPlayAgainButton, "show")
 	end)
 
 	teardown(function ( ... )
 		showGameOverBackgroundImage.show:revert()
 		showEndingImage.show:revert()
+		showPlayAgainButton.show:revert()
 	end)
 
 
@@ -44,11 +49,14 @@ describe("gameOverScene", function ( ... )
 		assert.stub(showEndingImage.show).was_called_with(scene.view)
 	end)
 
-	it("Set ending image x to center of screen", function ( ... )
-		-- body
-
+	it("Show play again button", function ( ... )
+		-- when
+		gameOverScene:createScene(event)
+		-- then
+		assert.stub(showPlayAgainButton.show).was_called_with(scene.view)
 	end)
+
 	it("Show share button")
-	it("Show restart button")
+	
 	it("Show main menu button")
 end)
