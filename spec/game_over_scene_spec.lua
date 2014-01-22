@@ -1,25 +1,37 @@
 describe("gameOverScene", function ( ... )
 
+	local scene = {
+		addEventListener = function ( ... )
+			-- body
+		end,
+		view = {}
+	}
+
 	storyboard = {
 		newScene = function ( ... )
-			return {
-				addEventListener = function ( ... )
-					-- body
-				end
-			}
+			return scene
 		end
 	}
 
 	local gameOverScene = require "gameOverScene"
-
+	local showGameOverBackgroundImage = require "showGameOverBackgroundImage"
 	event = {}
-	display = {
-		newImage = function ( ... )
-			return {}
-		end
-	}
 
-	it("Call showGameOverImage.show()")
+	setup(function ( ... )
+		stub(showGameOverBackgroundImage, "show")
+	end)
+
+	teardown(function ( ... )
+		showGameOverBackgroundImage.show:revert()
+	end)
+
+
+	it("Call showGameOverImage.show()", function ( ... )
+		--when
+		gameOverScene:createScene(event)
+		--then
+		assert.stub(showGameOverBackgroundImage.show).was_called_with(scene.view)
+	end)
 
 	it("Show ending image", function ( ... )
 		--given

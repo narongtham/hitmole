@@ -1,10 +1,12 @@
 local storyboard = storyboard or require("storyboard")  
+local showGameOverBackgroundImage = require "showGameOverBackgroundImage"
+
 local scene = storyboard.newScene()
 
 function scene:createScene(e)
-	local gameOverBackground = display.newImage("img/gameoverbg.png")
-	gameOverBackground.x = DISPLAY_CENTER_X
-	gameOverBackground.y = DISPLAY_CENTER_Y
+	local group = self.view
+
+	showGameOverBackgroundImage.show(group)
 
 	display.newImage( "img/end_image_1.png" )
 end
