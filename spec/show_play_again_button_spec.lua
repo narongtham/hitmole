@@ -15,7 +15,8 @@ describe("showPlayAgainButton", function ( ... )
 		buttonMetaData = {
 			id="playAgain",
 			defaultFile="img/button/play_again.png",
-			overFile="img/button/play_again_down.png"
+			overFile="img/button/play_again_down.png",
+			onRelease=showPlayAgainButton.onPlayAgain
 		}
 
 		widget.newButton = function ( ... )

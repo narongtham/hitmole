@@ -55,8 +55,6 @@ describe("gameOverScene", function ( ... )
 		-- then
 		assert.stub(showPlayAgainButton.show).was_called_with(scene.view)
 	end)
-
-	it("Show share button")
 	
 	it("Show main menu button")
 end)
