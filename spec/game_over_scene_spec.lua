@@ -19,6 +19,7 @@ describe("gameOverScene", function ( ... )
 	local showGameOverBackgroundImage = require "showGameOverBackgroundImage"
 	local showEndingImage = require "showEndingImage"
 	local showPlayAgainButton = require "showPlayAgainButton"
+	local showMainMenuButton = require "showMainMenuButton"
 
 	event = {}
 
@@ -26,12 +27,14 @@ describe("gameOverScene", function ( ... )
 		stub(showGameOverBackgroundImage, "show")
 		stub(showEndingImage, "show")
 		stub(showPlayAgainButton, "show")
+		stub(showMainMenuButton, "show")
 	end)
 
 	teardown(function ( ... )
 		showGameOverBackgroundImage.show:revert()
 		showEndingImage.show:revert()
 		showPlayAgainButton.show:revert()
+		showMainMenuButton.show:revert()
 	end)
 
 
@@ -56,5 +59,10 @@ describe("gameOverScene", function ( ... )
 		assert.stub(showPlayAgainButton.show).was_called_with(scene.view)
 	end)
 	
-	it("Show main menu button")
+	it("Show main menu button", function ( ... )
+		-- when
+		gameOverScene:createScene(event)
+		-- then
+		assert.stub(showMainMenuButton.show).was_called_with(scene.view)
+	end)
 end)

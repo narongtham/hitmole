@@ -1,4 +1,4 @@
-terminateMole = terminateMole or require "terminatemole"
+terminateMole = terminateMole or require "terminateMole"
 escapeMole = escapeMole or require("escapeMole")
 
 switchToIdlingMole = {}

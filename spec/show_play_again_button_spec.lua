@@ -60,6 +60,4 @@ describe("showPlayAgainButton", function ( ... )
 		assert.stub(group.insert).was_called_with(group, playAgainButton)
 	end)
 
-	it("Bind function restart to button event listener")
-	
 end)

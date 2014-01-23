@@ -2,6 +2,7 @@ local storyboard = storyboard or require("storyboard")
 local showGameOverBackgroundImage = require "showGameOverBackgroundImage"
 local showEndingImage = require "showEndingImage"
 local showPlayAgainButton = require "showPlayAgainButton"
+local showMainMenuButton = require "showMainMenuButton"
 
 local scene = storyboard.newScene()
 
@@ -11,6 +12,7 @@ function scene:createScene(e)
 	showGameOverBackgroundImage.show(group)
 	showEndingImage.show(group)
 	showPlayAgainButton.show(group)
+	showMainMenuButton.show(group)
 end
 
 scene:addEventListener( "createScene", scene )
