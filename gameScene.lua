@@ -23,6 +23,7 @@ tapSound = audio.loadStream( "audio/punch.mp3") -- โหลดเสียง�
 
 function playBgSound()
 	bgmChannel = audio.play(bgm, { channel=1 , loops=-1 }) -- loops 0mean play once , loops -1 mean infinity loop
+	audio.setVolume( 1, {channel=1})
 end
 function playTapSound()
 	tapChannel = audio.play(tapSound, { channel=2 , loops=0}) -- ต้องใส่ channel ด้วย เด๋วเสียงชนกัน
@@ -60,6 +61,7 @@ function scene:enterScene(e)
 	escapeCount = 3
 	score = 0
 	scoreTxt.text = "Score: 0"
+	pauseGame.isVisible = true
 	playBgSound()
 	spawnMole()
 	showHeart()

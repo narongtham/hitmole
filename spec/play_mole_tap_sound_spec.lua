@@ -11,6 +11,6 @@ describe("playMoleTapSound spec", function ( ... )
 		--when
 		moleTapSoundPlayer.play()
 		--then
-		assert.stub(audio.play).was_called_with(tapSound, {channel=2, loops=0})
+		assert.stub(audio.play).was_called_with(tapSound)
 	end)
 end)

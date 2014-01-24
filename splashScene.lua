@@ -30,6 +30,7 @@ function toMenu()
 	})
 	
 end
+
 function purgeS( )
 	storyboard.purgeScene( "splashScene" )
 end
