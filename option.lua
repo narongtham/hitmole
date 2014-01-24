@@ -1,5 +1,7 @@
 -- header
 local storyboard = require("storyboard")  
+local showMainMenuButton = require "showMainMenuButton"
+
 local scene = storyboard.newScene()
 -- end header
 
@@ -25,7 +27,7 @@ function scene:createScene(e)
 	backTxt:addEventListener( "tap", backToGame )
 	group:insert(backTxt)
 
-
+	showMainMenuButton.show(group, DISPLAY_CENTER_Y)
 	
 end
 

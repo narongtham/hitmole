@@ -12,7 +12,7 @@ function scene:createScene(e)
 	showGameOverBackgroundImage.show(group)
 	showEndingImage.show(group)
 	showPlayAgainButton.show(group)
-	showMainMenuButton.show(group)
+	showMainMenuButton.show(group, 840)
 end
 
 scene:addEventListener( "createScene", scene )

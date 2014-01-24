@@ -1,6 +1,6 @@
 showMainMenuButton = {}
 
-function showMainMenuButton.show(group)
+function showMainMenuButton.show(group, yPosition)
 	local mainMenuButton = widget.newButton {
 		id="mainMenu",
 		defaultFile="img/button/main_menu.png",
@@ -9,12 +9,16 @@ function showMainMenuButton.show(group)
 	}
 
 	mainMenuButton.x = DISPLAY_CENTER_X
-	mainMenuButton.y = 840
+	mainMenuButton.y = yPosition
 
 	group:insert(mainMenuButton)
 end
 
 function showMainMenuButton.onRelease(event)
+	if mole.removeAllEventListeners then
+		mole:removeAllEventListeners()
+	end
+	display.remove( mole )
 	storyboard.gotoScene("menuScene",{
 		effect = "fade",
 		time = 500,

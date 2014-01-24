@@ -62,6 +62,7 @@ function scene:enterScene(e)
 	score = 0
 	scoreTxt.text = "Score: 0"
 	pauseGame.isVisible = true
+	isPause = false
 	playBgSound()
 	spawnMole()
 	showHeart()
@@ -85,15 +86,19 @@ function showHeart()
 end
 
 function pauseAll()
+	print( "pauseAll" )
+	print( isPause )
 	if ( isPause == false) then
 		transition.pause()
 		mole:pause()
 		isPause = true
 		storyboard.showOverlay( "option" , {effect = "fade" , isModal = true})
+		pauseGame.isVisible = false
 	else
 		transition.resume( )
 		mole:play()
 		isPause = false
+		pauseGame.isVisible = true
 	end
 end
 

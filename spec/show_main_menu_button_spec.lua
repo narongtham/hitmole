@@ -41,11 +41,11 @@ describe("showMainMenu", function ( ... )
 		assert.are.equal(mainMenuButton.x, DISPLAY_CENTER_X)
 	end)
 
-	it("Move button to y = 720", function ( ... )
+	it("Move button to given y", function ( ... )
 		-- given
 		expectedYPosition = 840
 		--when
-		showMainMenuButton.show(group)
+		showMainMenuButton.show(group, expectedYPosition)
 		--then
 		assert.are.equal(mainMenuButton.y, expectedYPosition)
 	end)
@@ -58,4 +58,5 @@ describe("showMainMenu", function ( ... )
 		-- then
 		assert.stub(group.insert).was_called_with(group, mainMenuButton)
 	end)
+
 end)

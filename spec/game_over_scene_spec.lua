@@ -63,6 +63,6 @@ describe("gameOverScene", function ( ... )
 		-- when
 		gameOverScene:createScene(event)
 		-- then
-		assert.stub(showMainMenuButton.show).was_called_with(scene.view)
+		assert.stub(showMainMenuButton.show).was_called_with(scene.view, 840)
 	end)
 end)

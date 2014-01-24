@@ -9,6 +9,7 @@ function switchToIdlingMole.evaluate( sprite )
 	sprite:addEventListener( "tap", switchToIdlingMole.onTapMole )
 	sprite.transition = transition.to(sprite,
 	 {time=3000, x=sprite.x, y=sprite.y, onComplete=switchToIdlingMole.onTimeToLiveExeed })
+	sprite.removeAllEventListeners = switchToIdlingMole.removeAllEventListeners
 end
 
 function switchToIdlingMole.onTapMole( event )
@@ -24,6 +25,7 @@ end
 function switchToIdlingMole.removeAllEventListeners(target)
 	target:removeEventListener( "tap", switchToIdlingMole.onTapMole )
 	transition.cancel(target)
+	target.removeAllEventListeners = nil
 end
 
 return switchToIdlingMole
