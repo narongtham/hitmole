@@ -3,7 +3,6 @@ local scene = storyboard.newScene("menuScene")
 g = nil
 -- end header
 
-
 function scene:createScene(e)
 	local group = self.view
 	g = group
@@ -28,13 +27,8 @@ function scene:createScene(e)
 end
 
 function scene:enterScene(e)
-	local group = self.view
 	startBtn.alpha = 0
 	showLogo(view)
-end
-
-function scene:exitScene(e) 
-	--storyboard.purgeScene( "menuScene" )
 end
 
 function showLogo(view)
@@ -54,8 +48,7 @@ function startG1( event )
 end
 
 function startG()
-	
-	--startBtn = display.remove(startBtn)
+	startBtn.alpha = 0
 	storyboard.gotoScene("gameScene",{
 		effect = "fade",
 		time = 500,
@@ -64,12 +57,11 @@ function startG()
 end
 
 function purgeScene(event)
+
 	storyboard.purgeScene( "menuScene" )
 end
 
-
 scene:addEventListener("createScene",scene)
 scene:addEventListener("enterScene",scene)
-scene:addEventListener("exitScene",scene)
 
 return scene
