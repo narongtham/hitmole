@@ -7,6 +7,7 @@ describe("showBackToGameButton", function ( ... )
 	}
 	local buttonMetaData = {}
 	local backToGameButton = {}
+	local cancelPause = cancelPause or require "cancelPause"
 
 	local showBackToGameButton = require "showBackToGameButton"
 
@@ -21,6 +22,12 @@ describe("showBackToGameButton", function ( ... )
 		widget.newButton = function ( ... )
 			return backToGameButton
 		end
+
+		stub(cancelPause, "evaluate")
+	end)
+
+	teardown(function ( ... )
+		cancelPause.evaluate:revert()
 	end)
 
 	it("Create widget button", function ( ... )
@@ -59,6 +66,11 @@ describe("showBackToGameButton", function ( ... )
 		assert.stub(group.insert).was_called_with(group, backToGameButton)
 	end)
 
-	it("onRelease should call cancelPause.evaluate()")
+	it("onRelease should call cancelPause.evaluate()", function ( ... )
+		-- when
+		showBackToGameButton.onRelease()
+		-- then
+		assert.stub(cancelPause.evaluate).was_called()
+	end)
 
 end)

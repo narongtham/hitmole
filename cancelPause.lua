@@ -5,5 +5,6 @@ function cancelPause.evaluate()
 	mole:play( )
 	isPause = false
 	pauseGame.isVisible = true
+	storyboard.hideOverlay( "fade" )
 end
 return cancelPause

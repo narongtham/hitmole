@@ -1,3 +1,5 @@
+cancelPause = cancelPause or require "cancelPause"
+
 showBackToGameButton = {}
 
 function showBackToGameButton.show(group, yPosition)
@@ -12,6 +14,10 @@ function showBackToGameButton.show(group, yPosition)
 	backToGameButton.y = yPosition
 
 	group:insert( backToGameButton )
+end
+
+function showBackToGameButton.onRelease( ... )
+	cancelPause.evaluate()
 end
 
 return showBackToGameButton

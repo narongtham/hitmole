@@ -5,10 +5,12 @@ describe("cancelPause", function ( ... )
 	transition = {}
 	mole = {}
 	pauseGame = {}
+	storyboard = {}
 
 	setup(function ( ... )
 		stub(transition, "resume")
 		stub(mole, "play")
+		stub(storyboard, "hideOverlay")
 	end)
 
 	it("Resume transition", function ( ... )
@@ -37,5 +39,12 @@ describe("cancelPause", function ( ... )
 		cancelPause.evaluate()
 		--then
 		assert.are.True(pauseGame.isVisible)
+	end)
+
+	it("Fade out the pause menu scene", function ( ... )
+		-- when
+		cancelPause.evaluate()
+		-- then
+		assert.stub(storyboard.hideOverlay).was_called_with("fade")
 	end)
 end)
