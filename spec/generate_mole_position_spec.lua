@@ -28,7 +28,7 @@ describe("Generate mole position spec", function ( ... )
 		--when
 		generateMolePosition.generate()
 		--then
-		assert.spy(math.random).was_called_with(350, CONTENT_HEIGHT - 120)
+		assert.spy(math.random).was_called_with(350, CONTENT_HEIGHT - 250)
 	end)
 
 	it("Return x position should be in range", function ( ... )
@@ -42,6 +42,6 @@ describe("Generate mole position spec", function ( ... )
 		--when
 		local result = generateMolePosition.generate()
 		--then
-		assert.are.True(result.y >= 350 and result.y <= CONTENT_HEIGHT - 120)
+		assert.are.True(result.y >= 350 and result.y <= CONTENT_HEIGHT - 250)
 	end)
 end)
