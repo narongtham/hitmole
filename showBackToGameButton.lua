@@ -13,4 +13,5 @@ function showBackToGameButton.show(group, yPosition)
 
 	group:insert( backToGameButton )
 end
+
 return showBackToGameButton

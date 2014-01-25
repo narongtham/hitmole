@@ -86,8 +86,6 @@ function showHeart()
 end
 
 function pauseAll()
-	print( "pauseAll" )
-	print( isPause )
 	if ( isPause == false) then
 		transition.pause()
 		mole:pause()
