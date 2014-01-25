@@ -1,10 +1,10 @@
 -- header
 local storyboard = require("storyboard")  
 local showMainMenuButton = require "showMainMenuButton"
-
-local scene = storyboard.newScene()
+local showBackToGameButton = require "showBackToGameButton"
 -- end header
 
+local scene = storyboard.newScene()
 
 function scene:createScene(e)
 	local group = self.view
@@ -15,20 +15,8 @@ function scene:createScene(e)
 	logo.alpha = 1
 	group:insert(logo)
 
-	local font = "Helvetica" or native.systemFont
-	local optionTitle = display.newText(  "Option" , 0,0,font,48 )
-	optionTitle.x = DISPLAY_CENTER_X
-	optionTitle.y = DISPLAY_CENTER_Y
-	group:insert(optionTitle)
-
-	local backTxt = display.newText(  "back" , 0,0,font,36 )
-	backTxt.x = DISPLAY_CENTER_X
-	backTxt.y = DISPLAY_CENTER_Y + 100
-	backTxt:addEventListener( "tap", backToGame )
-	group:insert(backTxt)
-
 	showMainMenuButton.show(group, DISPLAY_CENTER_Y)
-	
+	showBackToGameButton.show(group, DISPLAY_CENTER_Y + 100)
 end
 
 function backToGame( event )
