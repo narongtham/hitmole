@@ -19,16 +19,6 @@ function scene:createScene(e)
 	showBackToGameButton.show(group, DISPLAY_CENTER_Y + 100)
 end
 
-function backToGame( event )
-	pauseAll()
-	storyboard.hideOverlay( "fade" )
-
-	return true
-end
-
-
-
 scene:addEventListener("createScene",scene)
-
 
 return scene

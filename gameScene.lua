@@ -86,18 +86,11 @@ function showHeart()
 end
 
 function pauseAll()
-	if ( isPause == false) then
-		transition.pause()
-		mole:pause()
-		isPause = true
-		storyboard.showOverlay( "option" , {effect = "fade" , isModal = true})
-		pauseGame.isVisible = false
-	else
-		transition.resume( )
-		mole:play()
-		isPause = false
-		pauseGame.isVisible = true
-	end
+	transition.pause()
+	mole:pause()
+	isPause = true
+	storyboard.showOverlay( "option" , {effect = "fade" , isModal = true})
+	pauseGame.isVisible = false
 end
 
 scene:addEventListener("createScene",scene)
