@@ -18,6 +18,7 @@ function showMainMenuButton.onRelease(event)
 	if mole.removeAllEventListeners then
 		mole:removeAllEventListeners()
 	end
+	
 	display.remove( mole )
 	storyboard.gotoScene("menuScene",{
 		effect = "fade",
