@@ -1,7 +1,7 @@
 decreaseLifePoint = {}
 
 function decreaseLifePoint.decreaseByOne()
-	display.remove( heart[escapeCount] )
+	display.remove( lifePoints[escapeCount] )
 	escapeCount = escapeCount-1
 end
 

@@ -3,7 +3,7 @@ describe("DecreaseLifePoint spec", function ( ... )
 	local decreaseLifePoint = require "decreaseLifePoint"
 
 	display = {}
-	heart = {{}, {}, {}}
+	lifePoints = {{}, {}, {}}
 	
 
 	it("It should decrease escape count.", function ( ... )
@@ -23,6 +23,6 @@ describe("DecreaseLifePoint spec", function ( ... )
 		--when
 		decreaseLifePoint.decreaseByOne()
 		--then
-		assert.stub(display.remove).was_called_with(heart[escapeCount])
+		assert.stub(display.remove).was_called_with(lifePoints[escapeCount])
 	end)
 end)

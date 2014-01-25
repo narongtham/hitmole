@@ -74,14 +74,14 @@ function spawnMole()
 end
 
 function showHeart()
-	heart = {}
+	lifePoints = {}
 	for i =1 , escapeCount do
-		heart[i] = display.newImage("img/headmole.png")
-		heart[i].x = 30*i
-		heart[i].y = 30
-		heart[i].width = 32
-		heart[i].height = 32
-		currentViewGroup:insert(heart[i])
+		lifePoints[i] = display.newImage("img/headmole.png")
+		lifePoints[i].x = 30*i
+		lifePoints[i].y = 30
+		lifePoints[i].width = 32
+		lifePoints[i].height = 32
+		currentViewGroup:insert(lifePoints[i])
 	end
 end
 
