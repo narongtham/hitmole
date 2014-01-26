@@ -4,8 +4,9 @@ local decoratorConfigurations = decoratorConfigurations or require "decoratorCon
 createDecoratorsFromConfig = {}
 
 function createDecoratorsFromConfig.create(group)
-	createDecorator.createAndInsertToGroup(group, decoratorConfigurations[1])
-	createDecorator.createAndInsertToGroup(group, decoratorConfigurations[2])
+	for i=1, #decoratorConfigurations do
+		createDecorator.createAndInsertToGroup(group, decoratorConfigurations[i])
+	end
 end
 
 return createDecoratorsFromConfig
