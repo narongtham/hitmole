@@ -1,5 +1,5 @@
 local createDecorator = createDecorator or require "createDecorator"
-local decoratorConfigurations = decoratorConfigurations or require "decoratorConfigurations"
+local decoratorConfigurations = decoratorConfigurations or require "config.decoratorConfigurations"
 
 createDecoratorsFromConfig = {}
 
