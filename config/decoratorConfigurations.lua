@@ -7,7 +7,7 @@ decoratorConfigurations = {
 	{
 		filename = "img/sprite/lawnmower.png",
 		x = 666,
-		y = 320
+		y = 350
 	}
 }
 return decoratorConfigurations

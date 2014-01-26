@@ -1,7 +1,7 @@
 -- header
 createMoleSprite = require("createMoleSprite")
 createSpawningMole = require("createSpawningMole")
-createDecorator = require("createDecorator")
+createDecoratorsFromConfig = require("createDecoratorsFromConfig")
 -- end header
 
 
@@ -55,7 +55,7 @@ function scene:createScene(e)
 
 	pauseGame:addEventListener("tap", pauseAll)
 
-	createDecorator.createAndInsertToGroup(group)
+	createDecoratorsFromConfig.create(group)
 end
 
 function scene:enterScene(e)
