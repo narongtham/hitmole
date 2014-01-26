@@ -3,8 +3,12 @@ describe("createDecorator", function ( ... )
 	local createDecorator = require "createDecorator"
 
 	local decoratorImage
+	local group
 
 	setup(function ( ... )
+		group = {}
+		stub(group, "insert")
+
 		decoratorImage = {}
 
 		display.newImage = function ( ... )
@@ -16,7 +20,7 @@ describe("createDecorator", function ( ... )
 		-- given
 		spy.on(display, "newImage")
 		-- when
-		createDecorator.evaluate()
+		createDecorator.evaluate(group)
 		-- then
 		assert.spy(display.newImage).was_called_with("img/sprite/rubber_tube.png")
 	end)
@@ -25,7 +29,7 @@ describe("createDecorator", function ( ... )
 		-- given
 		local expected_x = 90
 		-- when
-		createDecorator.evaluate()
+		createDecorator.evaluate(group)
 		--then
 		assert.are.equal(decoratorImage.x, expected_x)
 	end)
@@ -34,8 +38,15 @@ describe("createDecorator", function ( ... )
 		-- given
 		local expected_y = 320
 		-- when
-		createDecorator.evaluate()
+		createDecorator.evaluate(group)
 		--then
 		assert.are.equal(decoratorImage.y, expected_y)
+	end)
+
+	it("Add decorator to assigned group", function ( ... )
+		--when
+		createDecorator.evaluate(group)
+		--then
+		assert.stub(group.insert).was_called_with(group, decoratorImage)
 	end)
 end)

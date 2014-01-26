@@ -1,9 +1,11 @@
 createDecorator = {}
 
-function createDecorator.evaluate()
+function createDecorator.evaluate(group)
 	local decoratorImage = display.newImage( "img/sprite/rubber_tube.png" )
 	decoratorImage.x = 90
 	decoratorImage.y = 320
+
+	group:insert(decoratorImage)
 end
 
 return createDecorator
