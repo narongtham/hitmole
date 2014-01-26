@@ -55,7 +55,7 @@ function scene:createScene(e)
 
 	pauseGame:addEventListener("tap", pauseAll)
 
-	createDecorator.evaluate()
+	createDecorator.evaluate(group)
 end
 
 function scene:enterScene(e)
