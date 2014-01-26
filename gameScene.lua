@@ -1,8 +1,7 @@
 -- header
---storyboard = require("storyboard")
 createMoleSprite = require("createMoleSprite")
 createSpawningMole = require("createSpawningMole")
-
+createDecorator = require("createDecorator")
 -- end header
 
 
@@ -55,6 +54,8 @@ function scene:createScene(e)
 	group:insert(pauseGame)
 
 	pauseGame:addEventListener("tap", pauseAll)
+
+	createDecorator.evaluate()
 end
 
 function scene:enterScene(e)
