@@ -4,6 +4,11 @@ describe("createDecorator", function ( ... )
 
 	local decoratorImage
 	local group
+	local decoratorConfig = {
+		filename = "decorators_1.png",
+		x = 90,
+		y = 320
+	}
 
 	setup(function ( ... )
 		group = {}
@@ -20,32 +25,30 @@ describe("createDecorator", function ( ... )
 		-- given
 		spy.on(display, "newImage")
 		-- when
-		createDecorator.createAndInsertToGroup(group)
+		createDecorator.createAndInsertToGroup(group, decoratorConfig)
 		-- then
-		assert.spy(display.newImage).was_called_with("img/sprite/rubber_tube.png")
+		assert.spy(display.newImage).was_called_with(decoratorConfig.filename)
 	end)
 
 	it("Set x position to 90", function ( ... )
-		-- given
-		local expected_x = 90
 		-- when
-		createDecorator.createAndInsertToGroup(group)
+		createDecorator.createAndInsertToGroup(group, decoratorConfig)
 		--then
-		assert.are.equal(decoratorImage.x, expected_x)
+		assert.are.equal(decoratorImage.x, decoratorConfig.x)
 	end)
 
 	it("Set y position to 320", function ( ... )
 		-- given
 		local expected_y = 320
 		-- when
-		createDecorator.createAndInsertToGroup(group)
+		createDecorator.createAndInsertToGroup(group, decoratorConfig)
 		--then
-		assert.are.equal(decoratorImage.y, expected_y)
+		assert.are.equal(decoratorImage.y, decoratorConfig.y)
 	end)
 
 	it("Add decorator to assigned group", function ( ... )
 		--when
-		createDecorator.createAndInsertToGroup(group)
+		createDecorator.createAndInsertToGroup(group, decoratorConfig)
 		--then
 		assert.stub(group.insert).was_called_with(group, decoratorImage)
 	end)
