@@ -1,9 +1,28 @@
 settings = 
 {
+	plugins =
+	{
+	   ["CoronaProvider.ads.admob"] =
+	   {
+	      publisherId = "com.coronalabs",
+	      supportedPlatforms = { android = true },
+	   },
+	},
+
     orientation =
 	{
 		default = "portrait",
 		supported = { "portrait" }
 	},
 
+	-- for admob
+	android =
+    {
+      usesPermissions =
+      {
+         "android.permission.INTERNET",
+         "android.permission.ACCESS_NETWORK_STATE",
+         "android.permission.READ_PHONE_STATE",
+      },
+    },
 }

@@ -1,4 +1,5 @@
 -- header 
+local ads = require "ads" 
 local scene = storyboard.newScene("menuScene")
 g = nil
 -- end header
@@ -24,11 +25,16 @@ function scene:createScene(e)
 	startBtn.y = 900
 	startBtn.alpha = 0
 	group:insert(startBtn)
+
+	ads.init( "admob", "a151e25cef8803a", adListener )
+	
 end
 
 function scene:enterScene(e)
 	startBtn.alpha = 0
 	showLogo(view)
+
+	ads.show( "banner", { x = display.screenOriginX , y = display.screenOriginY + display.viewableContentHeight - 90 } )
 end
 
 function showLogo(view)
@@ -56,6 +62,12 @@ function startG()
 	})
 end
 
+local function adListener( event )
+    if event.isError then
+        -- Failed to receive an ad.
+    end
+end
+
 function purgeScene(event)
 
 	storyboard.purgeScene( "menuScene" )
@@ -63,5 +75,6 @@ end
 
 scene:addEventListener("createScene",scene)
 scene:addEventListener("enterScene",scene)
+
 
 return scene
