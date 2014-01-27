@@ -55,6 +55,7 @@ end
 
 function startG()
 	startBtn.alpha = 0
+	ads.hide( )
 	storyboard.gotoScene("gameScene",{
 		effect = "fade",
 		time = 500,

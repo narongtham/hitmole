@@ -2,6 +2,7 @@
 local storyboard = require "storyboard"  
 local showMainMenuButton = require "showMainMenuButton"
 local showBackToGameButton = require "showBackToGameButton"
+local ads = require "ads" 
 -- end header
 
 local scene = storyboard.newScene()
@@ -19,6 +20,16 @@ function scene:createScene(e)
 	showBackToGameButton.show(group, DISPLAY_CENTER_Y + 100)
 end
 
+function scene:enterScene(e)
+	ads.show( "banner", { x = display.screenOriginX , y = display.screenOriginY + display.viewableContentHeight - 90 } )
+end
+
+function  scene:exitScene(e)
+	ads.hide( )
+end
+
 scene:addEventListener("createScene",scene)
+scene:addEventListener( "enterScene", scene )
+scene:addEventListener( "exitScene", scene )
 
 return scene
