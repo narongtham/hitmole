@@ -13,13 +13,10 @@ createSpawningMole.create = function ( ... )
 	moleSprite.xScale = 1.5
 	moleSprite.yScale = 1.5
 
-	switchToSpawningMole.evaluate(moleSprite)
-
-	--mole = moleSprite
 	currentViewGroup:insert(moleSprite)
-
 	addMoleToContainer.add(moleSprite)
-
+	switchToSpawningMole.evaluate(moleSprite)
+	
 	return {
 		sprite=moleSprite
 	}
