@@ -1,4 +1,5 @@
 local removeAllLifePoints = removeAllLifePoints or require "removeAllLifePoints"
+local removeAllMoles = removeAllMoles or require "removeAllMoles"
 
 showMainMenuButton = {}
 
@@ -17,10 +18,6 @@ function showMainMenuButton.show(group, yPosition)
 end
 
 function showMainMenuButton.onRelease(event)
-	if mole.removeAllEventListeners then
-		mole:removeAllEventListeners()
-	end
-	display.remove( mole )
 
 	storyboard.gotoScene("menuScene",{
 		effect = "fade",
@@ -31,6 +28,7 @@ function showMainMenuButton.onRelease(event)
 	audio.fadeOut( {channel=1,time=500})
 
 	removeAllLifePoints.evaluate()
+	removeAllMoles.evaluate()
 end
 
 function showMainMenuButton.purgeGameScene(event)

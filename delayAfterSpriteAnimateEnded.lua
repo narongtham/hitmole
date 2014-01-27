@@ -1,3 +1,5 @@
+moleContainer = moleContainer or require("moleContainer")
+
 delayAfterSpriteAnimateEnded = {}
 
 function delayAfterSpriteAnimateEnded.start(sprite, afterDelayEndedFunctions)
@@ -13,6 +15,7 @@ function delayAfterSpriteAnimateEnded.onDelayEnded(event)
 end
 
 function delayAfterSpriteAnimateEnded.onFadeOutCompleted(event)
+	--print(event.target)
 	display.remove(event.target)
 end
 

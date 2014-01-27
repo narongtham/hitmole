@@ -9,6 +9,8 @@ function removeAllMoles.evaluate()
 		end
 		display.remove( iterateMole )
 	end
+
+	moleContainer = {}
 end
 
 return removeAllMoles
