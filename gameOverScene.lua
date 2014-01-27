@@ -3,7 +3,7 @@ local showGameOverBackgroundImage = require "showGameOverBackgroundImage"
 local showEndingImage = require "showEndingImage"
 local showPlayAgainButton = require "showPlayAgainButton"
 local showMainMenuButton = require "showMainMenuButton"
-local ads = require "ads"
+local ads = ads or require "ads"
 
 local scene = storyboard.newScene()
 

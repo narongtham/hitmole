@@ -15,6 +15,8 @@ describe("gameOverScene", function ( ... )
 
 	widget = {}
 
+	ads = {}
+
 	local gameOverScene = require "gameOverScene"
 	local showGameOverBackgroundImage = require "showGameOverBackgroundImage"
 	local showEndingImage = require "showEndingImage"
