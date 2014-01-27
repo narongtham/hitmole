@@ -1,4 +1,7 @@
 describe("Create spawning mole spec", function ( ... )
+
+	local addMoleToContainer = require "addMoleToContainer"
+
 	local createSpawningMole = require("createSpawningMole")
 
 	display = nil
@@ -31,8 +34,19 @@ describe("Create spawning mole spec", function ( ... )
 
 	switchToSpawningMole = {}
 	stub(switchToSpawningMole, "evaluate")
+	local moleSprite = {}
 
-	
+	setup(function ( ... )
+		display.newSprite = function ( ... )
+			return moleSprite
+		end
+
+		stub(addMoleToContainer, "add")
+	end)
+
+	teardown(function ( ... )
+		addMoleToContainer.add:revert()
+	end)
 	
 	it("Should return spawning mole", function ( ... )
 		--when
@@ -62,14 +76,17 @@ describe("Create spawning mole spec", function ( ... )
 
 	it("Should insert moleSprite to currentViewGroup", function ( ... )
 		-- given
-		local moleSprite = {}
-		display.newSprite = function ( ... )
-			return moleSprite
-		end
 		stub(currentViewGroup, "insert")
 		--when
 		createSpawningMole.create()
 		--then
 		assert.stub(currentViewGroup.insert).was_called_with(currentViewGroup, moleSprite)
+	end)
+
+	it("Should call addMoleToContainer", function ( ... )
+		-- when
+		createSpawningMole.create()
+		-- then
+		assert.stub(addMoleToContainer.add).was_called_with(moleSprite)
 	end)
 end)

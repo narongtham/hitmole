@@ -1,5 +1,6 @@
 generateMolePosition = generateMolePosition or require("generateMolePosition")
 switchToSpawningMole = switchToSpawningMole or require("switchToSpawningMole")
+addMoleToContainer = addMoleToContainer or require("addMoleToContainer")
 
 createSpawningMole = {}
 
@@ -14,8 +15,10 @@ createSpawningMole.create = function ( ... )
 
 	switchToSpawningMole.evaluate(moleSprite)
 
-	mole = moleSprite
+	--mole = moleSprite
 	currentViewGroup:insert(moleSprite)
+
+	addMoleToContainer.add(moleSprite)
 
 	return {
 		sprite=moleSprite
