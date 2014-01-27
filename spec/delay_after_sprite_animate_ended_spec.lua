@@ -14,6 +14,7 @@ describe("delayAfterSpriteAnimateEnded spec", function ( ... )
 	transition = {}
 
 	setup(function ( ... )
+		moleContainer = {}
 		sprite = {}
 		event = {
 			phase="ended",
@@ -71,7 +72,7 @@ describe("delayAfterSpriteAnimateEnded spec", function ( ... )
 		--given
 		stub(display, "remove")
 		--when
-		delayAfterSpriteAnimateEnded.onFadeOutCompleted(event)
+		delayAfterSpriteAnimateEnded.onFadeOutCompleted(sprite)
 		--then
 		assert.stub(display.remove).was_called_with(sprite)
 	end)
