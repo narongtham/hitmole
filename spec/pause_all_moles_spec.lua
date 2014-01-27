@@ -18,7 +18,6 @@ describe("pauseAllMoles", function ( ... )
 	end)
 
 	it("Call pause on every mole in container", function ( ... )
-		print(moleContainer[mole_1])
 		-- when
 		pauseAllMoles.evaluate()
 		-- then

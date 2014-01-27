@@ -1,4 +1,4 @@
-local moleContainer = moleContainer or require "moleContainer"
+moleContainer = moleContainer or require "moleContainer"
 
 playAllMoles = {}
 

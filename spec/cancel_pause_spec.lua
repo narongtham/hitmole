@@ -1,16 +1,23 @@
 describe("cancelPause", function ( ... )
 
-	local cancelPause = require( "cancelPause" )
+	local playAllMoles = require "playAllMoles"
+
+	local cancelPause
 
 	transition = {}
-	mole = {}
 	pauseGame = {}
 	storyboard = {}
 
 	setup(function ( ... )
 		stub(transition, "resume")
-		stub(mole, "play")
+		stub(playAllMoles, "evaluate")
 		stub(storyboard, "hideOverlay")
+
+		cancelPause = require( "cancelPause" )
+	end)
+
+	teardown(function ( ... )
+		playAllMoles.evaluate:revert()
 	end)
 
 	it("Resume transition", function ( ... )
@@ -20,11 +27,11 @@ describe("cancelPause", function ( ... )
 		assert.stub(transition.resume).was_called()
 	end)
 
-	it("Play mole sprite", function ( ... )
+	it("Play every mole sprites", function ( ... )
 		-- when
 		cancelPause.evaluate()
 		-- then
-		assert.stub(mole.play).was_called_with(mole)
+		assert.stub(playAllMoles.evaluate).was_called()
 	end)
 
 	it("Set isPause flag to false", function ( ... )

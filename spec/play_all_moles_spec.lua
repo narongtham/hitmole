@@ -1,4 +1,5 @@
 describe("playAllMoles", function ( ... )
+
 	local mole_1 = {}
 	local mole_2 = {}
 

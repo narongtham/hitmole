@@ -5,7 +5,7 @@ describe("addMoleToContainer", function ( ... )
 	local addMoleToContainer = require "addMoleToContainer"
 
 	teardown(function ( ... )
-		moleContainer = {}
+		moleContainer = nil
 	end)
 
 	it("Insert a given mole to provided container", function ( ... )
