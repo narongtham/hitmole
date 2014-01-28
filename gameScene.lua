@@ -1,6 +1,7 @@
 -- header
 createMoleSprite = require("createMoleSprite")
-createSpawningMole = require("createSpawningMole")
+--createSpawningMole = require("createSpawningMole")
+startGenerateMoleTimer = require("startGenerateMoleTimer")
 createDecoratorsFromConfig = require("createDecoratorsFromConfig")
 pauseAllMoles = require("pauseAllMoles")
 -- end header
@@ -76,7 +77,8 @@ end
 
 -- element funciton --
 function spawnMole()
-	createSpawningMole.create()
+	--createSpawningMole.create()
+	startGenerateMoleTimer.evaluate()
 end
 
 function showHeart()

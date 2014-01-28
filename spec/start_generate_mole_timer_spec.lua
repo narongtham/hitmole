@@ -4,14 +4,17 @@ describe("startGenerateMoleTimer", function ( ... )
 	createSpawningMole = require("createSpawningMole")
 	timer = {}
 	fakeRandomedTime = 101
+	fakeTimerInstance = {}
 
 	setup(function ( ... )
 		math.random = function ( ... )
 			return fakeRandomedTime
 		end
-
+		timer.performWithDelay = function ( ... )
+			return fakeTimerInstance
+		end
 		startGenerateMoleTimer = require("startGenerateMoleTimer")
-		stub(timer, "performWithDelay")
+		spy.on(timer, "performWithDelay")
 		stub(createSpawningMole, "create")
 	end)
 
@@ -34,14 +37,21 @@ describe("startGenerateMoleTimer", function ( ... )
 		--when
 		startGenerateMoleTimer.evaluate()
 		--then
-		assert.spy(math.random).was_called_with(0, 100)
+		assert.spy(math.random).was_called_with(100, 1000)
 	end)
 
 	it("Start timer using randomed time and it will call onTimer when done", function ( ... )
 		-- when
 		startGenerateMoleTimer.evaluate()
 		-- then
-		assert.stub(timer.performWithDelay).was_called_with(fakeRandomedTime, startGenerateMoleTimer.onTimerEnded)
+		assert.spy(timer.performWithDelay).was_called_with(fakeRandomedTime, startGenerateMoleTimer.onTimerEnded)
+	end)
+
+	it("The global variable 'generateMoleTimer' should be set", function ( ... )
+		-- when
+		startGenerateMoleTimer.evaluate()
+		-- then
+		assert.are.same(generateMoleTimer, fakeTimerInstance)
 	end)
 
 	it("onTimer should call createSpawnMole", function ( ... )
