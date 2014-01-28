@@ -1,9 +1,11 @@
 describe("pauseGenerateMoletimer", function ( ... )
 	local pauseGenerateMoletimer
 
+	timer = {}
+
 	setup(function ( ... )
 		generateMoleTimer = {}
-		stub(generateMoleTimer, "pause")
+		stub(timer, "pause")
 
 		pauseGenerateMoletimer = require("pauseGenerateMoleTimer")
 	end)
@@ -12,6 +14,6 @@ describe("pauseGenerateMoletimer", function ( ... )
 		-- when
 		pauseGenerateMoletimer.evaluate()
 		-- then
-		assert.stub(generateMoleTimer.pause).was_called()
+		assert.stub(timer.pause).was_called_with(generateMoleTimer)
 	end)
 end)

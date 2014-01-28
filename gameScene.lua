@@ -65,7 +65,7 @@ function scene:createScene(e)
 end
 
 function scene:enterScene(e)
-	escapeCount = 3
+	escapeCount = 9
 	score = 0
 	scoreTxt.text = "Score: 0"
 	pauseGame.isVisible = true

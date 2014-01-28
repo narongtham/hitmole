@@ -1,7 +1,7 @@
 pauseGenerateMoleTimer = {}
 
 function pauseGenerateMoleTimer.evaluate()
-	generateMoleTimer.pause()
+	timer.pause(generateMoleTimer)
 end
 
 return pauseGenerateMoleTimer
