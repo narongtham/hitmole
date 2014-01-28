@@ -2,20 +2,16 @@ describe("CheckGameOver", function ( ... )
 
 	local checkGameOver = require "checkGameOver"
 	showGameOverPopup = require "showGameOverPopup"
-
-	display = {
-		newText = function ( ... )
-			return {}
-		end
-	}
-	DISPLAY_CENTER_X = 10
-	DISPLAY_CENTER_Y = 10
+	pauseGenerateMoleTimer = require "pauseGenerateMoleTimer"
+	
 	setup(function ( ... )
 		stub(showGameOverPopup, "show")
+		stub(pauseGenerateMoleTimer, "evaluate")
 	end)
 
 	teardown(function ( ... )
 		showGameOverPopup.show:revert()
+		pauseGenerateMoleTimer.evaluate:revert()
 	end)
 
 	it("If life is equals to zero. It will show gameover scene", function ( ... )
@@ -25,5 +21,14 @@ describe("CheckGameOver", function ( ... )
 		checkGameOver.evaluate()
 		--then
 		assert.stub(showGameOverPopup.show).was_called()
+	end)
+
+	it("If life is equals to zero. It will call pauseGenerateMoleTimer", function ( ... )
+		--given
+		escapeCount = 0
+		--when
+		checkGameOver.evaluate()
+		--then
+		assert.stub(pauseGenerateMoleTimer.evaluate).was_called()
 	end)
 end)
