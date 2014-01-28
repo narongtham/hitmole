@@ -5,7 +5,7 @@ describe("pauseGenerateMoletimer", function ( ... )
 		generateMoleTimer = {}
 		stub(generateMoleTimer, "pause")
 
-		pauseGenerateMoletimer = require("pauseGenerateMoletimer")
+		pauseGenerateMoletimer = require("pauseGenerateMoleTimer")
 	end)
 
 	it("Call pause on generateMoleTimer", function ( ... )
