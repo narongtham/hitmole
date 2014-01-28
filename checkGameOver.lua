@@ -1,12 +1,9 @@
---local createSpawnMole = createSpawnMole or require "createSpawnMole"
 showGameOverPopup = showGameOverPopup or require "showGameOverPopup"
 
 checkGameOver = {}
 
 function checkGameOver.evaluate()
-	if escapeCount > 0 then
-		createSpawningMole.create()
-	else
+	if escapeCount == 0 then
 		showGameOverPopup.show()
 	end
 end
