@@ -1,9 +1,9 @@
 -- header
 createMoleSprite = require("createMoleSprite")
---createSpawningMole = require("createSpawningMole")
 startGenerateMoleTimer = require("startGenerateMoleTimer")
 createDecoratorsFromConfig = require("createDecoratorsFromConfig")
 pauseAllMoles = require("pauseAllMoles")
+pauseGenerateMoleTimer = require("pauseGenerateMoleTimer")
 -- end header
 
 
@@ -77,7 +77,6 @@ end
 
 -- element funciton --
 function spawnMole()
-	--createSpawningMole.create()
 	startGenerateMoleTimer.evaluate()
 end
 
@@ -95,8 +94,8 @@ end
 
 function pauseAll()
 	transition.pause()
-	--mole:pause()
 	pauseAllMoles.evaluate()
+	pauseGenerateMoleTimer.evaluate()
 	isPause = true
 	storyboard.showOverlay( "option" , {effect = "fade" , isModal = true})
 	pauseGame.isVisible = false
