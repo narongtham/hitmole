@@ -42,16 +42,20 @@ function scene:createScene(e)
 
 	font = native.systemFont
 	scoreTxt = display.newText("Score: 0", 0, 0, font, 30)
-	scoreTxt.x = display.contentWidth - 140
-	scoreTxt.y = 40
+	scoreTxt.anchorX = 0.0
+	scoreTxt.anchorY = 0.0
+	scoreTxt.x = 25
+	scoreTxt.y = 25
 	scoreTxt:setFillColor (0,0,0)
 	group:insert(scoreTxt)
 
 	pauseGame = display.newImage("img/pause.png")
-	pauseGame.x = display.contentWidth - 100
-	pauseGame.y = 128
 	pauseGame.xScale = 0.25
 	pauseGame.yScale = 0.25
+
+	pauseGame.x = display.contentWidth - (pauseGame.contentWidth/2) - 25
+	pauseGame.y = (pauseGame.contentHeight/2) + 25
+	
 	group:insert(pauseGame)
 
 	pauseGame:addEventListener("tap", pauseAll)
@@ -79,10 +83,10 @@ function showHeart()
 	lifePoints = {}
 	for i =1 , escapeCount do
 		lifePoints[i] = display.newImage("img/headmole.png")
-		lifePoints[i].x = 30*i
-		lifePoints[i].y = 30
-		lifePoints[i].width = 32
-		lifePoints[i].height = 32
+		lifePoints[i].x = 49*i
+		lifePoints[i].y = 84
+		lifePoints[i].width = 48
+		lifePoints[i].height = 48
 		currentViewGroup:insert(lifePoints[i])
 	end
 end
