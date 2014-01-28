@@ -1,6 +1,5 @@
 local delayAfterSpriteAnimateEnded = delayAfterSpriteAnimateEnded or require "delayAfterSpriteAnimateEnded"
 local scoreIncrement = scoreIncrement or require "scoreIncrement"
---local createSpawningMole = createSpawningMole or require "createSpawningMole"
 
 dyingMoleSpriteAnimateEnded = {}
 
@@ -10,7 +9,6 @@ end
 
 function dyingMoleSpriteAnimateEnded.afterDelayEnded()
 	scoreIncrement.increaseScore(20)
-	createSpawningMole.create()
 end
 
 return dyingMoleSpriteAnimateEnded
