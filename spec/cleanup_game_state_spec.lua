@@ -3,16 +3,19 @@ describe("cleanupGameState", function ( ... )
 
 	local removeAllLifepoints = require("removeAllLifepoints")
 	local removeAllMoles = require("removeAllMoles")
+	local cancelGenerateMoleTimer = require("cancelGenerateMoleTimer")
 
 	setup(function ( ... )
 		stub(removeAllLifepoints, "evaluate")
 		stub(removeAllMoles, "evaluate")
+		stub(cancelGenerateMoletimer, "evaluate")
 		cleanupGameState = require("cleanupGameState")
 	end)
 
 	teardown(function ( ... )
 		removeAllLifepoints.evaluate:revert()
 		removeAllMoles.evaluate:revert()
+		cancelGenerateMoleTimer.evaluate:revert()
 	end)
 
 	it("Should call removeAllLifepoints", function ( ... )
@@ -29,5 +32,10 @@ describe("cleanupGameState", function ( ... )
 		assert.stub(removeAllMoles.evaluate).was_called()
 	end)
 
-	it("Should call cancelGenerateMoletimer")
+	it("Should call cancelGenerateMoletimer", function ( ... )
+		-- when
+		cleanupGameState.evaluate()
+		-- then
+		assert.stub(cancelGenerateMoleTimer.evaluate).was_called()
+	end)
 end)
