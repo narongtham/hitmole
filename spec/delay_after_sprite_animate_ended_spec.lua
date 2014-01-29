@@ -16,15 +16,22 @@ describe("delayAfterSpriteAnimateEnded spec", function ( ... )
 	setup(function ( ... )
 		moleContainer = {}
 		sprite = {}
-		event = {
-			phase="ended",
-			target = sprite
-		}
+		
 		timer = {
 			performWithDelay = function ( ... )
 				return timerInstance
 			end
 		}
+
+		event = {
+			source = {
+				params = {
+					waitForRemoveSprite = sprite,
+					afterDelayEndedFunctions = afterAnimateEndedFunctions.function_1
+				}
+			}
+		}
+
 		spy.on(timer, "performWithDelay")
 		stub(sprite, "removeEventListener")
 		stub(transition, "to")
@@ -41,32 +48,28 @@ describe("delayAfterSpriteAnimateEnded spec", function ( ... )
 		--when
 		delayAfterSpriteAnimateEnded.start(sprite)
 		--then
-		assert.are.same(delayAfterSpriteAnimateEnded.waitForRemoveSprite, sprite)
+		assert.are.same(timerInstance.params.waitForRemoveSprite, sprite)
 	end)
 
 	it("It should set provided functions will be execute after delay end", function ( ... )
 		--when
 		delayAfterSpriteAnimateEnded.start(sprite, afterAnimateEndedFunctions.function_1)
 		--then
-		assert.are.same(delayAfterSpriteAnimateEnded.afterDelayEndedFunctions, afterAnimateEndedFunctions.function_1)
+		assert.are.same(timerInstance.params.afterDelayEndedFunctions, afterAnimateEndedFunctions.function_1)
 	end)
 
 	it("When delay ended it start fading out transition", function ( ... )
-		--given
-		delayAfterSpriteAnimateEnded.waitForRemoveSprite = sprite
-		delayAfterSpriteAnimateEnded.afterDelayEndedFunctions = afterAnimateEndedFunctions.function_1
 		--when
 		delayAfterSpriteAnimateEnded.onDelayEnded(event)
 		--then
-		assert.stub(transition.to).was_called_with(delayAfterSpriteAnimateEnded.waitForRemoveSprite,
+		assert.stub(transition.to).was_called_with(sprite,
 		 {alpha=0, time=300, onComplete=delayAfterSpriteAnimateEnded.onFadeOutCompleted})
 	end)
 
 	it("When delay ended it should call after animate ended provided function", function ( ... )
 		--given
-		delayAfterSpriteAnimateEnded.waitForRemoveSprite = sprite
 		stub(afterAnimateEndedFunctions, "function_1")
-		delayAfterSpriteAnimateEnded.afterDelayEndedFunctions = afterAnimateEndedFunctions.function_1
+		event.source.params.afterDelayEndedFunctions = afterAnimateEndedFunctions.function_1
 		--when
 		delayAfterSpriteAnimateEnded.onDelayEnded(event)
 		--then

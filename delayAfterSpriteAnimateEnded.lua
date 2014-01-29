@@ -5,17 +5,21 @@ delayAfterSpriteAnimateEnded = {}
 function delayAfterSpriteAnimateEnded.start(sprite, afterDelayEndedFunctions)
 	print("delayAfterSpriteAnimateEnded.start")
 	print(sprite)
-	delayAfterSpriteAnimateEnded.waitForRemoveSprite = sprite
-	delayAfterSpriteAnimateEnded.afterDelayEndedFunctions = afterDelayEndedFunctions
-	timer.performWithDelay(300, delayAfterSpriteAnimateEnded.onDelayEnded)
+	
+	local timerInstance = timer.performWithDelay(300, delayAfterSpriteAnimateEnded.onDelayEnded)
+	timerInstance.params = {
+		waitForRemoveSprite = sprite,
+		afterDelayEndedFunctions = afterDelayEndedFunctions
+	}
 end
 
 function delayAfterSpriteAnimateEnded.onDelayEnded(event)
 	print("delayAfterSpriteAnimateEnded.onDelayEnded")
-	print(delayAfterSpriteAnimateEnded.waitForRemoveSprite)
-	transition.to(delayAfterSpriteAnimateEnded.waitForRemoveSprite,
+	local params = event.source.params
+	print(params.waitForRemoveSprite)
+	transition.to(params.waitForRemoveSprite,
 	 {alpha=0, time=300, onComplete=delayAfterSpriteAnimateEnded.onFadeOutCompleted})
-	delayAfterSpriteAnimateEnded.afterDelayEndedFunctions()
+	params.afterDelayEndedFunctions()
 end
 
 function delayAfterSpriteAnimateEnded.onFadeOutCompleted(target)
