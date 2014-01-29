@@ -1,5 +1,4 @@
-local removeAllLifePoints = removeAllLifePoints or require "removeAllLifePoints"
-local removeAllMoles = removeAllMoles or require "removeAllMoles"
+cleanupGameState = cleanupGameState or require("cleanupGameState")
 
 showMainMenuButton = {}
 
@@ -27,8 +26,7 @@ function showMainMenuButton.onRelease(event)
 
 	audio.fadeOut( {channel=1,time=500})
 
-	removeAllLifePoints.evaluate()
-	removeAllMoles.evaluate()
+	cleanupGameState.evaluate()
 end
 
 function showMainMenuButton.purgeGameScene(event)

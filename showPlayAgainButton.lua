@@ -1,4 +1,4 @@
---local widget = widget or require("widget")
+cleanupGameState = cleanupGameState or require("cleanupGameState")
 
 showPlayAgainButton = {}
 
@@ -16,6 +16,7 @@ function showPlayAgainButton.show(group)
 end
 
 function showPlayAgainButton.onPlayAgain(event)
+	cleanupGameState.evaluate()
 	storyboard.reloadScene()
 end
 
