@@ -1,0 +1,2 @@
+cancelGenerateMoletimer = {}
+return cancelGenerateMoletimer
