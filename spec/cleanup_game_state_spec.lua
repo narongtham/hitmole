@@ -8,7 +8,7 @@ describe("cleanupGameState", function ( ... )
 	setup(function ( ... )
 		stub(removeAllLifepoints, "evaluate")
 		stub(removeAllMoles, "evaluate")
-		stub(cancelGenerateMoletimer, "evaluate")
+		stub(cancelGenerateMoleTimer, "evaluate")
 		cleanupGameState = require("cleanupGameState")
 	end)
 
