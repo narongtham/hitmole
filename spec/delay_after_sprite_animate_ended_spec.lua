@@ -10,8 +10,8 @@ describe("delayAfterSpriteAnimateEnded spec", function ( ... )
 		function_1 =  function( ... ) end
 	}
 	
-	timer = {}
 	transition = {}
+	timerInstance = {}
 
 	setup(function ( ... )
 		moleContainer = {}
@@ -20,7 +20,12 @@ describe("delayAfterSpriteAnimateEnded spec", function ( ... )
 			phase="ended",
 			target = sprite
 		}
-		stub(timer, "performWithDelay")
+		timer = {
+			performWithDelay = function ( ... )
+				return timerInstance
+			end
+		}
+		spy.on(timer, "performWithDelay")
 		stub(sprite, "removeEventListener")
 		stub(transition, "to")
 	end)
@@ -29,7 +34,7 @@ describe("delayAfterSpriteAnimateEnded spec", function ( ... )
 		--when
 		delayAfterSpriteAnimateEnded.start(sprite)
 		--then
-		assert.stub(timer.performWithDelay).was_called_with(300, delayAfterSpriteAnimateEnded.onDelayEnded)
+		assert.spy(timer.performWithDelay).was_called_with(300, delayAfterSpriteAnimateEnded.onDelayEnded)
 	end)
 
 	it("It should set sprite to waitForRemoveSprite", function ( ... )
