@@ -8,6 +8,7 @@ function isMoleLimitExceed.evaluate()
 	local molesCount = countMoles.evaluate()
 
 	if moleLimit == molesCount then
+		print("Mole limit exceeded")
 		error("Mole limit exceeded")
 	end
 end

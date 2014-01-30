@@ -22,9 +22,12 @@ describe("onGenerateMoleTimerEnded", function ( ... )
 
 		startGenerateMoleTimer = {}
 
+		isMoleLimitExceed = {}
+
 		spy.on(generateMolePosition, "generate")
 		spy.on(createSpawningMole, "create")
 		stub(startGenerateMoleTimer, "evaluate")
+		stub(isMoleLimitExceed, "evaluate")
 
 		onGenerateMoleTimerEnded = require("onGenerateMoleTimerEnded")
 	end)
