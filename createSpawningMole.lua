@@ -1,11 +1,9 @@
-generateMolePosition = generateMolePosition or require("generateMolePosition")
 switchToSpawningMole = switchToSpawningMole or require("switchToSpawningMole")
 addMoleToContainer = addMoleToContainer or require("addMoleToContainer")
 
 createSpawningMole = {}
 
-createSpawningMole.create = function ( ... )
-	local molePosition = generateMolePosition.generate()
+createSpawningMole.create = function (molePosition)
 	local moleSprite = display.newSprite( moleSpriteMetaData.imageSheet, 
 		moleSpriteMetaData.sequenceData )
 	moleSprite.x = molePosition.x
