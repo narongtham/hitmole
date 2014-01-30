@@ -1,7 +1,7 @@
+startGenerateMoleTimer = {}
+
 createSpawningMole = createSpawningMole or require("createSpawningMole")
 onGenerateMoleTimerEnded = onGenerateMoleTimerEnded or require("onGenerateMoleTimerEnded")
-
-startGenerateMoleTimer = {}
 
 function startGenerateMoleTimer.evaluate()
 	math.randomseed( os.time(  ) )

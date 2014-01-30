@@ -1,7 +1,5 @@
 describe("onGenerateMoleTimerEnded", function ( ... )
 
-	startGenerateMoleTimer = require("startGenerateMoleTimer")
-
 	local onGenerateMoleTimerEnded
 
 	local fakeGeneratedMolePosition
@@ -22,6 +20,8 @@ describe("onGenerateMoleTimerEnded", function ( ... )
 			end
 		}
 
+		startGenerateMoleTimer = {}
+
 		spy.on(generateMolePosition, "generate")
 		spy.on(createSpawningMole, "create")
 		stub(startGenerateMoleTimer, "evaluate")
@@ -37,7 +37,7 @@ describe("onGenerateMoleTimerEnded", function ( ... )
 		-- when
 		onGenerateMoleTimerEnded.evaluate()
 		-- then
-		assert.spy(generateMolePosition).was_called()
+		assert.spy(generateMolePosition.generate).was_called()
 	end)
 
 	it("Call createSpawnMole", function ( ... )
