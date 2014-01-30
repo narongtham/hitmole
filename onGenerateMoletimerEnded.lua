@@ -1,0 +1,2 @@
+onGenerateMoleTimerEnded = {}
+return onGenerateMoleTimerEnded
