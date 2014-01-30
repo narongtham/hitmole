@@ -1,7 +1,9 @@
 describe("startGenerateMoleTimer", function ( ... )
 
 	local startGenerateMoleTimer
-	createSpawningMole = require("createSpawningMole")
+
+	onGenerateMoleTimerEnded = require("onGenerateMoleTimerEnded")
+
 	timer = {}
 	fakeRandomedTime = 101
 	fakeTimerInstance = {}
@@ -13,9 +15,11 @@ describe("startGenerateMoleTimer", function ( ... )
 		timer.performWithDelay = function ( ... )
 			return fakeTimerInstance
 		end
-		startGenerateMoleTimer = require("startGenerateMoleTimer")
+		
 		spy.on(timer, "performWithDelay")
 		stub(createSpawningMole, "create")
+
+		startGenerateMoleTimer = require("startGenerateMoleTimer")
 	end)
 
 	teardown(function ( ... )
@@ -44,7 +48,7 @@ describe("startGenerateMoleTimer", function ( ... )
 		-- when
 		startGenerateMoleTimer.evaluate()
 		-- then
-		assert.spy(timer.performWithDelay).was_called_with(fakeRandomedTime, startGenerateMoleTimer.onTimerEnded)
+		assert.spy(timer.performWithDelay).was_called_with(fakeRandomedTime, onGenerateMoleTimerEnded.evaluate)
 	end)
 
 	it("The global variable 'generateMoleTimer' should be set", function ( ... )
@@ -54,19 +58,4 @@ describe("startGenerateMoleTimer", function ( ... )
 		assert.are.same(generateMoleTimer, fakeTimerInstance)
 	end)
 
-	it("onTimer should call createSpawnMole", function ( ... )
-		-- when
-		startGenerateMoleTimer.onTimerEnded()
-		-- then
-		assert.stub(createSpawningMole.create).was_called()
-	end)
-
-	it("onTimer should call evaluate again", function ( ... )
-		-- given
-		spy.on(startGenerateMoleTimer, "evaluate")
-		-- when
-		startGenerateMoleTimer.onTimerEnded()
-		--then
-		assert.stub(startGenerateMoleTimer.evaluate).was_called()
-	end)
 end)
