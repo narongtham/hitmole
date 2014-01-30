@@ -15,7 +15,7 @@ end
 function switchToIdlingMole.onTapMole( event )
 	switchToIdlingMole.removeAllEventListeners(event.target)
 	terminateMole.evaluate(event.target)
-	return
+	return true
 end
 
 function switchToIdlingMole.onTimeToLiveExeed( target )

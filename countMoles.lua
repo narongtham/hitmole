@@ -1,0 +1,2 @@
+countMoles = {}
+return countMoles
