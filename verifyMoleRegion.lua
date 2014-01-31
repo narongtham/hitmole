@@ -1,3 +1,5 @@
+isMolePositionIntersect = isMolePositionIntersect or require("isMolePositionIntersect")
+
 verifyMoleRegions = {}
 
 function verifyMoleRegions.evaluate(generatePosition, targetMole)
