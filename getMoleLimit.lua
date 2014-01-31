@@ -1,7 +1,7 @@
 getMoleLimit = {}
 
 function getMoleLimit.evaluate()
-	return 5
+	return 2
 end
 
 return getMoleLimit

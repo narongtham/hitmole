@@ -16,7 +16,6 @@ moleSpriteMetaData = createMoleSprite.create()
 local scene = storyboard.newScene("gameScene")
 local bgmChannel
 local tapChannel
---local blastChannel
 
 local bgm = audio.loadSound("audio/music.mp3") --โหลดไฟล์เสียงมาใส่ในเครื่อง user เลย
 tapSound = audio.loadStream( "audio/punch.mp3") -- โหลดเสียงแบบ Stream (เหมือนดู ยูทูป)
