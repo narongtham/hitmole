@@ -5,7 +5,7 @@ onGenerateMoleTimerEnded = onGenerateMoleTimerEnded or require("onGenerateMoleTi
 
 function startGenerateMoleTimer.evaluate()
 	math.randomseed( os.time(  ) )
-	local interval = math.random( 100, 1000)
+	local interval = math.random( 0, 100)
 	generateMoleTimer = timer.performWithDelay( interval, onGenerateMoleTimerEnded.evaluate )
 end
 

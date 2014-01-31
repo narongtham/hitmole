@@ -2,6 +2,7 @@ isMolePositionIntersect = {}
 
 function isMolePositionIntersect.evaluate(generatedPosition, target)
 	if generatedPosition.x == target.x and generatedPosition.y == target.y then
+		print("Detected intersect position")
 		error("Detected intersect position")
 	end
 
@@ -15,6 +16,7 @@ function isMolePositionIntersect.evaluate(generatedPosition, target)
 
 	if generatedPosition.x >= leftMost and generatedPosition.x <= rightMost then
 		if generatedPosition.y >= topMost and generatedPosition.y <= bottomMost then
+			print("Detected intersect position")
 			error("Detected intersect position")
 		end
 	end
