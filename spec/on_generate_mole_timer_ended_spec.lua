@@ -24,10 +24,17 @@ describe("onGenerateMoleTimerEnded", function ( ... )
 
 		isMoleLimitExceed = {}
 
+		verifyGeneratedPositionToAllMoles = {
+			evaluate = function ( ... )
+				-- body
+			end
+		}
+
 		spy.on(generateMolePosition, "generate")
 		spy.on(createSpawningMole, "create")
 		stub(startGenerateMoleTimer, "evaluate")
 		stub(isMoleLimitExceed, "evaluate")
+		spy.on(verifyGeneratedPositionToAllMoles, "evaluate")
 
 		onGenerateMoleTimerEnded = require("onGenerateMoleTimerEnded")
 	end)
@@ -41,6 +48,20 @@ describe("onGenerateMoleTimerEnded", function ( ... )
 		onGenerateMoleTimerEnded.evaluate()
 		-- then
 		assert.spy(generateMolePosition.generate).was_called()
+	end)
+
+	it("Evalaute isMoleLimitExceed", function ( ... )
+		-- when
+		onGenerateMoleTimerEnded.evaluate()
+		-- then
+		assert.stub(isMoleLimitExceed.evaluate).was_called()
+	end)
+
+	it("Evalaute verifyGeneratePositionToAllMoles", function ( ... )
+		-- when
+		onGenerateMoleTimerEnded.evaluate()
+		-- then
+		assert.spy(verifyGeneratedPositionToAllMoles.evaluate).was_called_with(fakeGeneratedMolePosition)
 	end)
 
 	it("Call createSpawnMole", function ( ... )
