@@ -32,14 +32,19 @@ describe("isMolePositionIntersect", function ( ... )
 	end
 
 	local nonintersectPositions = {
-		{ x=80, y=80},
-		{ x=100, y=80},
-		{ x=120, y=80},
-		{ x=80, y=100},
-		{ x=120, y=100},
-		{ x=80, y=120},
-		{ x=100, y=120},
-		{ x=120, y=120}
+		{ x=90, y=89},
+		{ x=89, y=90},
+		{ x=89, y=89},
+		{ x=100, y=89},
+		{ x=110, y=89},
+		{ x=111, y=90},
+		{ x=111, y=100},
+		{ x=111, y=109},
+		{ x=110, y=111},
+		{ x=100, y=111},
+		{ x=90, y=111},
+		{ x=89, y=110},
+		{ x=89, y=100}
 	}
 
 	for index, generatedPosition in pairs(nonintersectPositions) do
