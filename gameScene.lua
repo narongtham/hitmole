@@ -17,8 +17,8 @@ local scene = storyboard.newScene("gameScene")
 local bgmChannel
 local tapChannel
 
-local bgm = audio.loadSound("audio/music.mp3") --โหลดไฟล์เสียงมาใส่ในเครื่อง user เลย
-tapSound = audio.loadStream( "audio/punch.mp3") -- โหลดเสียงแบบ Stream (เหมือนดู ยูทูป)
+local bgm = audio.loadStream("audio/music.mp3") --โหลดไฟล์เสียงมาใส่ในเครื่อง user เลย
+tapSound = audio.loadSound( "audio/punch.mp3") -- โหลดเสียงแบบ Stream (เหมือนดู ยูทูป)
 
 
 function playBgSound()
@@ -64,7 +64,7 @@ function scene:createScene(e)
 end
 
 function scene:enterScene(e)
-	escapeCount = 9
+	escapeCount = 3
 	score = 0
 	scoreTxt.text = "Score: 0"
 	pauseGame.isVisible = true
