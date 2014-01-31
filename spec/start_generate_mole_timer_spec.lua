@@ -26,22 +26,13 @@ describe("startGenerateMoleTimer", function ( ... )
 		createSpawningMole.create:revert()
 	end)
 
-	it("Should call generate randomed seed", function ( ... )
-		--given
-		spy.on(math, "randomseed")
-		--when
-		startGenerateMoleTimer.evaluate()
-		--then
-		assert.spy(math.randomseed).was_called_with(os.time())
-	end)
-
 	it("Should generate randomed time interval for spawning mole", function ( ... )
 		--given
 		spy.on(math, "random")
 		--when
 		startGenerateMoleTimer.evaluate()
 		--then
-		assert.spy(math.random).was_called_with(100, 1000)
+		assert.spy(math.random).was_called_with(0, 100)
 	end)
 
 	it("Start timer using randomed time and it will call onTimer when done", function ( ... )

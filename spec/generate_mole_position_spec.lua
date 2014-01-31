@@ -4,15 +4,6 @@ describe("Generate mole position spec", function ( ... )
 
 	local generateMolePosition = require('generateMolePosition')
 
-	it("Should call generate randomed seed", function ( ... )
-		--given
-		spy.on(math, "randomseed")
-		--when
-		generateMolePosition.generate()
-		--then
-		assert.spy(math.randomseed).was_called_with(os.time())
-	end)
-
 	it("Should generate randomed x position for spawning mole", function ( ... )
 		--given
 		spy.on(math, "random")
