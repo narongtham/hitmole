@@ -7,6 +7,7 @@ function isMolePositionIntersect.evaluate(generatedPosition, target)
 
 	local rangeWidth = (target.contentWidth/2)
 	local rangeHeight = (target.contentHeight/2)
+	
 	local leftMost = target.x - rangeWidth
 	local rightMost = target.x + rangeWidth
 	local topMost = target.y - rangeHeight
