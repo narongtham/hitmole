@@ -1,7 +1,10 @@
 getMoleLimit = {}
 
+getCurrentLevelConfig = getCurrentLevelConfig or require("getCurrentLevelConfig")
+
 function getMoleLimit.evaluate()
-	return 3
+	getCurrentLevelConfig.evaluate()
+	return 2
 end
 
 return getMoleLimit

@@ -1,0 +1,2 @@
+getCurrentLevelConfig = {}
+return getCurrentLevelConfig
