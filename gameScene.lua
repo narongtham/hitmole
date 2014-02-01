@@ -4,6 +4,7 @@ startGenerateMoleTimer = require("startGenerateMoleTimer")
 createDecoratorsFromConfig = require("createDecoratorsFromConfig")
 pauseAllMoles = require("pauseAllMoles")
 pauseGenerateMoleTimer = require("pauseGenerateMoleTimer")
+initiaLizeLevel = require("initiaLizeLevel")
 -- end header
 
 
@@ -69,6 +70,7 @@ function scene:enterScene(e)
 	scoreTxt.text = "Score: 0"
 	pauseGame.isVisible = true
 	isPause = false
+	initiaLizeLevel.evaluate()
 	playBgSound()
 	spawnMole()
 	showHeart()
