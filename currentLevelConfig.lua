@@ -1,0 +1,2 @@
+currentLevelconfig = {}
+return currentLevelconfig
