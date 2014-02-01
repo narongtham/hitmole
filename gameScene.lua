@@ -41,13 +41,18 @@ function scene:createScene(e)
 	
 	currentViewGroup = group
 
-	font = native.systemFont
-	scoreTxt = display.newText("Score: 0", 0, 0, font, 30)
+	local platForm = system.getInfo( "platformName" )
+	local fontName = {
+		Win="Stranded BRK",
+		Android="Strande2"
+	}
+
+	scoreTxt = display.newText("Score: 0", 0, 0, fontName[platForm], 30)
 	scoreTxt.anchorX = 0.0
 	scoreTxt.anchorY = 0.0
 	scoreTxt.x = 25
 	scoreTxt.y = 25
-	scoreTxt:setFillColor (0,0,0)
+	scoreTxt:setFillColor (0.55,0.55,0.55)
 	group:insert(scoreTxt)
 
 	pauseGame = display.newImage("img/pause.png")
