@@ -1,0 +1,2 @@
+checkNextLevel = {}
+return checkNextLevel

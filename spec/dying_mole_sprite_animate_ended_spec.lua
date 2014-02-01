@@ -1,6 +1,6 @@
 describe("dyingMoleSpriteAnimateEnded spec", function ( ... )
 
-	local dyingMoleSpriteAnimateEnded = require "dyingMoleSpriteAnimateEnded"
+	local dyingMoleSpriteAnimateEnded
 	local delayAfterSpriteAnimateEnded = require "delayAfterSpriteAnimateEnded"
 	local scoreIncrement = require "scoreIncrement"
 	local sprite = {}
@@ -8,6 +8,11 @@ describe("dyingMoleSpriteAnimateEnded spec", function ( ... )
 	setup(function ( ... )
 		stub(delayAfterSpriteAnimateEnded, "start")
 		stub(scoreIncrement, "increaseScore")
+
+		checkNextLevel = {}
+		stub(checkNextLevel, "evaluate")
+
+		dyingMoleSpriteAnimateEnded = require "dyingMoleSpriteAnimateEnded"
 	end)
 
 	teardown(function ( ... )
@@ -27,5 +32,12 @@ describe("dyingMoleSpriteAnimateEnded spec", function ( ... )
 		dyingMoleSpriteAnimateEnded.afterDelayEnded()
 		--then
 		assert.stub(scoreIncrement.increaseScore).was_called_with(20)
+	end)
+
+	it("After delay ended function should evaluate checkNextLevel", function ( ... )
+		--when
+		dyingMoleSpriteAnimateEnded.afterDelayEnded()
+		--then
+		assert.stub(checkNextLevel.evaluate).was_called()
 	end)
 end)
