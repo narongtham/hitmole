@@ -1,14 +1,18 @@
+switchToIdlingMole = {}
+
 terminateMole = terminateMole or require "terminateMole"
 escapeMole = escapeMole or require("escapeMole")
-
-switchToIdlingMole = {}
+getTimeToLive = getTimeToLive or require("getTimeToLive")
 
 function switchToIdlingMole.evaluate( sprite )
 	sprite:setSequence( "idle" )
 	sprite:play( )
 	sprite:addEventListener( "tap", switchToIdlingMole.onTapMole )
+
+	local timeToLive = getTimeToLive.evaluate()
+
 	sprite.transition = transition.to(sprite,
-	 {time=3000, x=sprite.x, y=sprite.y, onComplete=switchToIdlingMole.onTimeToLiveExeed })
+	 {time=timeToLive, x=sprite.x, y=sprite.y, onComplete=switchToIdlingMole.onTimeToLiveExeed })
 	sprite.removeAllEventListeners = switchToIdlingMole.removeAllEventListeners
 end
 

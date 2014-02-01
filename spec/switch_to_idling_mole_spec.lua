@@ -12,6 +12,8 @@ describe("SwitchToIdlingMole spec", function ( ... )
 		y=10
 	}
 
+	local timeToLive = 3001
+
 	setup(function ( ... )
 		stub(sprite, "setSequence")
 		stub(sprite, "play")
@@ -20,6 +22,13 @@ describe("SwitchToIdlingMole spec", function ( ... )
 
 		stub(transition, "to")
 		stub(transition, "cancel")
+
+		getTimeToLive = {
+			evaluate = function ( ... )
+				return timeToLive
+			end
+		}
+		spy.on(getTimeToLive, "evaluate")
 	end)
 
 	it("Set mole sprite sequence to 'idle'.", function ( ... )
@@ -43,12 +52,19 @@ describe("SwitchToIdlingMole spec", function ( ... )
 		assert.stub(sprite.addEventListener).was_called_with(sprite, "tap", switchToIdlingMole.onTapMole)
 	end)
 
+	it("Evaluate getTimeTolive", function ( ... )
+		-- when
+		switchToIdlingMole.evaluate(sprite)
+		-- then
+		assert.spy(getTimeToLive.evaluate).was_called()
+	end)
+
 	it("Start timer for make mole escape", function ( ... )
 		--when
 		switchToIdlingMole.evaluate(sprite)
 		--then
 		assert.stub(transition.to)
-			.was_called_with(sprite, {time=3000, x=sprite.x, y=sprite.y, onComplete=switchToIdlingMole.onTimeToLiveExeed })
+			.was_called_with(sprite, {time=timeToLive, x=sprite.x, y=sprite.y, onComplete=switchToIdlingMole.onTimeToLiveExeed })
 	end)
 
 	it("When sprite tapped .It should call mole terminater.", function ( ... )
