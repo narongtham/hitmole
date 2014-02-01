@@ -1,15 +1,20 @@
 describe("getMoleLimit", function ( ... )
 	local getMoleLimit
+	local currentLevelConfig
 
 	setup(function ( ... )
 
+		currentLevelConfig = {
+			moleLimit = 1
+		}
+
 		getCurrentLevelConfig = {
 			evaluate = function ( ... )
-				-- body
+				return currentLevelConfig
 			end
 		}
 		spy.on(getCurrentLevelConfig, "evaluate")
-		
+
 		getMoleLimit = require("getMoleLimit")
 	end)
 
@@ -20,10 +25,12 @@ describe("getMoleLimit", function ( ... )
 		assert.spy(getCurrentLevelConfig.evaluate).was_called()
 	end)
 
-	it("Should always return 2", function ( ... )
+	it("Should return moleLimit value from currentLevelConfig", function ( ... )
+		--given
+		--currentLevelConfig.moleLimit = 5
 		-- when
 		local moleLimit = getMoleLimit.evaluate()
 		-- then
-		assert.are.equal(moleLimit, 2)
+		assert.are.equal(1, moleLimit)
 	end)
 end)
