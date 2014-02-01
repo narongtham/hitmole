@@ -9,6 +9,7 @@ function checkNextLevel.evaluate( ... )
 		local nextLevelScore = getNextLevelScore.evaluate()
 
 		if score >= nextLevelScore then
+			print("Go to next level")
 			switchToNextLevel.evaluate()
 		end
 	end
