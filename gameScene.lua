@@ -4,7 +4,8 @@ startGenerateMoleTimer = require("startGenerateMoleTimer")
 createDecoratorsFromConfig = require("createDecoratorsFromConfig")
 pauseAllMoles = require("pauseAllMoles")
 pauseGenerateMoleTimer = require("pauseGenerateMoleTimer")
-initiaLizeLevel = require("initiaLizeLevel")
+initiaLizeLevel = require("initializeLevel")
+showReadySplash = require("showReadySplash")
 -- end header
 
 
@@ -83,6 +84,7 @@ end
 
 -- element funciton --
 function spawnMole()
+	showReadySplash.evaluate(currentViewGroup)
 	startGenerateMoleTimer.evaluate()
 end
 
