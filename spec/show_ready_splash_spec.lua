@@ -15,6 +15,9 @@ describe("showReadySplash", function ( ... )
 			end
 		}
 
+		startReadySplashTimer = {}
+		stub(startReadySplashTimer, "evaluate")
+
 		showReadySplash = require("showReadySplash")
 	end)
 
@@ -54,5 +57,10 @@ describe("showReadySplash", function ( ... )
 		assert.stub(group.insert).was_called_with(group, endingImage)
 	end)
 
-	it("Evaluate startSplashScreenTimer")
+	it("Evaluate startSplashScreenTimer", function ( ... )
+		-- when
+		showReadySplash.evaluate(group)
+		-- then
+		assert.stub(startReadySplashTimer.evaluate).was_called()
+	end)
 end)
