@@ -17,8 +17,11 @@ describe("startReadySplashTimer", function ( ... )
 
 		onReadySplashTimerEnded = {}
 		onReadySplashTimerEnded.evalaute = function ( ... )
-			-- body
 		end
+
+		readySplashConfigurations = {
+			delay = 101
+		}
 
 		startReadySplashTimer = require("startReadySplashTimer")
 	end)
@@ -27,7 +30,7 @@ describe("startReadySplashTimer", function ( ... )
 		-- when
 		startReadySplashTimer.evaluate(target)
 		-- then
-		assert.spy(timer.performWithDelay).was_called_with(1000, onReadySplashTimerEnded.evaluate)
+		assert.spy(timer.performWithDelay).was_called_with(readySplashConfigurations.delay, onReadySplashTimerEnded.evaluate)
 	end)
 
 	it("Set target to timer's instance parameter", function ( ... )
