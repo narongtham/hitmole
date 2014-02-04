@@ -64,6 +64,6 @@ describe("showReadySplash", function ( ... )
 		-- when
 		showReadySplash.evaluate(group, splashImageSequenceData)
 		-- then
-		assert.stub(startReadySplashTimer.evaluate).was_called_with(splashImage)
+		assert.stub(startReadySplashTimer.evaluate).was_called_with(splashImage, splashImageSequenceData)
 	end)
 end)

@@ -8,7 +8,7 @@ function showReadySplash.evaluate(group, splashImageSequenceData)
 	splashImage.y = DISPLAY_CENTER_Y
 	group:insert(splashImage)
 
-	startReadySplashTimer.evaluate(splashImage)
+	startReadySplashTimer.evaluate(splashImage, splashImageSequenceData)
 end
 
 return showReadySplash
