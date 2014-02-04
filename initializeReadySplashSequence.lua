@@ -1,11 +1,11 @@
 initializeReadySplashSequence = {}
 
 createReadySequenceImagesLinkedList = createReadySequenceImagesLinkedList or require("createReadySequenceImagesLinkedList")
-showReadySplashImage = showReadySplashImage or require("showReadySplashImage")
+showReadySplash = showReadySplash or require("showReadySplash")
 
 function initializeReadySplashSequence.evaluate(group)
 	local readyImageSequence = createReadySequenceImagesLinkedList.evaluate()
-	showReadySplashImage.evaluate(group, readyImageSequence)
+	showReadySplash.evaluate(group, readyImageSequence)
 end
 
 return initializeReadySplashSequence

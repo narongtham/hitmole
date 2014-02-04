@@ -14,8 +14,8 @@ describe("initializeReadySplashSequence", function ( ... )
 		}
 		spy.on(createReadySequenceImagesLinkedList, "evaluate")
 
-		showReadySplashImage = {}
-		stub(showReadySplashImage, "evaluate")
+		showReadySplash = {}
+		stub(showReadySplash, "evaluate")
 
 		initializeReadySplashSequence = require("initializeReadySplashSequence")
 	end)
@@ -31,6 +31,6 @@ describe("initializeReadySplashSequence", function ( ... )
 		-- when
 		initializeReadySplashSequence.evaluate(group)
 		-- then
-		assert.stub(showReadySplashImage.evaluate).was_called_with(group, readySequenceImage)
+		assert.stub(showReadySplash.evaluate).was_called_with(group, readySequenceImage)
 	end)
 end)

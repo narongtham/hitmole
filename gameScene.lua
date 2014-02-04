@@ -5,7 +5,8 @@ createDecoratorsFromConfig = require("createDecoratorsFromConfig")
 pauseAllMoles = require("pauseAllMoles")
 pauseGenerateMoleTimer = require("pauseGenerateMoleTimer")
 initiaLizeLevel = require("initializeLevel")
-showReadySplash = require("showReadySplash")
+initializeReadySplashSequence = require("initializeReadySplashSequence")
+--showReadySplash = require("showReadySplash")
 -- end header
 
 
@@ -77,7 +78,8 @@ function scene:enterScene(e)
 	pauseGame.isVisible = true
 	isPause = false
 	initiaLizeLevel.evaluate()
-	showReadySplash.evaluate(currentViewGroup)
+	--showReadySplash.evaluate(currentViewGroup)
+	initializeReadySplashSequence.evaluate(currentViewGroup)
 	playBgSound()
 	showHeart()
 end
