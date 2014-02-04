@@ -1,13 +1,13 @@
 describe("showReadySplash", function ( ... )
 	local showReadySplash
 
-	local endingImage
+	local splashImage
 	local group
 
 	setup(function ( ... )
-		endingImage = {}
+		splashImage = {}
 		display.newImage = function ( ... )
-			return endingImage
+			return splashImage
 		end
 		
 		group = {
@@ -34,9 +34,9 @@ describe("showReadySplash", function ( ... )
 		-- given
 		DISPLAY_CENTER_X = 100
 		--when
-		showEndingImage.show(group)
+		showReadySplash.evaluate(group)
 		--then
-		assert.are.equal(endingImage.x, DISPLAY_CENTER_X)
+		assert.are.equal(splashImage.x, DISPLAY_CENTER_X)
 	end)
 
 	it("Set image y position to center", function ( ... )
@@ -45,7 +45,7 @@ describe("showReadySplash", function ( ... )
 		--when
 		showReadySplash.evaluate(group)
 		--then
-		assert.are.equal(endingImage.y, DISPLAY_CENTER_Y)
+		assert.are.equal(splashImage.y, DISPLAY_CENTER_Y)
 	end)
 
 	it("Add background image to a given group", function ( ... )
@@ -54,13 +54,13 @@ describe("showReadySplash", function ( ... )
 		--when
 		showReadySplash.evaluate(group)
 		--then
-		assert.stub(group.insert).was_called_with(group, endingImage)
+		assert.stub(group.insert).was_called_with(group, splashImage)
 	end)
 
 	it("Evaluate startSplashScreenTimer", function ( ... )
 		-- when
 		showReadySplash.evaluate(group)
 		-- then
-		assert.stub(startReadySplashTimer.evaluate).was_called()
+		assert.stub(startReadySplashTimer.evaluate).was_called_with(splashImage)
 	end)
 end)

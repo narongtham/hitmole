@@ -6,7 +6,9 @@ describe("startReadySplashTimer", function ( ... )
 	local target = {}
 	setup(function ( ... )
 
-		fakeTimerInstance = {}
+		fakeTimerInstance = {
+			params = {}
+		}
 
 		timer.performWithDelay = function ( ... )
 			return fakeTimerInstance
@@ -32,6 +34,6 @@ describe("startReadySplashTimer", function ( ... )
 		-- when
 		startReadySplashTimer.evaluate(target)
 		-- then
-		assert.are.equal(fakeTimerInstance.source.parameters.target, target)
+		assert.are.equal(fakeTimerInstance.params.target, target)
 	end)
 end)
