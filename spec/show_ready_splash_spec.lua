@@ -3,6 +3,9 @@ describe("showReadySplash", function ( ... )
 
 	local splashImage
 	local group
+	local splashImageSequenceData = {
+		value = "img/sprite/ready/go.png"
+	}
 
 	setup(function ( ... )
 		splashImage = {}
@@ -25,16 +28,16 @@ describe("showReadySplash", function ( ... )
 		--given
 		spy.on(display, "newImage")
 		--when
-		showReadySplash.evaluate(group)
+		showReadySplash.evaluate(group, splashImageSequenceData)
 		--then
-		assert.spy(display.newImage).was_called_with("img/sprite/ready/go.png")
+		assert.spy(display.newImage).was_called_with(splashImageSequenceData.value)
 	end)
 
 	it("Set image x position to center", function ( ... )
 		-- given
 		DISPLAY_CENTER_X = 100
 		--when
-		showReadySplash.evaluate(group)
+		showReadySplash.evaluate(group, splashImageSequenceData)
 		--then
 		assert.are.equal(splashImage.x, DISPLAY_CENTER_X)
 	end)
@@ -43,7 +46,7 @@ describe("showReadySplash", function ( ... )
 		-- given
 		DISPLAY_CENTER_Y = 120
 		--when
-		showReadySplash.evaluate(group)
+		showReadySplash.evaluate(group, splashImageSequenceData)
 		--then
 		assert.are.equal(splashImage.y, DISPLAY_CENTER_Y)
 	end)
@@ -52,14 +55,14 @@ describe("showReadySplash", function ( ... )
 		--given
 		stub(group, "insert")
 		--when
-		showReadySplash.evaluate(group)
+		showReadySplash.evaluate(group, splashImageSequenceData)
 		--then
 		assert.stub(group.insert).was_called_with(group, splashImage)
 	end)
 
 	it("Evaluate startSplashScreenTimer", function ( ... )
 		-- when
-		showReadySplash.evaluate(group)
+		showReadySplash.evaluate(group, splashImageSequenceData)
 		-- then
 		assert.stub(startReadySplashTimer.evaluate).was_called_with(splashImage)
 	end)
