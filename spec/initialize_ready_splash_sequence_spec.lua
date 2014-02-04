@@ -3,6 +3,8 @@ describe("initializeReadySplashSequence", function ( ... )
 
 	local readySequenceImage = {}
 
+	local group = {}
+
 	setup(function ( ... )
 
 		createReadySequenceImagesLinkedList = {
@@ -20,15 +22,15 @@ describe("initializeReadySplashSequence", function ( ... )
 
 	it("Evaluate createReadySequenceImagesLinkedList", function ( ... )
 		-- when
-		initializeReadySplashSequence.evaluate()
+		initializeReadySplashSequence.evaluate(group)
 		-- then
 		assert.stub(createReadySequenceImagesLinkedList.evaluate).was_called()
 	end)
 
 	it("Evalaute showReadySplash", function ( ... )
 		-- when
-		initializeReadySplashSequence.evaluate()
+		initializeReadySplashSequence.evaluate(group)
 		-- then
-		assert.stub(showReadySplashImage.evaluate).was_called_with(readySequenceImage)
+		assert.stub(showReadySplashImage.evaluate).was_called_with(group, readySequenceImage)
 	end)
 end)
