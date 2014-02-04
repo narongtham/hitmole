@@ -1,0 +1,3 @@
+createReadySequenceImagesLinkedList = {}
+
+return createReadySequenceImagesLinkedList
