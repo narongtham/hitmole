@@ -77,17 +77,12 @@ function scene:enterScene(e)
 	pauseGame.isVisible = true
 	isPause = false
 	initiaLizeLevel.evaluate()
+	showReadySplash.evaluate(currentViewGroup)
 	playBgSound()
-	spawnMole()
 	showHeart()
 end
 
 -- element funciton --
-function spawnMole()
-	showReadySplash.evaluate(currentViewGroup)
-	startGenerateMoleTimer.evaluate()
-end
-
 function showHeart()
 	lifePoints = {}
 	for i =1 , escapeCount do

@@ -15,6 +15,9 @@ describe("onReadySplashTimerEnded", function ( ... )
 			}
 		}
 
+		startGenerateMoleTimer = {}
+		stub(startGenerateMoleTimer, "evaluate")
+
 		onReadySplashTimerEnded = require("onReadySplashTimerEnded")
 	end)
 
@@ -25,5 +28,10 @@ describe("onReadySplashTimerEnded", function ( ... )
 		assert.stub(display.remove).was_called_with(target)
 	end)
 
-	it("Start generate mole timer")
+	it("Start generate mole timer", function ( ... )
+		-- when
+		onReadySplashTimerEnded.evaluate(event)
+		-- then
+		assert.stub(startGenerateMoleTimer.evaluate).was_called()
+	end)
 end)
