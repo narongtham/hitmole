@@ -7,7 +7,7 @@ g = nil
 function scene:createScene(e)
 	local group = self.view
 	g = group
-	local bg = display.newImageRect("img/menuBg.jpg",
+	local bg = display.newImageRect("img/start_screen_bg.png",
 		CONTENT_WIDTH,
 		CONTENT_HEIGHT)
 	bg.x = DISPLAY_CENTER_X
