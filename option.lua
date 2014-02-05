@@ -16,8 +16,8 @@ function scene:createScene(e)
 	logo.alpha = 1
 	group:insert(logo)
 
-	showMainMenuButton.show(group, DISPLAY_CENTER_Y)
-	showBackToGameButton.show(group, DISPLAY_CENTER_Y + 100)
+	showBackToGameButton.show(group, DISPLAY_CENTER_Y)
+	showMainMenuButton.show(group, DISPLAY_CENTER_Y + 100)
 end
 
 function scene:enterScene(e)
