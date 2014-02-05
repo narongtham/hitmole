@@ -1,10 +1,18 @@
 describe("loadHighScore", function ( ... )
 	local loadHighScore
 
+	local stored_highScore = {
+		value = 9999
+	}
+
 	setup(function ( ... )
 
-		loadHighScoreFile = {}
-		stub(loadHighScoreFile, "evaluate")
+		loadHighScoreFile = {
+			evaluate = function ( ... )
+				return stored_highScore
+			end
+		}
+		spy.on(loadHighScoreFile, "evaluate")
 
 		loadHighScore = require("loadHighScore")
 	end)
@@ -16,7 +24,11 @@ describe("loadHighScore", function ( ... )
 		assert.stub(loadHighScoreFile.evaluate).was_called()
 	end)
 
-	it("If file available replace highScore table with data in the file")
+	it("If file available replace highScore table with data in the file", function ( ... )
+		-- when
+		loadHighScore.evaluate()
+		-- then
+		assert.are.same(highScore, stored_highScore)
+	end)
 
-	it("If file not available then set 0 to highscore")
 end)
