@@ -55,7 +55,7 @@ describe("showHighScoreText", function ( ... )
 		-- when
 		showHighScoreText.evaluate(group)
 		-- then
-		assert.spy(display.newText).was_called_with("High score: 0", 0, 0, fontNameByPlatForm, 30)
+		assert.spy(display.newText).was_called_with("High score: 0", 0, 0, fontNameByPlatForm, 40)
 	end)
 
 	it("Set x to center", function ( ... )

@@ -3,11 +3,13 @@ local ads = require "ads"
 local scene = storyboard.newScene("menuScene")
 
 loadHighScore = require("loadHighScore")
+showHighScoreText = require("showHighScoreText")
 
 g = nil
 -- end header
 
 function scene:createScene(e)
+	ads.init( "admob", "a151e25cef8803a", adListener )
 	loadHighScore.evaluate()
 
 	local group = self.view
@@ -31,8 +33,7 @@ function scene:createScene(e)
 	startBtn.alpha = 0
 	group:insert(startBtn)
 
-	ads.init( "admob", "a151e25cef8803a", adListener )
-
+	showHighScoreText.evaluate(group)
 end
 
 function scene:enterScene(e)
