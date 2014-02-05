@@ -1,10 +1,15 @@
 -- header 
 local ads = require "ads" 
 local scene = storyboard.newScene("menuScene")
+
+loadHighScore = require("loadHighScore")
+
 g = nil
 -- end header
 
 function scene:createScene(e)
+	loadHighScore.evaluate()
+
 	local group = self.view
 	g = group
 	local bg = display.newImageRect("img/start_screen_bg.png",
@@ -27,7 +32,7 @@ function scene:createScene(e)
 	group:insert(startBtn)
 
 	ads.init( "admob", "a151e25cef8803a", adListener )
-	
+
 end
 
 function scene:enterScene(e)

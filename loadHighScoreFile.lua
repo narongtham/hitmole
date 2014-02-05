@@ -13,7 +13,8 @@ function loadHighScoreFile.evaluate()
 
 		return decoded
 	else
-		error("Highscore file not found")
+		print( "Highscore file not found" )
+		error( "Highscore file not found" )
 	end
 end
 
