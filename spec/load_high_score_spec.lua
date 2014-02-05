@@ -2,6 +2,10 @@ describe("loadHighScore", function ( ... )
 	local loadHighScore
 
 	setup(function ( ... )
+
+		loadHighScoreFile = {}
+		stub(loadHighScoreFile, "evaluate")
+
 		loadHighScore = require("loadHighScore")
 	end)
 
