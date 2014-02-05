@@ -33,19 +33,19 @@ levelConfigurations = {
 		level = 6,
 		moleLimit = 5,
 		timeToLive = 1500,
-		nextLevelScore = 4000
+		nextLevelScore = 2800
 	},
 	{
 		level = 7,
 		moleLimit = 5,
 		timeToLive = 1000,
-		nextLevelScore = 6000
+		nextLevelScore = 3600
 	},
 	{
 		level = 8,
 		moleLimit = 6,
 		timeToLive = 1000,
-		nextLevelScore = 9000
+		nextLevelScore = 4400
 	}
 }
 return levelConfigurations
