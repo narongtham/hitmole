@@ -1,36 +1,18 @@
-describe("loadHighScoreFile", function ( ... )
-	local loadHighScoreFile
+describe("loadHighScore", function ( ... )
+	local loadHighScore
 
 	setup(function ( ... )
-		system = {
-			pathForFile = function ( ... )
-				-- body
-			end,
-			DocumentsDirectory = "fakeDocumentDir"
-		}
-		spy.on(system, "pathForFile")
-
-		loadHighScoreFile = require("loadHighScoreFile")
+		loadHighScore = require("loadHighScore")
 	end)
 
-	it("Acquire path of highscore file", function ( ... )
+	it("Evaluate loadHighScoreFile", function ( ... )
 		-- when
-		loadHighScoreFile.evaluate()
+		loadHighScore.evaluate()
 		-- then
-		assert.stub(system.pathForFile).was_called_with("cvm_highscore", system.DocumentsDirectory)
+		assert.stub(loadHighScoreFile.evaluate).was_called()
 	end)
 
-	it("Open file")
+	it("If file available replace highScore table with data in the file")
 
-	it("Error if no highscore file available")
-
-	it("If file availables then read")
-
-	it("If file available decode after read")
-
-	it("If file available close file after decoded")
-
-	it("If file available return highscore table")
-
-
+	it("If file not available then set 0 to highscore")
 end)
