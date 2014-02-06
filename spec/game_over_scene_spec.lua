@@ -15,7 +15,7 @@ describe("gameOverScene", function ( ... )
 
 	widget = {}
 
-	ads = {}
+	showAds = {}
 
 	local gameOverScene = require "gameOverScene"
 	local showGameOverBackgroundImage = require "showGameOverBackgroundImage"
@@ -32,6 +32,9 @@ describe("gameOverScene", function ( ... )
 		stub(showMainMenuButton, "show")
 		checkHighScore = {}
 		stub(checkHighScore, "evaluate")
+		stub(showAds, "evaluate")
+
+		display.viewableContentHeight = 720
 	end)
 
 	teardown(function ( ... )
@@ -75,5 +78,12 @@ describe("gameOverScene", function ( ... )
 		gameOverScene:enterScene(event)
 		-- then
 		assert.stub(checkHighScore.evaluate).was_called_with(scene.view)
+	end)
+
+	it("Evalaute showAds", function ( ... )
+		-- when
+		gameOverScene:enterScene(event)
+		-- then
+		assert.stub(showAds.evaluate).was_called()
 	end)
 end)
