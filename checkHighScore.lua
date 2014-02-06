@@ -2,7 +2,7 @@ checkHighScore = {}
 
 getHighScore = getHighScore or require("getHighScore")
 setHighScore = setHighScore or require("setHighScore")
---saveHighScore = saveHighScore or require("saveHighScore")
+saveHighScore = saveHighScore or require("saveHighScore")
 --showNewHighImage = showNewHighImage or require("showNewHighImage")
 showHighScoreText = showHighScoreText or require("showHighScoreText") 
 
@@ -11,7 +11,7 @@ function checkHighScore.evaluate(group)
 
 	if score > storedHighScore then
 		setHighScore.evaluate(score)
-		--saveHighScore.evaluate()
+		saveHighScore.evaluate()
 		--showNewHighImage.evaluate()
 	end
 
