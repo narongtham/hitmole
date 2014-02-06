@@ -14,7 +14,7 @@ function scene:createScene(e)
 	showGameOverBackgroundImage.show(group)
 	showEndingImage.show(group)
 	showPlayAgainButton.show(group)
-	showMainMenuButton.show(group, 840)
+	showMainMenuButton.show(group, 940)
 end
 
 function scene:enterScene(e)

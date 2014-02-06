@@ -44,7 +44,7 @@ describe("showPlayAgainButton", function ( ... )
 
 	it("Move button to y = 720", function ( ... )
 		-- given
-		expectedYPosition = 720
+		expectedYPosition = 830
 		--when
 		showPlayAgainButton.show(group)
 		--then

@@ -10,7 +10,7 @@ function showPlayAgainButton.show(group)
 		onRelease=showPlayAgainButton.onPlayAgain
 	}
 	playAgainButton.x = DISPLAY_CENTER_X
-	playAgainButton.y = 720
+	playAgainButton.y = 830
 
 	group:insert( playAgainButton )
 end
