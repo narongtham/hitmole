@@ -33,17 +33,17 @@ function scene:createScene(e)
 	startBtn.alpha = 0
 	group:insert(startBtn)
 
-	showHighScoreText.evaluate(group)
+	
 end
 
 function scene:enterScene(e)
 	startBtn.alpha = 0
-	showLogo(view)
-
+	showLogo()
+	showHighScoreText.evaluate(g)
 	ads.show( "banner", { x = display.screenOriginX , y = display.screenOriginY + display.viewableContentHeight - 90 } )
 end
 
-function showLogo(view)
+function showLogo()
 	transition.to( logo, {time = 1000, alpha = 1, onComplete = showMenu} )
 end
 
