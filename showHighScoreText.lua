@@ -13,6 +13,8 @@ function showhighScoreText.evaluate(group)
 	hiScoreText:setFillColor( 65/255, 65/255, 65/255 )
 
 	group:insert( hiScoreText )
+
+	return hiScoreText
 end
 
 return showhighScoreText
