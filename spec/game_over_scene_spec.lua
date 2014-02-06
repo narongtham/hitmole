@@ -7,17 +7,13 @@ describe("gameOverScene", function ( ... )
 		view = {}
 	}
 
-	storyboard = {
-		newScene = function ( ... )
-			return scene
-		end
-	}
+	
 
 	widget = {}
 
 	showAds = {}
 
-	local gameOverScene = require "gameOverScene"
+	local gameOverScene
 	local showGameOverBackgroundImage = require "showGameOverBackgroundImage"
 	local showEndingImage = require "showEndingImage"
 	local showPlayAgainButton = require "showPlayAgainButton"
@@ -35,6 +31,14 @@ describe("gameOverScene", function ( ... )
 		stub(showAds, "evaluate")
 
 		display.viewableContentHeight = 720
+
+		storyboard = {
+			newScene = function ( ... )
+				return scene
+			end
+		}
+
+		gameOverScene = require "gameOverScene"
 	end)
 
 	teardown(function ( ... )

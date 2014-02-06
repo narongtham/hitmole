@@ -40,6 +40,9 @@ describe("saveTable", function ( ... )
 
 		stub(fakeFile, "write")
 
+		print("Before load")
+		print( json )
+
 		saveTable = require("saveTable")
 	end)
 
