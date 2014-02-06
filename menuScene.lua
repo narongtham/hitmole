@@ -6,6 +6,7 @@ loadHighScore = require("loadHighScore")
 showHighScoreText = require("showHighScoreText")
 
 g = nil
+local highScoreText
 -- end header
 
 function scene:createScene(e)
@@ -39,7 +40,7 @@ end
 function scene:enterScene(e)
 	startBtn.alpha = 0
 	showLogo()
-	showHighScoreText.evaluate(g)
+	highScoreText = showHighScoreText.evaluate(g)
 	ads.show( "banner", { x = display.screenOriginX , y = display.screenOriginY + display.viewableContentHeight - 90 } )
 end
 
@@ -64,9 +65,9 @@ function startG()
 	ads.hide( )
 	storyboard.gotoScene("gameScene",{
 		effect = "fade",
-		time = 500,
-		onComplete = purgeScene
+		time = 500
 	})
+	purgeScene()
 end
 
 local function adListener( event )
@@ -76,7 +77,6 @@ local function adListener( event )
 end
 
 function purgeScene(event)
-
 	storyboard.purgeScene( "menuScene" )
 end
 
