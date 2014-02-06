@@ -3,6 +3,7 @@ local showGameOverBackgroundImage = require "showGameOverBackgroundImage"
 local showEndingImage = require "showEndingImage"
 local showPlayAgainButton = require "showPlayAgainButton"
 local showMainMenuButton = require "showMainMenuButton"
+checkHighScore = checkHighScore or require("checkHighScore")
 local ads = ads or require "ads"
 
 local scene = storyboard.newScene()
@@ -16,7 +17,8 @@ function scene:createScene(e)
 	showMainMenuButton.show(group, 840)
 end
 
-function scene:enterScene( ... )
+function scene:enterScene(e)
+	checkHighScore.evaluate(self.view)
 	ads.show( "banner", { x = display.screenOriginX , y = display.screenOriginY + display.viewableContentHeight - 90 } )
 end
 

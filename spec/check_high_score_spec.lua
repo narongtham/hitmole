@@ -33,35 +33,35 @@ describe("checkHighScore", function ( ... )
 
 	it("Evalaute getHighScore", function ( ... )
 		-- when
-		checkHighScore.evalaute(group)
+		checkHighScore.evaluate(group)
 		-- then
 		assert.stub(getHighScore.evaluate).was_called()
 	end)
 
 	it("If current score higher than highScore.value then evaluate setHighscore", function ( ... )
 		-- when
-		checkHighScore.evalaute(group)
+		checkHighScore.evaluate(group)
 		-- then
 		assert.stub(setHighScore.evaluate).was_called_with(score)
 	end)
 
 	it("If current score higher than highscore then save", function ( ... )
 		-- when
-		checkHighScore.evalaute(group)
+		checkHighScore.evaluate(group)
 		-- then
 		assert.stub(saveHighScore.evaluate).was_called()
 	end)
 
 	it("If current score higher than highscore then show new badge", function ( ... )
 		-- when
-		checkHighScore.evalaute(group)
+		checkHighScore.evaluate(group)
 		-- then
 		assert.stub(showNewHighImage.evaluate).was_called()
 	end)
 
 	it("Show highScore text", function ( ... )
 		-- when
-		checkHighScore.evalaute(group)
+		checkHighScore.evaluate(group)
 		-- then
 		assert.stub(showHighScoreText.evaluate).was_called_with(group)
 	end)

@@ -30,6 +30,8 @@ describe("gameOverScene", function ( ... )
 		stub(showEndingImage, "show")
 		stub(showPlayAgainButton, "show")
 		stub(showMainMenuButton, "show")
+		checkHighScore = {}
+		stub(checkHighScore, "evaluate")
 	end)
 
 	teardown(function ( ... )
@@ -66,5 +68,12 @@ describe("gameOverScene", function ( ... )
 		gameOverScene:createScene(event)
 		-- then
 		assert.stub(showMainMenuButton.show).was_called_with(scene.view, 840)
+	end)
+
+	it("Evaluate checkHighScore", function ( ... )
+		-- when
+		gameOverScene:enterScene(event)
+		-- then
+		assert.stub(checkHighScore.evaluate).was_called_with(scene.view)
 	end)
 end)
