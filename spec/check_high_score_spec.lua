@@ -22,8 +22,8 @@ describe("checkHighScore", function ( ... )
 		saveHighScore = {}
 		stub(saveHighScore, "evaluate")
 
-		showNewHighImage = {}
-		stub(showNewHighImage, "evaluate")
+		showNewHighBadge = {}
+		stub(showNewHighBadge, "evaluate")
 
 		showHighScoreText = {}
 		stub(showHighScoreText, "evaluate")
@@ -56,7 +56,7 @@ describe("checkHighScore", function ( ... )
 		-- when
 		checkHighScore.evaluate(group)
 		-- then
-		assert.stub(showNewHighImage.evaluate).was_called()
+		assert.stub(showNewHighBadge.evaluate).was_called()
 	end)
 
 	it("Show highScore text", function ( ... )

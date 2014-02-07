@@ -76,13 +76,6 @@ describe("showHighScoreText", function ( ... )
 		assert.are.equal(textObject.y, expectedY)
 	end)
 
-	it("Set color", function ( ... )
-		-- when
-		showHighScoreText.evaluate(group)
-		-- then
-		assert.stub(textObject.setFillColor).was_called_with(textObject, 65/255, 65/255, 65/255)
-	end)
-
 	it("insert to group", function ( ... )
 		-- when
 		showHighScoreText.evaluate(group)
