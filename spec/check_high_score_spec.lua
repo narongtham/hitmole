@@ -5,6 +5,8 @@ describe("checkHighScore", function ( ... )
 	
 	local group = {}
 
+	local highScoreText = {}
+
 	setup(function ( ... )
 
 		score = 100
@@ -25,8 +27,15 @@ describe("checkHighScore", function ( ... )
 		showNewHighScoreText = {}
 		stub(showNewHighScoreText, "evaluate")
 
-		showHighScoreText = {}
-		stub(showHighScoreText, "evaluate")
+		showHighScoreText = {
+			evaluate = function ( ... )
+				return highScoreText
+			end
+		}
+		spy.on(showHighScoreText, "evaluate")
+
+		showGameOverScoreText = {}
+		stub(showGameOverScoreText, "evaluate")
 
 		checkHighScore = require("checkHighScore")
 	end)
@@ -67,5 +76,12 @@ describe("checkHighScore", function ( ... )
 		checkHighScore.evaluate(group)
 		-- then
 		assert.stub(showHighScoreText.evaluate).was_called_with(group)
+	end)
+
+	it("Evaluate showGameOverScoreText", function ( ... )
+		-- when
+		checkHighScore.evaluate(group)
+		-- theb
+		assert.stub(showGameOverScoreText.evaluate).was_called_with(group, highScoreText)
 	end)
 end)
