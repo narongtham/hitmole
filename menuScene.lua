@@ -40,7 +40,7 @@ end
 function scene:enterScene(e)
 	startBtn.alpha = 0
 	showLogo()
-	highScoreText = showHighScoreText.evaluate(g)
+	highScoreText = showHighScoreText.evaluate(g, 720)
 	ads.show( "banner", { x = display.screenOriginX , y = display.screenOriginY + display.viewableContentHeight - 90 } )
 end
 

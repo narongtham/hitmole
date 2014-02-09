@@ -24,8 +24,12 @@ describe("checkHighScore", function ( ... )
 		saveHighScore = {}
 		stub(saveHighScore, "evaluate")
 
-		showNewHighScoreText = {}
-		stub(showNewHighScoreText, "evaluate")
+		showNewHighScoreText = {
+			evaluate = function ( ... )
+				return highScoreText
+			end
+		}
+		spy.on(showNewHighScoreText, "evaluate")
 
 		showHighScoreText = {
 			evaluate = function ( ... )

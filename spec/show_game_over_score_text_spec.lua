@@ -50,7 +50,7 @@ describe("showGameOverScoreText", function ( ... )
 		-- when
 		showGameOverScoreText.evaluate(group, targetObject)
 		-- then
-		assert.spy(display.newText).was_called_with("High score: 0", 0, 0, fontNameByPlatForm, 40)
+		assert.spy(display.newText).was_called_with("Your score: 0", 0, 0, fontNameByPlatForm, 40)
 	end)
 
 	it("Set x to center", function ( ... )
@@ -64,7 +64,7 @@ describe("showGameOverScoreText", function ( ... )
 
 	it("Set y to under target object with offset", function ( ... )
 		-- given
-		expectedY=753
+		expectedY=777
 		-- when
 		showGameOverScoreText.evaluate(group, targetObject)
 		-- then

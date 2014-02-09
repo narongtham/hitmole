@@ -12,12 +12,14 @@ function checkHighScore.evaluate(group)
 
 	local highScoreText
 
+	local verticalPosition = 680
+
 	if score > storedHighScore then
 		setHighScore.evaluate(score)
 		saveHighScore.evaluate()
-		highScoreText = showNewHighScoreText.evaluate(group)
+		highScoreText = showNewHighScoreText.evaluate(group, verticalPosition)
 	else
-		highScoreText = showHighScoreText.evaluate(group)
+		highScoreText = showHighScoreText.evaluate(group, verticalPosition)
 	end
 
 	showGameOverScoreText.evaluate(group, highScoreText)
