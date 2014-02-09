@@ -41,6 +41,6 @@ describe("showNewHighBadge", function ( ... )
 		-- when
 		showNewHighBadge.evaluate(group)
 		-- then
-		assert.are.equal(newHighBadge.rotation, 45)
+		assert.are.equal(newHighBadge.rotation, -20)
 	end)
 end)

@@ -6,7 +6,7 @@ function showNewHighBadge.evaluate(group)
 	newHighBadge.x = 164
 	newHighBadge.y = 686
 
-	newHighBadge.rotation = 45
+	newHighBadge.rotation = -20
 
 	group:insert(newHighBadge)
 end

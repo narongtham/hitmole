@@ -1,5 +1,5 @@
-highscore = {
+highScore = {
 	value=0
 }
 
-return highscore
+return highScore

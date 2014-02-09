@@ -12,10 +12,11 @@ function checkHighScore.evaluate(group)
 	if score > storedHighScore then
 		setHighScore.evaluate(score)
 		saveHighScore.evaluate()
+		showHighScoreText.evaluate(group)
 		showNewHighBadge.evaluate(group)
+	else
+		showHighScoreText.evaluate(group)
 	end
-
-	showHighScoreText.evaluate(group)
 end
 
 return checkHighScore
