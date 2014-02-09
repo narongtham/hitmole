@@ -3,7 +3,7 @@ checkHighScore = {}
 getHighScore = getHighScore or require("getHighScore")
 setHighScore = setHighScore or require("setHighScore")
 saveHighScore = saveHighScore or require("saveHighScore")
-showNewHighBadge = showNewHighBadge or require("showNewHighBadge")
+showNewHighScoreText = showNewHighScoreText or require("showNewHighScoreText")
 showHighScoreText = showHighScoreText or require("showHighScoreText") 
 
 function checkHighScore.evaluate(group)
@@ -12,8 +12,7 @@ function checkHighScore.evaluate(group)
 	if score > storedHighScore then
 		setHighScore.evaluate(score)
 		saveHighScore.evaluate()
-		showHighScoreText.evaluate(group)
-		showNewHighBadge.evaluate(group)
+		showNewHighScoreText.evaluate(group)
 	else
 		showHighScoreText.evaluate(group)
 	end

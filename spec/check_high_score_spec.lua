@@ -22,8 +22,8 @@ describe("checkHighScore", function ( ... )
 		saveHighScore = {}
 		stub(saveHighScore, "evaluate")
 
-		showNewHighBadge = {}
-		stub(showNewHighBadge, "evaluate")
+		showNewHighScoreText = {}
+		stub(showNewHighScoreText, "evaluate")
 
 		showHighScoreText = {}
 		stub(showHighScoreText, "evaluate")
@@ -52,14 +52,17 @@ describe("checkHighScore", function ( ... )
 		assert.stub(saveHighScore.evaluate).was_called()
 	end)
 
-	it("If current score higher than highscore then show new badge", function ( ... )
+	it("If current score higher than highscore then show high score with new badge", function ( ... )
 		-- when
 		checkHighScore.evaluate(group)
 		-- then
-		assert.stub(showNewHighBadge.evaluate).was_called()
+		assert.stub(showNewHighScoreText.evaluate).was_called_with(group)
 	end)
 
 	it("Show highScore text", function ( ... )
+		-- given
+		score = 20
+		fakeHighScore = 100
 		-- when
 		checkHighScore.evaluate(group)
 		-- then
