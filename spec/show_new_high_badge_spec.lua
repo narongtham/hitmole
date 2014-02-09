@@ -3,6 +3,12 @@ describe("showNewHighBadge", function ( ... )
 
 	local newHighBadge = {}
 	local group = {}
+	local targetDisplayObject = {
+		x=10,
+		y=10,
+		contentWidth=20,
+		contentHeight=20 
+	}
 
 	setup(function ( ... )
 		
@@ -18,28 +24,32 @@ describe("showNewHighBadge", function ( ... )
 
 	it("Create new high badge image", function ( ... )
 		-- when
-		showNewHighBadge.evaluate(group)
+		showNewHighBadge.evaluate(group, targetDisplayObject)
 		-- then
 		assert.stub(display.newImage).was_called_with("img/sprite/new.png")
 	end)
 
-	it("Set x position 164", function ( ... )
+	it("Set x position", function ( ... )
+		-- given
+		local expected_x = 0
 		-- when
-		showNewHighBadge.evaluate(group)
+		showNewHighBadge.evaluate(group, targetDisplayObject)
 		-- then
-		assert.are.equal(newHighBadge.x, 164)
+		assert.are.equal(newHighBadge.x, expected_x)
 	end)
 
 	it("Set y position 686", function ( ... )
+		-- given
+		local expected_y = 0
 		-- when
-		showNewHighBadge.evaluate(group)
+		showNewHighBadge.evaluate(group, targetDisplayObject)
 		-- then
-		assert.are.equal(newHighBadge.y, 686)
+		assert.are.equal(newHighBadge.y, expected_y)
 	end)
 
 	it("Set rotation", function ( ... )
 		-- when
-		showNewHighBadge.evaluate(group)
+		showNewHighBadge.evaluate(group, targetDisplayObject)
 		-- then
 		assert.are.equal(newHighBadge.rotation, -20)
 	end)
