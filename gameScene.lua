@@ -75,6 +75,7 @@ function scene:enterScene(e)
 	escapeCount = 3
 	score = 0
 	scoreTxt.text = "Score: 0"
+	scoreTxt.isVisible = true
 	pauseGame.isVisible = true
 	isPause = false
 	initiaLizeLevel.evaluate()
