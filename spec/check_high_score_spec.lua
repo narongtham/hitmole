@@ -59,7 +59,7 @@ describe("checkHighScore", function ( ... )
 		assert.stub(showNewHighScoreText.evaluate).was_called_with(group)
 	end)
 
-	it("Show highScore text", function ( ... )
+	it("If current score lower or equal then just show highScore text", function ( ... )
 		-- given
 		score = 20
 		fakeHighScore = 100

@@ -40,7 +40,7 @@ describe("showNewHighBadge", function ( ... )
 
 	it("Set y position 686", function ( ... )
 		-- given
-		local expected_y = 0
+		local expected_y = -12
 		-- when
 		showNewHighBadge.evaluate(group, targetDisplayObject)
 		-- then
