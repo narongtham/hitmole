@@ -10,7 +10,7 @@ local highScoreText
 -- end header
 
 function scene:createScene(e)
-	ads.init( "admob", "a151e25cef8803a", adListener )
+	ads.init( "admob", "a152fcd578c6fa7", adListener )
 	loadHighScore.evaluate()
 
 	local group = self.view
